@@ -80,7 +80,7 @@ const char* ImportStream::String(Allocator& alloc)
 	if (m_size < n) {
 		fault("Invalid stream (%d): read string failed", m_current_id);
 	}
-	char* buf = static_cast<char*>(alloc.Alloc(ALIGN_4BYTE(n)));
+	char* buf = static_cast<char*>(alloc.Alloc(ALIGN_4BYTE(n  + 1)));
 	memcpy(buf, m_stream, n);
 	buf[n] = 0;
 	m_stream += n;

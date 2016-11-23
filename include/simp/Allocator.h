@@ -16,6 +16,9 @@ public:
 
 	bool Empty() const { return m_cap == 0; }
 
+	// for debug
+	int GetCap() const { return m_cap; }
+
 private:
 	char* m_buffer;
 	int m_cap;

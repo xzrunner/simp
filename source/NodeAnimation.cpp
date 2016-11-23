@@ -16,8 +16,8 @@ NodeAnimation::NodeAnimation(Allocator& alloc, ImportStream& is)
 	{
 		Layer* layer = &layers[i];
 		layer->n = is.UInt16();
-		layer->frames = static_cast<Frame**>(alloc.Alloc(SIZEOF_POINTER * layers->n));
-		memset(layer->frames, 0, SIZEOF_POINTER * layers->n);
+		layer->frames = static_cast<Frame**>(alloc.Alloc(SIZEOF_POINTER * layer->n));
+		memset(layer->frames, 0, SIZEOF_POINTER * layer->n);
  		for (int j = 0; j < layer->n; ++j) 
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(FrameSize()));

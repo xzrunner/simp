@@ -31,7 +31,7 @@ NodeComplex::NodeComplex(Allocator& alloc, ImportStream& is)
 
 	// sprs
 	sprs_n = is.UInt16();
-	sprs = (uint32_t*)(alloc.Alloc(sizeof(int32_t) * sprs_n));
+	sprs = (uint32_t*)(alloc.Alloc(sizeof(uint32_t) * sprs_n));
 	trans = static_cast<NodeTrans**>(alloc.Alloc(SIZEOF_POINTER * sprs_n));
 	memset(trans, 0, SIZEOF_POINTER * sprs_n);
 	for (int i = 0; i < sprs_n; ++i) {
