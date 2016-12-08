@@ -47,6 +47,12 @@ uint32_t NodeFactory::GetNodeID(const std::string& pkg_name, const std::string& 
 
 	uint32_t pkg_id = m_pkgs[idx].id;
 
+	return ComposeID(pkg_id, node_id);
+}
+
+uint32_t NodeFactory::ComposeID(uint32_t pkg_id, uint32_t node_id)
+{
+	assert(pkg_id < (1 << PKG_ID_SIZE) && node_id < (1 << NODE_ID_SIZE));
 	return (pkg_id << NODE_ID_SIZE) | node_id;
 }
 

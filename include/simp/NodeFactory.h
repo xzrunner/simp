@@ -25,6 +25,8 @@ public:
 
 	uint32_t GetNodeID(const std::string& pkg_name, const std::string& node_name) const;
 
+	static uint32_t ComposeID(uint32_t pkg_id, uint32_t node_id);
+
 private:
 	static const int PKG_ID_SIZE		= 12;
 	static const int NODE_ID_SIZE		= 20;
