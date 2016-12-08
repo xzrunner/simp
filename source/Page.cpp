@@ -4,6 +4,7 @@
 #include "Allocator.h"
 #include "simp_define.h"
 #include "StaticAlloc.h"
+#include "NodeFactory.h"
 
 #include "NodePicture.h"
 #include "NodeScale9.h"
@@ -95,7 +96,9 @@ OnLoad(ImportStream& is)
 	while (!is.Empty())
 	{
 		uint32_t id = is.UInt32();
-		int idx = id - m_page->m_begin_id;
+		uint32_t node_id = NodeFactory::GetNodeID(id);
+
+		int idx = node_id - m_page->m_begin_id;
 		uint8_t type = is.UInt8();
 		m_page->m_types[idx] = type;
 		m_page->m_nodes[idx] = CreateNode(type, alloc, is);
