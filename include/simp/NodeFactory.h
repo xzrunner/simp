@@ -27,18 +27,14 @@ public:
 
 	static uint32_t ComposeID(uint32_t pkg_id, uint32_t node_id);
 
+	static uint32_t GetPkgID(uint32_t id)  { return (id & PKG_ID_MASK) >> NODE_ID_SIZE; }
+	static uint32_t GetNodeID(uint32_t id) { return id & NODE_ID_MASK; }
+
 private:
 	static const int PKG_ID_SIZE		= 12;
 	static const int NODE_ID_SIZE		= 20;
 	static const uint32_t PKG_ID_MASK	= 0xfff00000;
 	static const uint32_t NODE_ID_MASK	= 0x000fffff;
-
-	uint32_t GetPkgID(uint32_t id) const {
-		return (id & PKG_ID_MASK) >> NODE_ID_SIZE;
-	}
-	uint32_t GetNodeID(uint32_t id) const {
-		return id & NODE_ID_MASK;
-	}
 
 private:
 	struct PkgWrap
