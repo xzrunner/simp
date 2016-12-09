@@ -12,7 +12,7 @@ static const int SIZEOF_POINTER		= 8;
 static const uint32_t ANCHOR_ID		= 0xffffffff;
 static const int SCREEN_SCALE		= 16;
 
-static const int PAGE_SIZE			= 4096 * 2;
+static const int PAGE_SIZE			= 1024 * 16;
 
 #define ALIGN_4BYTE(x) (((x) + 3) & ~3)
 
