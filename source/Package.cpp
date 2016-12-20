@@ -3,11 +3,12 @@
 #include "simp_types.h"
 #include "Page.h"
 #include "StaticAlloc.h"
-#include "Allocator.h"
 #include "simp_define.h"
 
 #include <fs_file.h>
 #include <fault.h>
+#include <bimp/typedef.h>
+#include <bimp/Allocator.h>
 
 #include <sstream>
 
@@ -25,6 +26,22 @@ Package::Package(const std::string& filepath)
 
 Package::~Package()
 {
+}
+
+void Package::Traverse(NodeVisitor& visitor) const
+{
+	for (int i = 0, n = m_pages.size(); i < n; ++i) 
+	{
+		const PageDesc& page = m_pages[i];
+		bool loaded = page.page != NULL;
+		if (!loaded) {
+			LoadPage(i);
+		}
+		page.page->Traverse(visitor);
+		if (!loaded) {
+			UnloadPage(i);
+		}
+	}
 }
 
 uint32_t Package::QueryID(const std::string& name) const
@@ -100,11 +117,11 @@ Page* Package::QueryPage(int id)
 	return m_pages[idx].page;	
 }
 
-void Package::LoadPage(int idx)
+void Package::LoadPage(int idx) const
 {
 	assert(!m_pages[idx].page);
 
-	Allocator* alloc = StaticAlloc::Instance()->Create();
+	bimp::Allocator* alloc = StaticAlloc::Instance()->Create();
 
 	int sz = ALIGN_4BYTE(Page::Size());
 	void* ptr = alloc->Alloc(sz);
@@ -118,17 +135,27 @@ void Package::LoadPage(int idx)
 	m_pages[idx].page = page;
 }
 
+void Package::UnloadPage(int idx) const
+{
+	if (!m_pages[idx].page) {
+		return;
+	}
+
+	delete m_pages[idx].page;
+	m_pages[idx].page = NULL;
+}
+
 /************************************************************************/
 /* class Package::ImageDescLoader                                       */
 /************************************************************************/
 
 Package::ImageDescLoader::ImageDescLoader(const std::string& filepath, std::vector<ImageDesc>& images) 
-	: FileLoader(filepath)
+	: bimp::FileLoader(filepath)
 	, m_images(images) 
 {
 }
 
-void Package::ImageDescLoader::OnLoad(ImportStream& is)
+void Package::ImageDescLoader::OnLoad(bimp::ImportStream& is)
 {
 	int num = is.UInt32();
 	m_images.reserve(num);
@@ -155,7 +182,7 @@ Package::PageDescLoader::PageDescLoader(const std::string& filepath,
 {
 }
 
-void Package::PageDescLoader::OnLoad(ImportStream& is)
+void Package::PageDescLoader::OnLoad(bimp::ImportStream& is)
 {
 	int export_n = is.UInt16();
 	for (int i = 0; i < export_n; ++i)

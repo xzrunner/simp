@@ -1,12 +1,13 @@
 #include "NodeMeshSpr.h"
-#include "Allocator.h"
 #include "ImportStream.h"
-#include "simp_define.h"
+
+#include <bimp/typedef.h>
+#include <bimp/Allocator.h>
 
 namespace simp
 {
 
-NodeMeshSpr::NodeMeshSpr(Allocator& alloc, ImportStream& is)
+NodeMeshSpr::NodeMeshSpr(bimp::Allocator& alloc, ImportStream& is)
 {
 	mesh_id = is.UInt32();
 	base_id	= is.UInt32();

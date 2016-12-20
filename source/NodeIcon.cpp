@@ -1,12 +1,13 @@
 #include "NodeIcon.h"
-#include "Allocator.h"
 #include "ImportStream.h"
-#include "simp_define.h"
+
+#include <bimp/typedef.h>
+#include <bimp/Allocator.h>
 
 namespace simp
 {
 
-NodeIcon::NodeIcon(Allocator& alloc, ImportStream& is)
+NodeIcon::NodeIcon(bimp::Allocator& alloc, ImportStream& is)
 {
 	base_id = is.UInt32();
 	type = is.UInt8();

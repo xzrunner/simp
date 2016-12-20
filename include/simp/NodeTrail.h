@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 
 class NodeTrail : private cu::Uncopyable
@@ -48,7 +49,7 @@ public:
 	Component components[1];
 
 public:
-	NodeTrail(Allocator& alloc, ImportStream& is);
+	NodeTrail(bimp::Allocator& alloc, ImportStream& is);
 
 	static int Size();
 	static int ComponentSize();

@@ -1,14 +1,16 @@
 #include "NodeAnimation.h"
 #include "simp_define.h"
 #include "ImportStream.h"
-#include "Allocator.h"
 #include "NodeTrans.h"
 #include "from_int.h"
+
+#include <bimp/typedef.h>
+#include <bimp/Allocator.h>
 
 namespace simp
 {
 
-NodeAnimation::NodeAnimation(Allocator& alloc, ImportStream& is)
+NodeAnimation::NodeAnimation(bimp::Allocator& alloc, ImportStream& is)
 {
 	n = is.UInt16();
 	alloc.Alloc(LayerSize() * n);

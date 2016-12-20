@@ -1,7 +1,9 @@
 #include "NodeTrans.h"
 #include "simp_define.h"
 #include "ImportStream.h"
-#include "Allocator.h"
+
+#include <bimp/typedef.h>
+#include <bimp/Allocator.h>
 
 namespace simp
 {
@@ -16,7 +18,7 @@ int NodeTrans::Size()
 	return sizeof(NodeTrans) + PTR_SIZE_DIFF - sizeof(uint32_t);
 }
 
-NodeTrans* NodeTrans::LoadTrans(Allocator& alloc, ImportStream& is)
+NodeTrans* NodeTrans::LoadTrans(bimp::Allocator& alloc, ImportStream& is)
 {
 	uint32_t type = is.UInt32();
 

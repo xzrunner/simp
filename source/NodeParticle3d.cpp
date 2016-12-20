@@ -1,11 +1,12 @@
 #include "NodeParticle3d.h"
 #include "ImportStream.h"
-#include "Allocator.h"
+
+#include <bimp/Allocator.h>
 
 namespace simp
 {
 
-NodeParticle3d::NodeParticle3d(Allocator& alloc, ImportStream& is)
+NodeParticle3d::NodeParticle3d(bimp::Allocator& alloc, ImportStream& is)
 {
 	n = is.UInt16();
 	alloc.Alloc(ComponentSize() * n);

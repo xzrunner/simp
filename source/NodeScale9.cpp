@@ -1,11 +1,12 @@
 #include "NodeScale9.h"
 #include "ImportStream.h"
-#include "Allocator.h"
+
+#include <bimp/Allocator.h>
 
 namespace simp
 {
 
-NodeScale9::NodeScale9(Allocator& alloc, ImportStream& is)
+NodeScale9::NodeScale9(bimp::Allocator& alloc, ImportStream& is)
 {
 	type = is.UInt8();
 

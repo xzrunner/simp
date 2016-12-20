@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 class NodeTrans;
 
@@ -33,7 +34,7 @@ public:
 	Action actions[1];
 
 public:
-	NodeComplex(Allocator& alloc, ImportStream& is);
+	NodeComplex(bimp::Allocator& alloc, ImportStream& is);
 
 	static int Size();
 	static int ActionSize();

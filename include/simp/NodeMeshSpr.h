@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 
 class NodeMeshSpr : private cu::Uncopyable
@@ -20,7 +21,7 @@ public:
 	uint16_t vertices[1];
 
 public:
-	NodeMeshSpr(Allocator& alloc, ImportStream& is);
+	NodeMeshSpr(bimp::Allocator& alloc, ImportStream& is);
 
 	static int Size();
 

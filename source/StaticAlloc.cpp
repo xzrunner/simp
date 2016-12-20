@@ -1,6 +1,7 @@
 #include "StaticAlloc.h"
-#include "Allocator.h"
 #include "simp_define.h"
+
+#include <bimp/Allocator.h>
 
 namespace simp
 {
@@ -11,19 +12,19 @@ StaticAlloc::StaticAlloc()
 {
 }
 
-Allocator* StaticAlloc::Create()
+bimp::Allocator* StaticAlloc::Create()
 {
-	Allocator* ret = NULL;
+	bimp::Allocator* ret = NULL;
 	if (!m_freelist.empty()) {
 		ret = m_freelist.back();
 		m_freelist.pop_back();
 	} else {
-		return new Allocator(PAGE_SIZE);
-	} 
+		return new bimp::Allocator(PAGE_SIZE);
+	}
 	return ret;
 }
 
-void StaticAlloc::Release(Allocator* alloc)
+void StaticAlloc::Release(bimp::Allocator* alloc)
 {
 	if (alloc) {
 		m_freelist.push_back(alloc);

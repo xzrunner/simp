@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 
 class NodeIcon : private cu::Uncopyable
@@ -22,7 +23,7 @@ public:
 	uint16_t vertices[1];
 
 public:
-	NodeIcon(Allocator& alloc, ImportStream& is);
+	NodeIcon(bimp::Allocator& alloc, ImportStream& is);
 
 	static int Size();
 

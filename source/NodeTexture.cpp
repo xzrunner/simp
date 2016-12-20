@@ -1,12 +1,14 @@
 #include "NodeTexture.h"
-#include "Allocator.h"
 #include "ImportStream.h"
 #include "simp_define.h"
+
+#include <bimp/typedef.h>
+#include <bimp/Allocator.h>
 
 namespace simp
 {
 
-NodeTexture::NodeTexture(Allocator& alloc, ImportStream& is)
+NodeTexture::NodeTexture(bimp::Allocator& alloc, ImportStream& is)
 {
 	n = is.UInt16();
 	alloc.Alloc(ALIGN_4BYTE(sizeof(uint32_t) * n));

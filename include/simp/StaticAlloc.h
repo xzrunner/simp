@@ -5,19 +5,19 @@
 
 #include <vector>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
-
-class Allocator;
 
 class StaticAlloc
 {
 public:
-	Allocator* Create();
-	void Release(Allocator*);
+	bimp::Allocator* Create();
+	void Release(bimp::Allocator*);
 
 private:
-	std::vector<Allocator*> m_freelist;
+	std::vector<bimp::Allocator*> m_freelist;
 
 	SINGLETON_DECLARATION(StaticAlloc);
 

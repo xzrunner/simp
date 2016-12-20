@@ -1,12 +1,13 @@
 #include "NodeShape.h"
-#include "Allocator.h"
 #include "ImportStream.h"
-#include "simp_define.h"
+
+#include <bimp/typedef.h>
+#include <bimp/Allocator.h>
 
 namespace simp
 {
 
-NodeShape::NodeShape(Allocator& alloc, ImportStream& is)
+NodeShape::NodeShape(bimp::Allocator& alloc, ImportStream& is)
 {
 	type		= is.UInt8();
 	filling		= 1;	// todo

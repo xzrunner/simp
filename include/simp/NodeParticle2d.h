@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 
 class NodeParticle2d : private cu::Uncopyable
@@ -73,7 +74,7 @@ public:
 	Component components[1];
 
 public:
-	NodeParticle2d(Allocator& alloc, ImportStream& is);
+	NodeParticle2d(bimp::Allocator& alloc, ImportStream& is);
 
 	static int Size();
 	static int ComponentSize();

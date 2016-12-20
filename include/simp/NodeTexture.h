@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 
 class NodeTexture : private cu::Uncopyable
@@ -18,7 +19,7 @@ public:
 	uint32_t polys[1];
 
 public:
-	NodeTexture(Allocator& alloc, ImportStream& is);
+	NodeTexture(bimp::Allocator& alloc, ImportStream& is);
 
 	static int Size();
 

@@ -1,13 +1,14 @@
 #include "NodeComplex.h"
 #include "ImportStream.h"
 #include "simp_define.h"
-#include "Allocator.h"
 #include "NodeTrans.h"
+
+#include <bimp/Allocator.h>
 
 namespace simp
 {
 
-NodeComplex::NodeComplex(Allocator& alloc, ImportStream& is)
+NodeComplex::NodeComplex(bimp::Allocator& alloc, ImportStream& is)
 {
 	// scissor
 	for (int i = 0; i < 4; ++i) {

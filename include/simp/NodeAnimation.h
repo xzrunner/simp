@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 class NodeTrans;
 
@@ -39,7 +40,7 @@ public:
 	Layer layers[1];
 
 public:
-	NodeAnimation(Allocator& alloc, ImportStream& is);
+	NodeAnimation(bimp::Allocator& alloc, ImportStream& is);
 
 	static int Size();
 	static int ActorSize();

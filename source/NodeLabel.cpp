@@ -1,12 +1,13 @@
 #include "NodeLabel.h"
 #include "ImportStream.h"
 #include "simp_define.h"
-#include "Allocator.h"
+
+#include <bimp/Allocator.h>
 
 namespace simp
 {
 
-NodeLabel::NodeLabel(Allocator& alloc, ImportStream& is)
+NodeLabel::NodeLabel(bimp::Allocator& alloc, ImportStream& is)
 {
 	width		= is.UInt16();
 	height		= is.UInt16();

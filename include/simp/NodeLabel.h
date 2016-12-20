@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 
 class NodeLabel : private cu::Uncopyable
@@ -38,7 +39,7 @@ public:
 	const char* tid;
 
 public:
-	NodeLabel(Allocator& alloc, ImportStream& is);
+	NodeLabel(bimp::Allocator& alloc, ImportStream& is);
 
 	static int Size();
 

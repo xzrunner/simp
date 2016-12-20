@@ -1,10 +1,10 @@
 #include "Page.h"
 #include "ImportStream.h"
 #include "simp_types.h"
-#include "Allocator.h"
 #include "simp_define.h"
 #include "StaticAlloc.h"
 #include "NodeFactory.h"
+#include "NodeVisitor.h"
 
 #include "NodePicture.h"
 #include "NodeScale9.h"
@@ -31,6 +31,10 @@
 #include "NodeTrail.h"
 #include "NodeTrailSpr.h"
 
+#include <bimp/FileLoader.h>
+#include <bimp/typedef.h>
+#include <bimp/Allocator.h>
+
 #include <new>
 #include <string.h>
 
@@ -39,7 +43,7 @@
 namespace simp
 {
 
-Page::Page(Allocator* alloc, int begin_id, int end_id)
+Page::Page(bimp::Allocator* alloc, int begin_id, int end_id)
 	: m_alloc(alloc)
 	, m_begin_id(begin_id)
 	, m_end_id(end_id)
@@ -49,6 +53,14 @@ Page::Page(Allocator* alloc, int begin_id, int end_id)
 Page::~Page()
 {
 	StaticAlloc::Instance()->Release(m_alloc);
+}
+
+void Page::Traverse(NodeVisitor& visitor) const
+{
+	for (int id = m_begin_id; id < m_end_id; ++id) {
+		int idx = id - m_begin_id;
+		visitor.Visit(id, m_types[idx], m_nodes[idx]);
+	}
 }
 
 void Page::Load(const std::string& filepath)
@@ -67,7 +79,7 @@ const void* Page::Query(uint32_t id, int* type) const
 
 int Page::Size()
 {
-	return sizeof(Page) + PTR_SIZE_DIFF * 2;
+	return sizeof(Page) + PTR_SIZE_DIFF * 3;
 }
 
 /************************************************************************/
@@ -76,15 +88,15 @@ int Page::Size()
 
 Page::Loader::
 Loader(const std::string& filepath, Page* page)
-	: FileLoader(filepath)
+	: bimp::FileLoader(filepath)
 	, m_page(page)
 {
 }
 
 void Page::Loader::
-OnLoad(ImportStream& is)
+OnLoad(bimp::ImportStream& is)
 {
-	Allocator& alloc = *(m_page->m_alloc);
+	bimp::Allocator& alloc = *(m_page->m_alloc);
 
 	int n = m_page->m_end_id - m_page->m_begin_id + 1;
 	int align_n = ALIGN_4BYTE(n);
@@ -106,158 +118,162 @@ OnLoad(ImportStream& is)
 }
 
 void* Page::Loader::
-CreateNode(uint8_t type, Allocator& alloc, ImportStream& is)
+CreateNode(uint8_t type, bimp::Allocator& alloc, bimp::ImportStream& is)
 {
 	void* ret = NULL;
+
+	ImportStream& _is = static_cast<ImportStream&>(is);
+
 	switch (type)
 	{
 	case TYPE_IMAGE:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodePicture::Size()));
-			ret = new (ptr) NodePicture(is);
+			ret = new (ptr) NodePicture(_is);
 		}
 		break;
 	case TYPE_SCALE9:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeScale9::Size()));
-			ret = new (ptr) NodeScale9(alloc, is);
+			ret = new (ptr) NodeScale9(alloc, _is);
 		}
 		break;
 	case TYPE_SCALE9_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeScale9Spr::Size()));
-			ret = new (ptr) NodeScale9Spr(is);
+			ret = new (ptr) NodeScale9Spr(_is);
 		}
 		break;
 	case TYPE_ICON:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeIcon::Size()));
-			ret = new (ptr) NodeIcon(alloc, is);
+			ret = new (ptr) NodeIcon(alloc, _is);
 		}
 		break;
 	case TYPE_ICON_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeIconSpr::Size()));
-			ret = new (ptr) NodeIconSpr(is);
+			ret = new (ptr) NodeIconSpr(_is);
 		}
 		break;
 	case TYPE_TEXTURE:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeTexture::Size()));
-			ret = new (ptr) NodeTexture(alloc, is);
+			ret = new (ptr) NodeTexture(alloc, _is);
 		}
 		break;
 	case TYPE_TEXTURE_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeTextureSpr::Size()));
-			ret = new (ptr) NodeTextureSpr(is);
+			ret = new (ptr) NodeTextureSpr(_is);
 		}
 		break;
 	case TYPE_LABEL:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeLabel::Size()));
-			ret = new (ptr) NodeLabel(alloc, is);
+			ret = new (ptr) NodeLabel(alloc, _is);
 		}
 		break;
 	case TYPE_COMPLEX:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeComplex::Size()));
-			ret = new (ptr) NodeComplex(alloc, is);
+			ret = new (ptr) NodeComplex(alloc, _is);
 		}
 		break;
 	case TYPE_COMPLEX_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeComplexSpr::Size()));
-			ret = new (ptr) NodeComplexSpr(is);
+			ret = new (ptr) NodeComplexSpr(_is);
 		}
 		break;
 	case TYPE_ANIMATION:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeAnimation::Size()));
-			ret = new (ptr) NodeAnimation(alloc, is);
+			ret = new (ptr) NodeAnimation(alloc, _is);
 		}
 		break;
 	case TYPE_ANIM_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeAnimationSpr::Size()));
-			ret = new (ptr) NodeAnimationSpr(is);
+			ret = new (ptr) NodeAnimationSpr(_is);
 		}
 		break;
 	case TYPE_PARTICLE3D:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeParticle3d::Size()));
-			ret = new (ptr) NodeParticle3d(alloc, is);
+			ret = new (ptr) NodeParticle3d(alloc, _is);
 		}
 		break;
 	case TYPE_P3D_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeParticle3dSpr::Size()));
-			ret = new (ptr) NodeParticle3dSpr(is);
+			ret = new (ptr) NodeParticle3dSpr(_is);
 		}
 		break;
 	case TYPE_PARTICLE2D:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeParticle2d::Size()));
-			ret = new (ptr) NodeParticle2d(alloc, is);
+			ret = new (ptr) NodeParticle2d(alloc, _is);
 		}
 		break;
 	case TYPE_P2D_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeParticle2dSpr::Size()));
-			ret = new (ptr) NodeParticle2dSpr(is);
+			ret = new (ptr) NodeParticle2dSpr(_is);
 		}
 		break;
 	case TYPE_SHAPE:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeShape::Size()));
-			ret = new (ptr) NodeShape(alloc, is);
+			ret = new (ptr) NodeShape(alloc, _is);
 		}
 		break;
 	case TYPE_SHAPE_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeShapeSpr::Size()));
-			ret = new (ptr) NodeShapeSpr(is);
+			ret = new (ptr) NodeShapeSpr(_is);
 		}
 		break;
 	case TYPE_MESH:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeMesh::Size()));
-			ret = new (ptr) NodeMesh(alloc, is);
+			ret = new (ptr) NodeMesh(alloc, _is);
 		}
 		break;
 	case TYPE_MESH_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeMeshSpr::Size()));
-			ret = new (ptr) NodeMeshSpr(alloc, is);
+			ret = new (ptr) NodeMeshSpr(alloc, _is);
 		}
 		break;
 	case TYPE_MASK:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeMask::Size()));
-			ret = new (ptr) NodeMask(is);
+			ret = new (ptr) NodeMask(_is);
 		}
 		break;
 	case TYPE_MASK_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeMaskSpr::Size()));
-			ret = new (ptr) NodeMaskSpr(is);
+			ret = new (ptr) NodeMaskSpr(_is);
 		}
 		break;
 	case TYPE_TRAIL:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeTrail::Size()));
-			ret = new (ptr) NodeTrail(alloc, is);
+			ret = new (ptr) NodeTrail(alloc, _is);
 		}
 		break;
 	case TYPE_TRAIL_SPR:
 		{
 			void* ptr = alloc.Alloc(ALIGN_4BYTE(NodeTrailSpr::Size()));
-			ret = new (ptr) NodeTrailSpr(is);
+			ret = new (ptr) NodeTrailSpr(_is);
 		}
 		break;
 	default:
 		assert(0);
 	}
+
 	return ret;
 }
 

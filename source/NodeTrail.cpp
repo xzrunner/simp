@@ -1,15 +1,15 @@
 #include "NodeTrail.h"
 #include "ImportStream.h"
-#include "Allocator.h"
 
 #include <mt_2d.h>
+#include <bimp/Allocator.h>
 
 #include <assert.h>
 
 namespace simp
 {
 
-NodeTrail::NodeTrail(Allocator& alloc, ImportStream& is)
+NodeTrail::NodeTrail(bimp::Allocator& alloc, ImportStream& is)
 {
 	mode_type = is.UInt8();
 	

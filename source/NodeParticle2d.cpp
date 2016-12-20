@@ -1,7 +1,7 @@
 #include "NodeParticle2d.h"
 #include "ImportStream.h"
-#include "Allocator.h"
 
+#include <bimp/Allocator.h>
 #include <ps_2d.h>
 
 #include <assert.h>
@@ -9,7 +9,7 @@
 namespace simp
 {
 
-NodeParticle2d::NodeParticle2d(Allocator& alloc, ImportStream& is)
+NodeParticle2d::NodeParticle2d(bimp::Allocator& alloc, ImportStream& is)
 {
 	n = is.UInt16();
 	alloc.Alloc(ComponentSize() * n);

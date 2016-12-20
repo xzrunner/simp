@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 
 class NodeTrans : private cu::Uncopyable
@@ -18,7 +19,7 @@ public:
 
 	static int Size();
 
-	static NodeTrans* LoadTrans(Allocator& alloc, ImportStream& is);
+	static NodeTrans* LoadTrans(bimp::Allocator& alloc, ImportStream& is);
 
 public:
 	// geometry

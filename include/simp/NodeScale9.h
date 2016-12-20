@@ -5,10 +5,11 @@
 
 #include <stdint.h>
 
+namespace bimp { class Allocator; }
+
 namespace simp
 {
 
-class Allocator;
 class ImportStream;
 
 class NodeScale9 : private cu::Uncopyable
@@ -25,7 +26,7 @@ public:
 	Grid grids[1];
 
 public:
-	NodeScale9(Allocator& alloc, ImportStream& is);
+	NodeScale9(bimp::Allocator& alloc, ImportStream& is);
 	
 	static int Size();
 	static int GridSize();
