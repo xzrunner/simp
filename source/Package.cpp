@@ -19,9 +19,8 @@ namespace simp
 {
 
 Package::Package(const std::string& filepath)
-	: m_filepath(filepath)
 {
-	LoadIndex();
+	LoadIndex(filepath);
 }
 
 Package::~Package()
@@ -66,28 +65,21 @@ const void* Package::QueryNode(uint32_t id, int* type)
 	}	
 }
 
-std::string Package::GetImagePath(int idx) const
+void Package::SetPagePath(int idx, const std::string& path)
 {
-	std::stringstream ss;
-	ss << (idx + 1);
-	return m_filepath + "." + ss.str() + ".ept";
+	if (idx < 0 || idx >= m_pages.size()) {
+		return;
+	}
+
+	m_pages[idx].filepath = path;
 }
 
-void Package::LoadIndex()
+void Package::LoadIndex(const std::string& filepath)
 {
-	{
-		std::string filepath = m_filepath + ".ept";
-		m_images.clear();
-		ImageDescLoader loader(filepath, m_images);
-		loader.Load();
-	}
-	{
-		std::string filepath = m_filepath + ".epe";
-		m_export_names.clear();
-		m_pages.clear();
-		PageDescLoader loader(filepath, m_export_names, m_pages);
-		loader.Load();
-	}
+	m_export_names.clear();
+	m_pages.clear();
+	PageDescLoader loader(filepath, m_export_names, m_pages);
+	loader.Load();
 }
 
 Page* Package::QueryPage(int id)
@@ -119,54 +111,32 @@ Page* Package::QueryPage(int id)
 
 void Package::LoadPage(int idx) const
 {
-	assert(!m_pages[idx].page);
+	if (idx < 0 || idx >= m_pages.size()) {
+		return;
+	}
+
+	const PageDesc& desc = m_pages[idx];
+
+	assert(!desc.page);
 
 	bimp::Allocator* alloc = StaticAlloc::Instance()->Create();
 
 	int sz = ALIGN_4BYTE(Page::Size());
 	void* ptr = alloc->Alloc(sz);
-	Page* page = new (ptr) Page(alloc, m_pages[idx].min, m_pages[idx].max);
+	Page* page = new (ptr) Page(alloc, desc.min, desc.max);
+ 	page->Load(desc.filepath);
 
-	std::ostringstream s;
-	s << idx + 1;
- 	std::string filepath = m_filepath + "." + s.str() + ".epe";
- 	page->Load(filepath);
-
-	m_pages[idx].page = page;
+	desc.page = page;
 }
 
 void Package::UnloadPage(int idx) const
 {
-	if (!m_pages[idx].page) {
+	if (idx < 0 || idx >= m_pages.size() || !m_pages[idx].page) {
 		return;
 	}
 
 	delete m_pages[idx].page;
 	m_pages[idx].page = NULL;
-}
-
-/************************************************************************/
-/* class Package::ImageDescLoader                                       */
-/************************************************************************/
-
-Package::ImageDescLoader::ImageDescLoader(const std::string& filepath, std::vector<ImageDesc>& images) 
-	: bimp::FileLoader(filepath)
-	, m_images(images) 
-{
-}
-
-void Package::ImageDescLoader::OnLoad(bimp::ImportStream& is)
-{
-	int num = is.UInt32();
-	m_images.reserve(num);
-	for (int i = 0; i < num; ++i)
-	{
-		ImageDesc img;
-		img.w = is.UInt16();
-		img.h = is.UInt16();
-		img.type = is.UInt16();
-		m_images.push_back(img);
-	}
 }
 
 /************************************************************************/

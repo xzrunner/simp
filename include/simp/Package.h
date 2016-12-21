@@ -31,45 +31,22 @@ public:
 
 	const void* QueryNode(uint32_t id, int* type);
 
-	std::string GetImagePath(int idx) const;
+	int GetPageCount() const { return m_pages.size(); }
+
+	void SetPagePath(int idx, const std::string& path);
 
 private:
-	void LoadIndex();
+	void LoadIndex(const std::string& filepath);
 
 	Page* QueryPage(int id);
 	void LoadPage(int idx) const;
 	void UnloadPage(int idx) const;
 
 private:
-	/************************************************************************/
-	/* image desc                                                           */
-	/************************************************************************/
-
-	struct ImageDesc
-	{
-		int w, h;
-		int type;
-	};
-
-	class ImageDescLoader : public bimp::FileLoader
-	{
-	public:
-		ImageDescLoader(const std::string& filepath, std::vector<ImageDesc>& images);
-
-	protected:
-		virtual void OnLoad(bimp::ImportStream& is);
-
-	private:
-		std::vector<ImageDesc>& m_images;
-
-	}; // ImageDescLoader
-
-	/************************************************************************/
-	/* page desc                                                            */
-	/************************************************************************/
-
 	struct PageDesc
 	{
+		std::string filepath;
+
 		int min, max;
 
 		mutable Page* page;
@@ -94,10 +71,6 @@ private:
 	}; // PageDescLoader
 
 protected:
-	const std::string m_filepath;
-
-	std::vector<ImageDesc> m_images;
-
 	std::map<std::string, uint32_t> m_export_names;
 
 	std::vector<PageDesc> m_pages;
