@@ -5,6 +5,7 @@
 #include "StaticAlloc.h"
 #include "NodeFactory.h"
 #include "NodeVisitor.h"
+#include "RelocateTexcoords.h"
 
 #include "NodePicture.h"
 #include "NodeScale9.h"
@@ -43,8 +44,9 @@
 namespace simp
 {
 
-Page::Page(bimp::Allocator* alloc, int begin_id, int end_id)
-	: m_alloc(alloc)
+Page::Page(int pkg_id, bimp::Allocator* alloc, int begin_id, int end_id)
+	: m_pkg_id(pkg_id)
+	, m_alloc(alloc)
 	, m_begin_id(begin_id)
 	, m_end_id(end_id)
 {
@@ -67,6 +69,8 @@ void Page::Load(const std::string& filepath)
 {
 	Loader loader(filepath, this);
 	loader.Load();
+
+	RelocateTexcoords::Instance()->Do(this);
 }
 
 const void* Page::Query(uint32_t id, int* type) const
@@ -108,7 +112,7 @@ OnLoad(bimp::ImportStream& is)
 	while (!is.Empty())
 	{
 		uint32_t id = is.UInt32();
-		uint32_t node_id = NodeFactory::GetNodeID(id);
+		uint32_t node_id = NodeID::GetNodeID(id);
 
 		int idx = node_id - m_page->m_begin_id;
 		uint8_t type = is.UInt8();

@@ -2,6 +2,7 @@
 #define _SIMP_NODE_FACTORY_INL_
 
 #include "Package.h"
+#include "NodeID.h"
 
 #include <assert.h>
 
@@ -11,7 +12,7 @@ namespace simp
 inline
 const Package* NodeFactory::QueryPkg(int node_id) const
 {
-	uint32_t pkg_id = GetPkgID(node_id);
+	uint32_t pkg_id = NodeID::GetPkgID(node_id);
 	int idx = m_hash_id.Query(pkg_id);
 	if (idx >= 0 && idx < m_pkgs.size()) {
 		return m_pkgs[idx].pkg;
@@ -34,8 +35,8 @@ const Package* NodeFactory::QueryPkg(const std::string& pkg_name) const
 inline
 const void* NodeFactory::Create(uint32_t id, int* type)
 {
-	uint32_t pkg_id = GetPkgID(id);
-	uint32_t node_id = GetNodeID(id);
+	uint32_t pkg_id = NodeID::GetPkgID(id);
+	uint32_t node_id = NodeID::GetNodeID(id);
 	int idx = m_hash_id.Query(pkg_id);
 	if (idx >= 0 && idx < m_pkgs.size()) {
 		return m_pkgs[idx].pkg->QueryNode(node_id, type);

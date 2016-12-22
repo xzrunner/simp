@@ -14,7 +14,7 @@ namespace simp
 
 class Package;
 
-class NodeFactory : private cu::Uncopyable
+class NodeFactory
 {
 public:
 	bool AddPkg(Package* pkg, const std::string& pkg_name, int pkg_id);
@@ -24,17 +24,6 @@ public:
 	const void* Create(uint32_t id, int* type);
 
 	uint32_t GetNodeID(const std::string& pkg_name, const std::string& node_name) const;
-
-	static uint32_t ComposeID(uint32_t pkg_id, uint32_t node_id);
-
-	static uint32_t GetPkgID(uint32_t id)  { return (id & PKG_ID_MASK) >> NODE_ID_SIZE; }
-	static uint32_t GetNodeID(uint32_t id) { return id & NODE_ID_MASK; }
-
-private:
-	static const int PKG_ID_SIZE		= 12;
-	static const int NODE_ID_SIZE		= 20;
-	static const uint32_t PKG_ID_MASK	= 0xfff00000;
-	static const uint32_t NODE_ID_MASK	= 0x000fffff;
 
 private:
 	struct PkgWrap

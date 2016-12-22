@@ -17,6 +17,9 @@ public:
 	uint16_t region[4];
 
 public:
+	static const int MAX_IN_PKG = 4096;
+
+public:
 	NodePicture(ImportStream& is);
 
 	static int Size();

@@ -19,7 +19,7 @@ class NodeVisitor;
 class Page : private cu::Uncopyable
 {
 public:
-	Page(bimp::Allocator* alloc, int begin_id, int end_id);
+	Page(int pkg_id, bimp::Allocator* alloc, int begin_id, int end_id);
 	~Page();
 
 	void Traverse(NodeVisitor& visitor) const;
@@ -27,6 +27,8 @@ public:
 	void Load(const std::string& filepath);
 
 	const void* Query(uint32_t id, int* type) const;
+
+	int GetPkgID() const { return m_pkg_id; }
 
 	static int Size();
 
@@ -48,6 +50,8 @@ private:
 	}; // Loader
 
 private:
+	int m_pkg_id;
+
 	bimp::Allocator* m_alloc;
 
 	int m_begin_id, m_end_id;	

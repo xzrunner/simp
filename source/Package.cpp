@@ -18,7 +18,8 @@
 namespace simp
 {
 
-Package::Package(const std::string& filepath)
+Package::Package(const std::string& filepath, int id)
+	: m_id(id)
 {
 	LoadIndex(filepath);
 }
@@ -123,7 +124,7 @@ void Package::LoadPage(int idx) const
 
 	int sz = ALIGN_4BYTE(Page::Size());
 	void* ptr = alloc->Alloc(sz);
-	Page* page = new (ptr) Page(alloc, desc.min, desc.max);
+	Page* page = new (ptr) Page(m_id, alloc, desc.min, desc.max);
  	page->Load(desc.filepath);
 
 	desc.page = page;

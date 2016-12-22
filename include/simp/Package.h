@@ -22,7 +22,7 @@ class NodeVisitor;
 class Package : private cu::Uncopyable
 {
 public:
-	Package(const std::string& filepath);
+	Package(const std::string& filepath, int id);
 	~Package();
 
 	void Traverse(NodeVisitor& visitor) const;
@@ -74,6 +74,9 @@ protected:
 	std::map<std::string, uint32_t> m_export_names;
 
 	std::vector<PageDesc> m_pages;
+
+private:
+	int m_id;
 
 }; // Package
 
