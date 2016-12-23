@@ -3,7 +3,7 @@
 	ProjectType="Intel C++ Project"
 	Version="11.1"
 	Name="1.simp"
-	ProjectGUID="{B84BDA3F-3D2A-4D5C-A559-B878BB2D6DCB}"
+	ProjectGUID="{B4B3472D-AB27-49F1-8D2A-57A011EC7EA3}"
 	VCNestedProjectGUID="{EE2229A3-AD5F-46E7-AFAB-729F8AA18036}"
 	VCNestedProjectFileName="simp.vcproj">
 	<Configurations>
