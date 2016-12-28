@@ -149,14 +149,6 @@
 			Name="storage"
 			>
 			<File
-				RelativePath="..\..\..\source\FileLoader.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\simp\FileLoader.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\source\NodeFactory.cpp"
 				>
 			</File>
