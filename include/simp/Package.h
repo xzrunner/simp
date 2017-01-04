@@ -35,6 +35,8 @@ public:
 
 	void SetPagePath(int idx, const std::string& path);
 
+	int GetMaxNodeID() const { return m_max_node_id; }
+
 private:
 	void LoadIndex(const std::string& filepath);
 
@@ -77,6 +79,8 @@ protected:
 
 private:
 	int m_id;
+
+	int m_min_node_id, m_max_node_id;
 
 }; // Package
 

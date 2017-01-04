@@ -20,6 +20,8 @@ namespace simp
 
 Package::Package(const std::string& filepath, int id)
 	: m_id(id)
+	, m_min_node_id(0)
+	, m_max_node_id(0)
 {
 	LoadIndex(filepath);
 }
@@ -79,8 +81,20 @@ void Package::LoadIndex(const std::string& filepath)
 {
 	m_export_names.clear();
 	m_pages.clear();
+
 	PageDescLoader loader(filepath, m_export_names, m_pages);
 	loader.Load();
+
+	m_min_node_id = INT_MAX;
+	m_max_node_id = -INT_MAX;
+	for (int i = 0, n = m_pages.size(); i < n; ++i) {
+		if (m_pages[i].min < m_min_node_id) {
+			m_min_node_id = m_pages[i].min;
+		}
+		if (m_pages[i].max > m_max_node_id) {
+			m_max_node_id = m_pages[i].max;
+		}
+	}
 }
 
 Page* Package::QueryPage(int id)
@@ -144,9 +158,9 @@ void Package::UnloadPage(int idx) const
 /* class Package::PageDescLoader                                        */
 /************************************************************************/
 
-Package::PageDescLoader::PageDescLoader(const std::string& filepath, 
-									  std::map<std::string, uint32_t>& export_names,
-									  std::vector<PageDesc>& pages)
+Package::PageDescLoader::
+PageDescLoader(const std::string& filepath, std::map<std::string, uint32_t>& export_names, 
+			   std::vector<PageDesc>& pages)
 	: FileLoader(filepath)
 	, m_export_names(export_names)
 	, m_pages(pages)
