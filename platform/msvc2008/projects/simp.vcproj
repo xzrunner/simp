@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\..\include\simp;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\cu\src\cu;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include"
+				AdditionalIncludeDirectories="..\..\..\include\simp;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\cu\src\cu;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;EASY_EDITOR"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -105,7 +105,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\..\..\include\simp;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\cu\src\cu;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include"
+				AdditionalIncludeDirectories="..\..\..\include\simp;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\cu\src\cu;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;EASY_EDITOR"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -445,6 +445,26 @@
 				</File>
 				<File
 					RelativePath="..\..\..\include\simp\NodeShapeSpr.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="07.anim2"
+				>
+				<File
+					RelativePath="..\..\..\source\NodeAnim2.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\simp\NodeAnim2.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\source\NodeAnim2Spr.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\simp\NodeAnim2Spr.h"
 					>
 				</File>
 			</Filter>
