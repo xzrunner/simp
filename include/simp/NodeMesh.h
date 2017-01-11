@@ -11,17 +11,14 @@ namespace simp
 {
 
 class ImportStream;
+class MeshShape;
 
 class NodeMesh : private cu::Uncopyable
 {
 public:
 	uint32_t base_id;
 
-	uint32_t outer_n;
-	uint16_t* outer;
-
-	uint32_t inner_n;
-	uint16_t* inner;
+	MeshShape* shape;
 
 public:
 	NodeMesh(bimp::Allocator& alloc, ImportStream& is);

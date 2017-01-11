@@ -17,18 +17,8 @@ float int2radian(int deg) {
 }
 
 inline
-float int2float16x(int i) {
-	return i / 16.0f;
-}
-
-inline
-float int2float100x(int i) {
-	return i * 0.01f;
-}
-
-inline
-float int2float1024x(int i) {
-	return i / 1024.0f;
+float int2float(int i, int precision) {
+	return (float)i / precision;
 }
 
 inline

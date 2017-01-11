@@ -197,6 +197,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\source\NodeArray.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\simp\NodeArray.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\source\NodeTrans.cpp"
 				>
 			</File>
@@ -412,6 +420,14 @@
 				Name="11.mesh"
 				>
 				<File
+					RelativePath="..\..\..\include\simp\MeshShape.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\simp\MeshType.h"
+					>
+				</File>
+				<File
 					RelativePath="..\..\..\source\NodeMesh.cpp"
 					>
 				</File>
@@ -427,6 +443,34 @@
 					RelativePath="..\..\..\include\simp\NodeMeshSpr.h"
 					>
 				</File>
+				<Filter
+					Name="shape"
+					>
+					<File
+						RelativePath="..\..\..\source\NetworkMesh.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\include\simp\NetworkMesh.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\source\Skeleton2Mesh.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\include\simp\Skeleton2Mesh.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\source\TrianglesMesh.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\include\simp\TrianglesMesh.h"
+						>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="10.shape"
