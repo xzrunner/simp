@@ -1,30 +1,23 @@
 #include "NodeShape.h"
 #include "ImportStream.h"
+#include "NodeArray.h"
 
 #include <bimp/typedef.h>
-#include <bimp/Allocator.h>
 
 namespace simp
 {
 
 NodeShape::NodeShape(bimp::Allocator& alloc, ImportStream& is)
 {
-	type		= is.UInt8();
-	filling		= 1;	// todo
-	color		= is.UInt32();
-	// vertices
-	vertices_n	= is.UInt16();
-	alloc.Alloc(ALIGN_4BYTE(sizeof(uint16_t) * 2 * vertices_n));
-	int idx = 0;
-	for (int i = 0; i < vertices_n; ++i) {
-		vertices[idx++] = is.UInt16();
-		vertices[idx++] = is.UInt16();
-	}
+	type	= is.UInt8();
+	filling	= 1;	// todo
+	color	= is.UInt32();
+	NodeArray::Load16(alloc, is, 2, vertices_n);
 }
 
 int NodeShape::Size()
 {
-	return sizeof(NodeShape) - sizeof(uint16_t);
+	return ALIGN_4BYTE(sizeof(NodeShape) - sizeof(uint16_t));
 }
 
 }

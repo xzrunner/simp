@@ -1,6 +1,8 @@
 #include "NodeScale9Spr.h"
 #include "ImportStream.h"
 
+#include <bimp/typedef.h>
+
 namespace simp
 {
 
@@ -13,7 +15,7 @@ NodeScale9Spr::NodeScale9Spr(ImportStream& is)
 
 int NodeScale9Spr::Size()
 {
-	return sizeof(NodeScale9Spr);
+	return ALIGN_4BYTE(sizeof(NodeScale9Spr));
 }
 
 }

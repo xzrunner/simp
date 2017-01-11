@@ -1,6 +1,8 @@
 #include "NodePicture.h"
 #include "ImportStream.h"
 
+#include <bimp/typedef.h>
+
 namespace simp
 {
 
@@ -14,7 +16,7 @@ NodePicture::NodePicture(ImportStream& is)
 
 int NodePicture::Size()
 {
-	return sizeof(NodePicture);
+	return ALIGN_4BYTE(sizeof(NodePicture));
 }
 
 }

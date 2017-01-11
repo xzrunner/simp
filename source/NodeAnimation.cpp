@@ -22,7 +22,7 @@ NodeAnimation::NodeAnimation(bimp::Allocator& alloc, ImportStream& is)
 		memset(layer->frames, 0, SIZEOF_POINTER * layer->n);
  		for (int j = 0; j < layer->n; ++j) 
 		{
-			void* ptr = alloc.Alloc(ALIGN_4BYTE(FrameSize()));
+			void* ptr = alloc.Alloc(FrameSize());
 			Frame* frame = new (ptr) Frame();
 			frame->index = is.UInt16();
 			frame->tween = int2bool(is.UInt8());
@@ -31,7 +31,7 @@ NodeAnimation::NodeAnimation(bimp::Allocator& alloc, ImportStream& is)
 			memset(frame->actors, 0, SIZEOF_POINTER * frame->n);
 			for (int k = 0; k < frame->n; ++k) 
 			{
-				void* ptr = alloc.Alloc(ALIGN_4BYTE(ActorSize()));
+				void* ptr = alloc.Alloc(ActorSize());
 				Actor* actor = new (ptr) Actor();
 				actor->sym_id = is.UInt32();
 				actor->trans = NodeTrans::LoadTrans(alloc, is);
@@ -44,22 +44,22 @@ NodeAnimation::NodeAnimation(bimp::Allocator& alloc, ImportStream& is)
 
 int NodeAnimation::Size()
 {
-	return sizeof(NodeAnimation) - sizeof(Layer);
+	return ALIGN_4BYTE(sizeof(NodeAnimation) - sizeof(Layer));
 }
 
 int NodeAnimation::ActorSize()
 {
-	return sizeof(Actor) + PTR_SIZE_DIFF;
+	return ALIGN_4BYTE(sizeof(Actor) + PTR_SIZE_DIFF);
 }
 
 int NodeAnimation::FrameSize()
 {
-	return sizeof(Frame) + PTR_SIZE_DIFF;
+	return ALIGN_4BYTE(sizeof(Frame) + PTR_SIZE_DIFF);
 }
 
 int NodeAnimation::LayerSize()
 {
-	return sizeof(Layer) + PTR_SIZE_DIFF;		
+	return ALIGN_4BYTE(sizeof(Layer) + PTR_SIZE_DIFF);
 }
 
 }

@@ -1,6 +1,8 @@
 #include "NodeParticle3dSpr.h"
 #include "ImportStream.h"
 
+#include <bimp/typedef.h>
+
 namespace simp
 {
 
@@ -15,7 +17,7 @@ NodeParticle3dSpr::NodeParticle3dSpr(ImportStream& is)
 
 int NodeParticle3dSpr::Size()
 {
-	return sizeof(NodeParticle3dSpr);
+	return ALIGN_4BYTE(sizeof(NodeParticle3dSpr));
 }
 
 }

@@ -1,6 +1,8 @@
 #include "NodeAnim2Spr.h"
 #include "ImportStream.h"
 
+#include <bimp/typedef.h>
+
 namespace simp
 {
 
@@ -12,7 +14,7 @@ NodeAnim2Spr::NodeAnim2Spr(ImportStream& is)
 
 int NodeAnim2Spr::Size()
 {
-	return sizeof(NodeAnim2Spr);
+	return ALIGN_4BYTE(sizeof(NodeAnim2Spr));
 }
 
 }

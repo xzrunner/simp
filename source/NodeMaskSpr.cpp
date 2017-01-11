@@ -1,6 +1,8 @@
 #include "NodeMaskSpr.h"
 #include "ImportStream.h"
 
+#include <bimp/typedef.h>
+
 namespace simp
 {
 
@@ -11,7 +13,7 @@ NodeMaskSpr::NodeMaskSpr(ImportStream& is)
 
 int NodeMaskSpr::Size()
 {
-	return sizeof(NodeMaskSpr);
+	return ALIGN_4BYTE(sizeof(NodeMaskSpr));
 }
 
 }

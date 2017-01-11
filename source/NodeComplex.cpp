@@ -2,8 +2,10 @@
 #include "ImportStream.h"
 #include "simp_define.h"
 #include "NodeTrans.h"
+#include "NodeArray.h"
 
 #include <bimp/Allocator.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {
@@ -22,12 +24,8 @@ NodeComplex::NodeComplex(bimp::Allocator& alloc, ImportStream& is)
 	for (int i = 0; i < actions_n; ++i) 
 	{
 		Action* dst = &actions[i];
-		dst->name = is.String(alloc);
-		dst->n = is.UInt16();
-		dst->idx = (uint16_t*)(alloc.Alloc(sizeof(uint16_t) * dst->n));
-		for (int j = 0; j < dst->n; ++j) {
-			dst->idx[j] = is.UInt16();
-		}
+		dst->name = is.String(alloc);	
+		dst->idx = NodeArray::Load16(alloc, is, 1, dst->n);
 	}
 
 	// sprs
@@ -43,12 +41,12 @@ NodeComplex::NodeComplex(bimp::Allocator& alloc, ImportStream& is)
 
 int NodeComplex::Size()
 {
-	return sizeof(NodeComplex) + PTR_SIZE_DIFF * 2 - sizeof(Action);
+	return ALIGN_4BYTE(sizeof(NodeComplex) + PTR_SIZE_DIFF * 2 - sizeof(Action));
 }
 
 int NodeComplex::ActionSize()
 {
-	return sizeof(Action) + PTR_SIZE_DIFF * 2;
+	return ALIGN_4BYTE(sizeof(Action) + PTR_SIZE_DIFF * 2);
 }
 
 }

@@ -3,6 +3,7 @@
 #include "simp_define.h"
 
 #include <bimp/Allocator.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {
@@ -36,7 +37,7 @@ NodeLabel::NodeLabel(bimp::Allocator& alloc, ImportStream& is)
 
 int NodeLabel::Size()
 {
-	return sizeof(NodeLabel) + PTR_SIZE_DIFF * 2;
+	return ALIGN_4BYTE(sizeof(NodeLabel) + PTR_SIZE_DIFF * 2);
 }
 
 }

@@ -3,6 +3,7 @@
 
 #include <mt_2d.h>
 #include <bimp/Allocator.h>
+#include <bimp/typedef.h>
 
 #include <assert.h>
 
@@ -52,12 +53,12 @@ NodeTrail::NodeTrail(bimp::Allocator& alloc, ImportStream& is)
 
 int NodeTrail::Size()
 {
-	return sizeof(NodeTrail) - sizeof(Component);
+	return ALIGN_4BYTE(sizeof(NodeTrail) - sizeof(Component));
 }
 
 int NodeTrail::ComponentSize()
 {
-	return sizeof(Component);
+	return ALIGN_4BYTE(sizeof(Component));
 }
 
 }

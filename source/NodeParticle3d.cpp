@@ -2,6 +2,7 @@
 #include "ImportStream.h"
 
 #include <bimp/Allocator.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {
@@ -69,12 +70,12 @@ NodeParticle3d::NodeParticle3d(bimp::Allocator& alloc, ImportStream& is)
 
 int NodeParticle3d::Size()
 {
-	return sizeof(NodeParticle3d) - sizeof(Component);
+	return ALIGN_4BYTE(sizeof(NodeParticle3d) - sizeof(Component));
 }
 
 int NodeParticle3d::ComponentSize()
 {
-	return sizeof(Component);
+	return ALIGN_4BYTE(sizeof(Component));
 }
 
 }

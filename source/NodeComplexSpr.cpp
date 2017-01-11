@@ -1,6 +1,8 @@
 #include "NodeComplexSpr.h"
 #include "ImportStream.h"
 
+#include <bimp/typedef.h>
+
 namespace simp
 {
 
@@ -12,7 +14,7 @@ NodeComplexSpr::NodeComplexSpr(ImportStream& is)
 
 int NodeComplexSpr::Size()
 {
-	return sizeof(NodeComplexSpr);
+	return ALIGN_4BYTE(sizeof(NodeComplexSpr));
 }
 
 }

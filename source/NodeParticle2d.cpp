@@ -2,6 +2,7 @@
 #include "ImportStream.h"
 
 #include <bimp/Allocator.h>
+#include <bimp/typedef.h>
 #include <ps_2d.h>
 
 #include <assert.h>
@@ -84,12 +85,12 @@ NodeParticle2d::NodeParticle2d(bimp::Allocator& alloc, ImportStream& is)
 
 int NodeParticle2d::Size()
 {
-	return sizeof(NodeParticle2d) - sizeof(Component);
+	return ALIGN_4BYTE(sizeof(NodeParticle2d) - sizeof(Component));
 }
 
 int NodeParticle2d::ComponentSize()
 {
-	return sizeof(Component);
+	return ALIGN_4BYTE(sizeof(Component));
 }
 
 }

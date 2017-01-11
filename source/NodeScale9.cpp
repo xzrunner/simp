@@ -2,6 +2,7 @@
 #include "ImportStream.h"
 
 #include <bimp/Allocator.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {
@@ -26,7 +27,7 @@ NodeScale9::NodeScale9(bimp::Allocator& alloc, ImportStream& is)
 		break;
 	}
 
-	alloc.Alloc(sizeof(Grid) * n);	
+	alloc.Alloc(GridSize() * n);	
 
 	for (int i = 0; i < n; ++i)
 	{
@@ -42,12 +43,12 @@ NodeScale9::NodeScale9(bimp::Allocator& alloc, ImportStream& is)
 
 int NodeScale9::Size()
 {
-	return sizeof(NodeScale9) - sizeof(Grid);
+	return ALIGN_4BYTE(sizeof(NodeScale9) - sizeof(Grid));
 }
 
 int NodeScale9::GridSize()
 {
-	return sizeof(Grid);
+	return ALIGN_4BYTE(sizeof(Grid));
 }
 
 }

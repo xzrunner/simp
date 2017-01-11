@@ -1,8 +1,8 @@
 #include "NodeMeshSpr.h"
 #include "ImportStream.h"
+#include "NodeArray.h"
 
 #include <bimp/typedef.h>
-#include <bimp/Allocator.h>
 
 namespace simp
 {
@@ -11,19 +11,15 @@ NodeMeshSpr::NodeMeshSpr(bimp::Allocator& alloc, ImportStream& is)
 {
 	mesh_id = is.UInt32();
 	base_id	= is.UInt32();
-
-	n = is.UInt16();
-	void* ptr = alloc.Alloc(ALIGN_4BYTE(sizeof(uint16_t) * 2 * n));
-	int idx = 0;
-	for (int i = 0; i < n; ++i) {
-		vertices[idx++] = is.UInt16();
-		vertices[idx++] = is.UInt16();
-	}
+	
+	uint16_t num;
+	NodeArray::Load16(alloc, is, 2, num);
+	n = num;
 }
 
 int NodeMeshSpr::Size()
 {
-	return sizeof(NodeMeshSpr) - sizeof(uint16_t);
+	return ALIGN_4BYTE(sizeof(NodeMeshSpr) - sizeof(uint16_t));
 }
 
 }

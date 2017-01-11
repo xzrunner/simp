@@ -1,5 +1,7 @@
 #include "NodeAnim2.h"
 
+#include <bimp/typedef.h>
+
 namespace simp
 {
 
@@ -10,37 +12,37 @@ NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 
 int NodeAnim2::Size()
 {
-	return sizeof(NodeAnim2) + PTR_SIZE_DIFF * 3;
+	return ALIGN_4BYTE(sizeof(NodeAnim2) + PTR_SIZE_DIFF * 3);
 }
 
 int NodeAnim2::JointSize()
 {
-	return sizeof(Joint);
+	return ALIGN_4BYTE(sizeof(Joint));
 }
 
 int NodeAnim2::SkinSize()
 {
-	return sizeof(Skin);
+	return ALIGN_4BYTE(sizeof(Skin));
 }
 
 int NodeAnim2::SlotSize()
 {
-	return sizeof(Slot);
+	return ALIGN_4BYTE(sizeof(Slot));
 }
 
 int NodeAnim2::TLJointSize()
 {
-	return sizeof(TL_Joint) - sizeof(JointSample);
+	return ALIGN_4BYTE(sizeof(TL_Joint) - sizeof(JointSample));
 }
 
 int NodeAnim2::TLSkinSize()
 {
-	return sizeof(TL_Skin) - sizeof(SkinSample);
+	return ALIGN_4BYTE(sizeof(TL_Skin) - sizeof(SkinSample));
 }
 
 int NodeAnim2::TLDeformSize()
 {
-	return sizeof(DeformSample) - sizeof(float);
+	return ALIGN_4BYTE(sizeof(DeformSample) - sizeof(float));
 }
 
 }
