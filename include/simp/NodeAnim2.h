@@ -64,6 +64,8 @@ public:
 		uint8_t	 lerp;
 		uint8_t  padding;
 		float	 data;
+
+		static int Size();
 	};
 
 	static const int DIM_COUNT = 7;
@@ -82,6 +84,8 @@ public:
 	{
 		uint16_t time;
 		uint16_t skin;
+
+		static int Size();
 	};
 
 	struct TL_Skin

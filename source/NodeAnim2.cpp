@@ -153,6 +153,16 @@ Size()
 }
 
 /************************************************************************/
+/* struct NodeAnim2::JointSample                                        */
+/************************************************************************/
+
+int NodeAnim2::JointSample::
+Size()
+{
+	return sizeof(JointSample);
+}
+
+/************************************************************************/
 /* struct NodeAnim2::TL_Joint                                           */
 /************************************************************************/
 
@@ -166,7 +176,7 @@ Load(bimp::Allocator& alloc, ImportStream& is)
 		count += dims_count[i];
 	}
 
-	alloc.Alloc(sizeof(JointSample) * count);
+	alloc.Alloc(JointSample::Size() * count);
 	for (int i = 0; i < count; ++i)
 	{
 		samples[i].time = is.UInt16();
@@ -182,6 +192,16 @@ Size()
 }
 
 /************************************************************************/
+/* struct NodeAnim2::SkinSample                                         */
+/************************************************************************/
+
+int NodeAnim2::SkinSample::
+Size()
+{
+	return sizeof(SkinSample);
+}
+
+/************************************************************************/
 /* struct NodeAnim2::TL_Skin                                            */
 /************************************************************************/
 
@@ -189,7 +209,7 @@ void NodeAnim2::TL_Skin::
 Load(bimp::Allocator& alloc, ImportStream& is)
 {
 	count = is.UInt16();
-	alloc.Alloc(sizeof(SkinSample) * count);
+	alloc.Alloc(SkinSample::Size() * count);
 	for (int i = 0; i < count; ++i) {
 		samples[i].time = is.UInt16();
 		samples[i].skin = is.UInt16();
