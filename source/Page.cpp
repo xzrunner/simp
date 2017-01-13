@@ -31,6 +31,8 @@
 #include "NodeMaskSpr.h"
 #include "NodeTrail.h"
 #include "NodeTrailSpr.h"
+#include "NodeAnim2.h"
+#include "NodeAnim2Spr.h"
 
 #include <bimp/FileLoader.h>
 #include <bimp/typedef.h>
@@ -272,6 +274,18 @@ CreateNode(uint8_t type, bimp::Allocator& alloc, bimp::ImportStream& is)
 		{
 			void* ptr = alloc.Alloc(NodeTrailSpr::Size());
 			ret = new (ptr) NodeTrailSpr(_is);
+		}
+		break;
+	case TYPE_ANIM2:
+		{
+			void* ptr = alloc.Alloc(NodeAnim2::Size());
+			ret = new (ptr) NodeAnim2(alloc, _is);
+		}
+		break;
+	case TYPE_ANIM2_SPR:
+		{
+			void* ptr = alloc.Alloc(NodeAnim2Spr::Size());
+			ret = new (ptr) NodeAnim2Spr(_is);
 		}
 		break;
 	default:

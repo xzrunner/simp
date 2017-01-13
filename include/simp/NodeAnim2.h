@@ -3,7 +3,6 @@
 
 #include <CU_Uncopyable.h>
 #include <SM_Vector.h>
-#include <rigging.h>
 
 #include <stdint.h>
 
@@ -23,13 +22,19 @@ public:
 		sm::vec2 trans;
 		float    rot;
 		sm::vec2 scale;
+
+		void Load(ImportStream& is);
 	};
 
 	struct Joint
 	{
 		uint16_t parent;
-		uint16_t padding;
+		uint16_t chlidren_count;
 		Srt      local;
+
+		void Load(ImportStream& is);
+
+		static int Size();
 	};
 
 	struct Skin
@@ -37,12 +42,20 @@ public:
 		uint32_t node;
 		int      type;
 		Srt      local;
+
+		void Load(ImportStream& is);
+
+		static int Size();
 	};
 
 	struct Slot
 	{
 		uint16_t joint;
 		uint16_t skin;
+
+		void Load(ImportStream& is);
+
+		static int Size();
 	};
 
 	struct JointSample
@@ -53,12 +66,16 @@ public:
 		float	 data;
 	};
 
+	static const int DIM_COUNT = 7;
 	struct TL_Joint
 	{
-		int type;
-		int dims_count[DIM_COUNT];
-		int count;
+		uint8_t type;
+		uint8_t dims_count[DIM_COUNT];
 		JointSample samples[1];
+
+		void Load(bimp::Allocator& alloc, ImportStream& is);
+
+		static int Size();
 	};
 
 	struct SkinSample
@@ -71,6 +88,10 @@ public:
 	{
 		int count;
 		SkinSample samples[1];
+
+		void Load(bimp::Allocator& alloc, ImportStream& is);
+
+		static int Size();
 	};
 
 	struct DeformSample
@@ -79,12 +100,18 @@ public:
 		uint16_t offset;
 		int count;
 		float vertices[1];
+
+		static int Size();
 	};
 
 	struct TL_Deform
 	{
 		int count;
-		DeformSample samples[1];
+		DeformSample** samples;
+
+		void Load(bimp::Allocator& alloc, ImportStream& is);
+
+		static int Size();
 	};
 
 public:
@@ -94,31 +121,18 @@ public:
 	uint16_t skin_count;
 	uint16_t slot_count;
 
-	uint16_t tl_joint_count;
-	uint16_t tl_skin_count;
-	uint16_t tl_deform_count;
-	uint16_t padding;
-
 	Joint* joints;
 	Skin*  skins;
 	Slot*  slots;
 
-	TL_Joint*  tl_joints;
-	TL_Skin*   tl_skins;
-	TL_Deform* tl_deforms;
+	TL_Joint**  tl_joints;
+	TL_Skin**   tl_skins;
+	TL_Deform** tl_deforms;
 
 public:
 	NodeAnim2(bimp::Allocator& alloc, ImportStream& is);
 
 	static int Size();
-
-	static int JointSize();
-	static int SkinSize();
-	static int SlotSize();
-
-	static int TLJointSize();
-	static int TLSkinSize();
-	static int TLDeformSize();
 
 }; // NodeAnim2
 
