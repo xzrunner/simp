@@ -18,7 +18,7 @@ public:
 	struct Item
 	{
 		uint16_t joint;
-		uint16_t vx, vy;
+		int16_t  vx, vy;
 		uint16_t weight;
 	};
 

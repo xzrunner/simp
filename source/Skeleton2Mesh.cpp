@@ -23,8 +23,8 @@ Skeleton2Mesh::Skeleton2Mesh(bimp::Allocator& alloc, ImportStream& is)
 	items = (Item*)alloc.Alloc(ItemSize() * count);
 	for (int i = 0; i < count; ++i) {
 		items[i].joint  = is.UInt16();
-		items[i].vx     = is.UInt16();
-		items[i].vy     = is.UInt16();
+		items[i].vx     = (int16_t)(is.UInt16());
+		items[i].vy     = (int16_t)(is.UInt16());
 		items[i].weight = is.UInt16();
 	}
 
