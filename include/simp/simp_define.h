@@ -13,6 +13,7 @@ static const uint32_t ANCHOR_ID		= 0xffffffff;
 static const int SCREEN_SCALE		= 16;
 
 static const int PAGE_SIZE			= 1024 * 16;
+static const int PAGE_SIZE_MIN		= 1024 * 4;
 static const int PAGE_SIZE_MAX		= 1024 * 64;
 
 }
