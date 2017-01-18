@@ -2,7 +2,7 @@
 #include "ImportStream.h"
 #include "simp_types.h"
 #include "Page.h"
-#include "StaticAlloc.h"
+#include "PageAlloc.h"
 #include "simp_define.h"
 
 #include <fs_file.h>
@@ -134,7 +134,7 @@ void Package::LoadPage(int idx) const
 
 	assert(!desc.page);
 
-	bimp::Allocator* alloc = StaticAlloc::Instance()->Create();
+	bimp::Allocator* alloc = PageAlloc::Instance()->Create(desc.size);
 
 	int sz = ALIGN_4BYTE(Page::Size());
 	void* ptr = alloc->Alloc(sz);
@@ -182,6 +182,7 @@ void Package::PageDescLoader::OnLoad(bimp::ImportStream& is)
 	for (int i = 0; i < page_n; ++i)
 	{
 		PageDesc page;
+		page.size = is.UInt32();
 		page.min = is.UInt32();
 		page.max = is.UInt32();
 		m_pages.push_back(page);

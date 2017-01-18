@@ -30,6 +30,8 @@ public:
 
 	int GetPkgID() const { return m_pkg_id; }
 
+	int GetBeginID() const { return m_begin_id; }
+
 	static int Size();
 
 private:

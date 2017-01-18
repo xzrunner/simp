@@ -2,7 +2,7 @@
 #include "ImportStream.h"
 #include "simp_types.h"
 #include "simp_define.h"
-#include "StaticAlloc.h"
+#include "PageAlloc.h"
 #include "NodeFactory.h"
 #include "NodeVisitor.h"
 #include "RelocateTexcoords.h"
@@ -56,7 +56,7 @@ Page::Page(int pkg_id, bimp::Allocator* alloc, int begin_id, int end_id)
 
 Page::~Page()
 {
-	StaticAlloc::Instance()->Release(m_alloc);
+	PageAlloc::Instance()->Release(m_alloc);
 }
 
 void Page::Traverse(NodeVisitor& visitor) const

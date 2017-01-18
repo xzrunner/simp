@@ -49,6 +49,7 @@ private:
 	{
 		std::string filepath;
 
+		int size;
 		int min, max;
 
 		mutable Page* page;

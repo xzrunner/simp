@@ -10,10 +10,6 @@ namespace simp
 
 NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 {
-	int init = alloc.GetCap();
-	int last = init;
-	printf("NodeAnim2 init %d\n", alloc.GetCap());
-
 	root = is.UInt16();
 	// joints
 	joint_count = is.UInt16();
@@ -22,9 +18,6 @@ NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 		joints[i].Load(is);
 	}
 
-	printf("NodeAnim2 joints %d\n", alloc.GetCap() - last);
-	last = alloc.GetCap();
-
 	// skins
 	skin_count = is.UInt16();
 	skins = static_cast<Skin*>(alloc.Alloc(Skin::Size() * skin_count));
@@ -32,18 +25,12 @@ NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 		skins[i].Load(is);
 	}
 
-	printf("NodeAnim2 skins %d\n", alloc.GetCap() - last);
-	last = alloc.GetCap();
-
 	// slots
 	slot_count = is.UInt16();
 	slots = static_cast<Slot*>(alloc.Alloc(Slot::Size() * slot_count));
 	for (int i = 0; i < slot_count; ++i) {
 		slots[i].Load(is);
 	}
-
-	printf("NodeAnim2 slots %d\n", alloc.GetCap() - last);
-	last = alloc.GetCap();
 
 	// tl_joints
 	tl_joints = static_cast<TL_Joint**>(alloc.Alloc(sizeof(TL_Joint*) * joint_count));
@@ -53,9 +40,6 @@ NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 		tl_joints[i]->Load(alloc, is);
 	}
 
-	printf("NodeAnim2 tl_joints %d\n", alloc.GetCap() - last);
-	last = alloc.GetCap();
-
 	// tl_skins
 	tl_skins = static_cast<TL_Skin**>(alloc.Alloc(sizeof(TL_Skin*) * slot_count));
 	for (int i = 0; i < slot_count; ++i)
@@ -64,9 +48,6 @@ NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 		tl_skins[i]->Load(alloc, is);
 	}
 
-	printf("NodeAnim2 tl_skins %d\n", alloc.GetCap() - last);
-	last = alloc.GetCap();
-
 	// tl_deforms
 	tl_deforms = static_cast<TL_Deform**>(alloc.Alloc(sizeof(TL_Deform*) * skin_count));
 	for (int i = 0; i < skin_count; ++i)
@@ -74,11 +55,6 @@ NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 		tl_deforms[i] = static_cast<TL_Deform*>(alloc.Alloc(TL_Deform::Size()));
 		tl_deforms[i]->Load(alloc, is);
 	}
-
-	printf("NodeAnim2 tl_deforms %d\n", alloc.GetCap() - last);
-	last = alloc.GetCap();
-
-	int zz = 0;
 }
 
 int NodeAnim2::Size()
