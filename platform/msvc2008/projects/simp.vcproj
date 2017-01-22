@@ -176,6 +176,14 @@
 				RelativePath="..\..\..\include\simp\Page.h"
 				>
 			</File>
+			<File
+				RelativePath="..\..\..\source\PageAlloc.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\simp\PageAlloc.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="preprocess"
