@@ -12,6 +12,8 @@ NodePicture::NodePicture(ImportStream& is)
 	for (int i = 0; i < 4; ++i) {
 		region[i] = is.UInt16();
 	}
+	offx = static_cast<int16_t>(is.UInt16());
+	offy = static_cast<int16_t>(is.UInt16());
 }
 
 int NodePicture::Size()

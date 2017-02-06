@@ -15,6 +15,7 @@ class NodePicture : private cu::Uncopyable
 public:
 	int texid;
 	uint16_t region[4];
+	int16_t offx, offy;
 
 public:
 	static const int MAX_IN_PKG = 4096;
