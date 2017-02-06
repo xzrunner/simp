@@ -23,6 +23,7 @@ public:
 	};
 
 	uint32_t type;
+	uint16_t left, right, top, down;
 	Grid grids[1];
 
 public:

@@ -27,6 +27,11 @@ NodeScale9::NodeScale9(bimp::Allocator& alloc, ImportStream& is)
 		break;
 	}
 
+	left  = is.UInt16();
+	right = is.UInt16();
+	top   = is.UInt16();
+	down  = is.UInt16();
+
 	alloc.Alloc(GridSize() * n);	
 
 	for (int i = 0; i < n; ++i)
