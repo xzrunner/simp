@@ -2,9 +2,9 @@
 #include "ImportStream.h"
 #include "simp_define.h"
 
-#include "NetworkMesh.h"
+#include "PointsMesh.h"
 #include "TrianglesMesh.h"
-#include "Skeleton2Mesh.h"
+#include "Skin2Mesh.h"
 
 #include <bimp/typedef.h>
 #include <bimp/Allocator.h>
@@ -20,10 +20,10 @@ NodeMesh::NodeMesh(bimp::Allocator& alloc, ImportStream& is)
 	int type = is.UInt8();
 	switch (type)
 	{
-	case MESH_NETWORK:
+	case MESH_POINTS:
 		{
-			void* ptr = alloc.Alloc(NetworkMesh::Size());
-			shape = new (ptr) NetworkMesh(alloc, is);
+			void* ptr = alloc.Alloc(PointsMesh::Size());
+			shape = new (ptr) PointsMesh(alloc, is);
 		}
 		break;
 	case MESH_TRIANGLES:
@@ -32,10 +32,10 @@ NodeMesh::NodeMesh(bimp::Allocator& alloc, ImportStream& is)
 			shape = new (ptr) TrianglesMesh(alloc, is);
 		}
 		break;
-	case MESH_SKELETON2:
+	case MESH_SKIN2:
 		{
-			void* ptr = alloc.Alloc(Skeleton2Mesh::Size());
-			shape = new (ptr) Skeleton2Mesh(alloc, is);
+			void* ptr = alloc.Alloc(Skin2Mesh::Size());
+			shape = new (ptr) Skin2Mesh(alloc, is);
 		}
 		break;
 	}

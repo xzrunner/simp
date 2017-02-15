@@ -13,7 +13,7 @@ NodeMeshSpr::NodeMeshSpr(bimp::Allocator& alloc, ImportStream& is)
 	base_id	= is.UInt32();
 	
 	uint16_t num;
-	NodeArray::Load16(alloc, is, 2, num);
+	NodeArray::Load16(alloc, is, 3, num);
 	n = num;
 }
 

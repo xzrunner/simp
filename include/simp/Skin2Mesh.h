@@ -1,5 +1,5 @@
-#ifndef _SIMP_SKELETON2_MESH_H_
-#define _SIMP_SKELETON2_MESH_H_
+#ifndef _SIMP_SKIN2_MESH_H_
+#define _SIMP_SKIN2_MESH_H_
 
 #include "MeshShape.h"
 
@@ -12,10 +12,10 @@ namespace simp
 
 class ImportStream;
 
-class Skeleton2Mesh : public MeshShape
+class Skin2Mesh : public MeshShape
 {
 public:
-	struct Item
+	struct Joint
 	{
 		uint16_t joint;
 		int16_t  vx, vy;
@@ -24,8 +24,8 @@ public:
 
 public:
 	uint32_t  vertices_n;
-	uint8_t*  items_n;
-	Item*     items;
+	uint8_t*  joints_n;
+	Joint*    joints;
 
 	uint32_t  texcoords_n;
 	uint16_t* texcoords;
@@ -34,16 +34,16 @@ public:
 	uint16_t* triangle;
 
 public:
-	Skeleton2Mesh(bimp::Allocator& alloc, ImportStream& is);
+	Skin2Mesh(bimp::Allocator& alloc, ImportStream& is);
 
-	virtual MeshType Type() const { return MESH_SKELETON2; }
+	virtual MeshType Type() const { return MESH_SKIN2; }
 
 	static int Size();
 
-	static int ItemSize();
+	static int JointSize();
 
-}; // Skeleton2Mesh
+}; // Skin2Mesh
 
 }
 
-#endif // _SIMP_SKELETON2_MESH_H_
+#endif // _SIMP_SKIN2_MESH_H_

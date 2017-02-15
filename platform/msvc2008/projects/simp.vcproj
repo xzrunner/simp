@@ -455,19 +455,19 @@
 					Name="shape"
 					>
 					<File
-						RelativePath="..\..\..\source\NetworkMesh.cpp"
+						RelativePath="..\..\..\source\PointsMesh.cpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\..\include\simp\NetworkMesh.h"
+						RelativePath="..\..\..\include\simp\PointsMesh.h"
 						>
 					</File>
 					<File
-						RelativePath="..\..\..\source\Skeleton2Mesh.cpp"
+						RelativePath="..\..\..\source\Skin2Mesh.cpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\..\include\simp\Skeleton2Mesh.h"
+						RelativePath="..\..\..\include\simp\Skin2Mesh.h"
 						>
 					</File>
 					<File

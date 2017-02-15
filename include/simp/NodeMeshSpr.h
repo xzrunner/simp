@@ -18,7 +18,7 @@ public:
 	uint32_t mesh_id, base_id;
 
 	uint32_t n;
-	uint16_t vertices[1];
+	uint16_t trans[1];
 
 public:
 	NodeMeshSpr(bimp::Allocator& alloc, ImportStream& is);
