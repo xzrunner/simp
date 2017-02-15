@@ -14,7 +14,7 @@ PointsMesh::PointsMesh(bimp::Allocator& alloc, ImportStream& is)
 	outline = NodeArray::Load16(alloc, is, 2, n);
 	outline_n = n;
 	points = NodeArray::Load16(alloc, is, 2, n);
-	points_n = 0;
+	points_n = n;
 }
 
 int PointsMesh::Size()
