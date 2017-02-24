@@ -21,7 +21,7 @@ public:
 	uint32_t color;
 
 	uint16_t vertices_n;
-	uint16_t vertices[1];
+	uint32_t vertices[1];
 
 public:
 	NodeShape(bimp::Allocator& alloc, ImportStream& is);
