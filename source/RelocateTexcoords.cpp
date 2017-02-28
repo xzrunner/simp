@@ -20,7 +20,8 @@ void RelocateTexcoords::Add(const Item& item)
 	int id = CalcKey(item.src_pkg, item.src_tex);
 	std::pair<std::map<int, Item>::iterator, bool> ret 
 		= m_items.insert(std::make_pair(id, item));
-	assert(ret.second);
+//	todo
+//	assert(ret.second);
 }
 
 void RelocateTexcoords::Delete(int pkg)
