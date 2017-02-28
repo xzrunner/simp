@@ -28,8 +28,8 @@ NodeLabel::NodeLabel(bimp::Allocator& alloc, ImportStream& is)
 	space_vert	= is.UInt16() / 1024.0f;
 
 	uint8_t pack8 = is.UInt8();
-	richtext = pack8 & 0x1;
-	overflow = pack8 & 0x2;
+	richtext = (pack8 & 0x1) ? 1 : 0;
+	overflow = (pack8 & 0x2) ? 1 : 0;
 
 	text		= is.String(alloc);
 	tid			= is.String(alloc);
