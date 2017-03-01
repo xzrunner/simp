@@ -2,7 +2,7 @@
 #include "ImportStream.h"
 #include "NodeArray.h"
 
-#include <bimp/typedef.h>
+#include <bimp/bimp_typedef.h>
 
 namespace simp
 {

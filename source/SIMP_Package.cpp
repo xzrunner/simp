@@ -1,4 +1,4 @@
-#include "Package.h"
+#include "SIMP_Package.h"
 #include "ImportStream.h"
 #include "simp_types.h"
 #include "Page.h"
@@ -7,10 +7,11 @@
 
 #include <fs_file.h>
 #include <fault.h>
-#include <bimp/typedef.h>
+#include <bimp/bimp_typedef.h>
 #include <bimp/Allocator.h>
 
 #include <sstream>
+#include <climits>
 
 #include <stddef.h>
 #include <assert.h>

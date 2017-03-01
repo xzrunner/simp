@@ -3,7 +3,7 @@
 
 #include <mt_2d.h>
 #include <bimp/Allocator.h>
-#include <bimp/typedef.h>
+#include <bimp/bimp_typedef.h>
 
 #include <assert.h>
 

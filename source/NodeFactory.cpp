@@ -1,5 +1,5 @@
 #include "NodeFactory.h"
-#include "Package.h"
+#include "SIMP_Package.h"
 
 #include <assert.h>
 

@@ -1,7 +1,7 @@
 #ifndef _SIMP_NODE_FACTORY_INL_
 #define _SIMP_NODE_FACTORY_INL_
 
-#include "Package.h"
+#include "SIMP_Package.h"
 #include "NodeID.h"
 
 #include <assert.h>

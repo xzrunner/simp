@@ -2,7 +2,7 @@
 #include "ImportStream.h"
 #include "simp_define.h"
 
-#include <bimp/typedef.h>
+#include <bimp/bimp_typedef.h>
 #include <bimp/Allocator.h>
 
 namespace simp

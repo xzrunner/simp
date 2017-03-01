@@ -4,7 +4,7 @@
 #include "NodeTrans.h"
 #include "from_int.h"
 
-#include <bimp/typedef.h>
+#include <bimp/bimp_typedef.h>
 #include <bimp/Allocator.h>
 
 namespace simp

@@ -1,6 +1,6 @@
 #include "ImportStream.h"
 
-#include <bimp/typedef.h>
+#include <bimp/bimp_typedef.h>
 
 #include <fault.h>
 

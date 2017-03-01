@@ -35,7 +35,7 @@
 #include "NodeAnim2Spr.h"
 
 #include <bimp/FileLoader.h>
-#include <bimp/typedef.h>
+#include <bimp/bimp_typedef.h>
 #include <bimp/Allocator.h>
 
 #include <new>
