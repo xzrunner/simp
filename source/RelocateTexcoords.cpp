@@ -29,11 +29,11 @@ void RelocateTexcoords::Delete(int pkg)
 	m_pkgs.erase(pkg);
 
 	std::map<int, Item>::iterator itr = m_items.begin();
-	for ( ; itr != m_items.end(); ) 
+	while (itr != m_items.end())
 	{
 		int id = itr->first;
 		if (NodeID::GetPkgID(id) == pkg) {
-			itr = m_items.erase(itr);
+			m_items.erase(itr++);
 		} else {
 			++itr;
 		}
