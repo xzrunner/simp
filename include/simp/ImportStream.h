@@ -1,7 +1,7 @@
 #ifndef _SIMP_IMPORT_STREAM_H_
 #define _SIMP_IMPORT_STREAM_H_
 
-#include <bimp/ImportStream.h>
+#include <bimp/BIMP_ImportStream.h>
 
 #include <string>
 
