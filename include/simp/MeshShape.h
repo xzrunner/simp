@@ -1,7 +1,7 @@
 #ifndef _SIMP_MESH_SHAPE_H_
 #define _SIMP_MESH_SHAPE_H_
 
-#include "MeshType.h"
+#include "SIMP_MeshType.h"
 
 namespace simp
 {

@@ -1,4 +1,4 @@
-#include "TrianglesMesh.h"
+#include "SIMP_TrianglesMesh.h"
 #include "ImportStream.h"
 #include "simp_define.h"
 #include "NodeArray.h"

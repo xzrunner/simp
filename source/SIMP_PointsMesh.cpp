@@ -1,4 +1,4 @@
-#include "PointsMesh.h"
+#include "SIMP_PointsMesh.h"
 #include "ImportStream.h"
 #include "simp_define.h"
 #include "NodeArray.h"

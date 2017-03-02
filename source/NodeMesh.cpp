@@ -2,9 +2,9 @@
 #include "ImportStream.h"
 #include "simp_define.h"
 
-#include "PointsMesh.h"
-#include "TrianglesMesh.h"
-#include "Skin2Mesh.h"
+#include "SIMP_PointsMesh.h"
+#include "SIMP_TrianglesMesh.h"
+#include "SIMP_Skin2Mesh.h"
 
 #include <bimp/bimp_typedef.h>
 #include <bimp/Allocator.h>
