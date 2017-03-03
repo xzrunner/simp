@@ -20,6 +20,7 @@ public:
 	{
 		NodeTrans* trans;
 		uint32_t sym_id;
+		uint32_t padding;
 	};
 
 	struct Frame
@@ -28,15 +29,18 @@ public:
 		uint16_t n;
 		uint16_t index;
 		uint8_t tween;
+		uint8_t padding[3];
 	};
 
 	struct Layer
 	{
 		Frame** frames;
 		int n;
+		uint32_t padding;
 	};
 
 	uint16_t n;
+	uint16_t padding[3];
 	Layer layers[1];
 
 public:

@@ -21,6 +21,7 @@ public:
 		const char* name;
 		uint16_t* idx;
 		uint16_t n;
+		uint16_t padding[3];
 	};
 
 	uint32_t* sprs;
@@ -30,6 +31,7 @@ public:
 	uint16_t actions_n;
 
 	int16_t scissor[4];
+	int16_t padding[2];
 
 	Action actions[1];
 

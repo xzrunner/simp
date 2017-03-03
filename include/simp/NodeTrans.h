@@ -43,10 +43,10 @@ public:
 	static const int CAMERA_MASK		= 1 << 24;
 
 public:
-	uint32_t type;
-	
 	const char* name;
 
+	uint32_t type;
+	
 	uint32_t data[1];
 
 }; // NodeTrans
