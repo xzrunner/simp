@@ -161,14 +161,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\source\Package.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\simp\Package.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\source\Page.cpp"
 				>
 			</File>
@@ -182,6 +174,14 @@
 			</File>
 			<File
 				RelativePath="..\..\..\include\simp\PageAlloc.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\source\SIMP_Package.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\simp\SIMP_Package.h"
 				>
 			</File>
 		</Filter>
@@ -432,10 +432,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\..\include\simp\MeshType.h"
-					>
-				</File>
-				<File
 					RelativePath="..\..\..\source\NodeMesh.cpp"
 					>
 				</File>
@@ -451,31 +447,35 @@
 					RelativePath="..\..\..\include\simp\NodeMeshSpr.h"
 					>
 				</File>
+				<File
+					RelativePath="..\..\..\include\simp\SIMP_MeshType.h"
+					>
+				</File>
 				<Filter
 					Name="shape"
 					>
 					<File
-						RelativePath="..\..\..\source\PointsMesh.cpp"
+						RelativePath="..\..\..\source\SIMP_PointsMesh.cpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\..\include\simp\PointsMesh.h"
+						RelativePath="..\..\..\include\simp\SIMP_PointsMesh.h"
 						>
 					</File>
 					<File
-						RelativePath="..\..\..\source\Skin2Mesh.cpp"
+						RelativePath="..\..\..\source\SIMP_Skin2Mesh.cpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\..\include\simp\Skin2Mesh.h"
+						RelativePath="..\..\..\include\simp\SIMP_Skin2Mesh.h"
 						>
 					</File>
 					<File
-						RelativePath="..\..\..\source\TrianglesMesh.cpp"
+						RelativePath="..\..\..\source\SIMP_TrianglesMesh.cpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\..\include\simp\TrianglesMesh.h"
+						RelativePath="..\..\..\include\simp\SIMP_TrianglesMesh.h"
 						>
 					</File>
 				</Filter>
