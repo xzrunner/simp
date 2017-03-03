@@ -24,8 +24,6 @@ public:
 public:
 	PointsMesh(bimp::Allocator& alloc, ImportStream& is);
 
-	virtual MeshType Type() const { return MESH_POINTS; }
-
 	static int Size();
 
 }; // PointsMesh

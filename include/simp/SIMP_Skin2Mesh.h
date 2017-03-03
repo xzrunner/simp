@@ -36,8 +36,6 @@ public:
 public:
 	Skin2Mesh(bimp::Allocator& alloc, ImportStream& is);
 
-	virtual MeshType Type() const { return MESH_SKIN2; }
-
 	static int Size();
 
 	static int JointSize();

@@ -9,9 +9,11 @@ namespace simp
 class MeshShape
 {
 public:
-	virtual ~MeshShape() {}
-	virtual MeshType Type() const = 0;
+	MeshType type;
 
+public:
+	MeshShape() : type(MESH_UNKNOWN) {}
+	
 }; // MeshShape
 
 }

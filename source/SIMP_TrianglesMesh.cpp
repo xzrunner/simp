@@ -10,6 +10,8 @@ namespace simp
 
 TrianglesMesh::TrianglesMesh(bimp::Allocator& alloc, ImportStream& is)
 {
+	type = MESH_TRIANGLES;
+
 	uint16_t n;
 	vertices = NodeArray::Load16(alloc, is, 2, n);
 	vertices_n = n;

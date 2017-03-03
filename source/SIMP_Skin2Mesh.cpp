@@ -11,6 +11,8 @@ namespace simp
 
 Skin2Mesh::Skin2Mesh(bimp::Allocator& alloc, ImportStream& is)
 {
+	type = MESH_SKIN2;
+
 	uint16_t n;
 	joints_n = NodeArray::Load8(alloc, is, 1, n);
 	vertices_n = n;

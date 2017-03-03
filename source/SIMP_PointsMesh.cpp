@@ -10,6 +10,8 @@ namespace simp
 
 PointsMesh::PointsMesh(bimp::Allocator& alloc, ImportStream& is)
 {
+	type = MESH_POINTS;
+
 	uint16_t n;
 	outline = NodeArray::Load16(alloc, is, 2, n);
 	outline_n = n;

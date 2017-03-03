@@ -27,8 +27,6 @@ public:
 public:
 	TrianglesMesh(bimp::Allocator& alloc, ImportStream& is);
 
-	virtual MeshType Type() const { return MESH_TRIANGLES; }
-
 	static int Size();
 
 }; // TrianglesMesh
