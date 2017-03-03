@@ -48,9 +48,9 @@ namespace simp
 
 Page::Page(int pkg_id, bimp::Allocator* alloc, int begin_id, int end_id)
 	: m_pkg_id(pkg_id)
-	, m_alloc(alloc)
 	, m_begin_id(begin_id)
 	, m_end_id(end_id)
+	, m_alloc(alloc)
 {
 }
 
@@ -85,7 +85,7 @@ const void* Page::Query(uint32_t id, int* type) const
 
 int Page::Size()
 {
-	return sizeof(Page) + PTR_SIZE_DIFF * 3;
+	return ALIGN_4BYTE(sizeof(Page) + PTR_SIZE_DIFF * 3);
 }
 
 /************************************************************************/

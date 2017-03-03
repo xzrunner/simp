@@ -54,9 +54,11 @@ private:
 private:
 	int m_pkg_id;
 
-	bimp::Allocator* m_alloc;
+	int m_begin_id, m_end_id;
 
-	int m_begin_id, m_end_id;	
+	uint32_t m_padding;
+
+	bimp::Allocator* m_alloc;
 
 	uint8_t* m_types;
 	void** m_nodes;
