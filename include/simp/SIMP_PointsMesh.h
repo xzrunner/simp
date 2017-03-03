@@ -15,10 +15,11 @@ class ImportStream;
 class PointsMesh : public MeshShape
 {
 public:
-	uint32_t  outline_n;
-	uint16_t* outline;
+	uint32_t outline_n;
+	uint32_t points_n;
+	uint32_t padding;
 
-	uint32_t  points_n;
+	uint16_t* outline;
 	uint16_t* points;
 
 public:

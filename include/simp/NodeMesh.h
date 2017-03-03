@@ -17,6 +17,7 @@ class NodeMesh : private cu::Uncopyable
 {
 public:
 	uint32_t base_id;
+	uint32_t padding;
 
 	MeshShape* shape;
 
