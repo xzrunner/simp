@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "NodeAnimation.h"
 #include "simp_define.h"
 #include "ImportStream.h"

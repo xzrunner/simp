@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "NodeComplex.h"
 #include "ImportStream.h"
 #include "simp_define.h"
