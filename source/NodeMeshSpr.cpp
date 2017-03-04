@@ -4,6 +4,8 @@
 
 #include <bimp/bimp_typedef.h>
 
+#include <string.h>
+
 namespace simp
 {
 

@@ -9,6 +9,8 @@
 #include <bimp/bimp_typedef.h>
 #include <bimp/Allocator.h>
 
+#include <string.h>
+
 namespace simp
 {
 
