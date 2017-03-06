@@ -17,6 +17,8 @@ public:
 	void LoadPkgIDs(const std::string& filepath);
 	int  QueryPkgID(const std::string& name) const;
 
+	void Clear();
+
 private:
 	struct PkgID
 	{

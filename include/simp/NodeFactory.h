@@ -25,6 +25,8 @@ public:
 
 	uint32_t GetNodeID(const std::string& pkg_name, const std::string& node_name) const;
 
+	void Clear();
+
 private:
 	struct PkgWrap
 	{
@@ -42,6 +44,8 @@ private:
 
 		bool Insert(const T& key, int val);
 		int  Query(const T& key) const;
+
+		void Clear();
 
 	protected:
 		virtual int GetHashVal(const T& key) const = 0;

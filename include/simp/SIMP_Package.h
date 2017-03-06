@@ -45,8 +45,13 @@ private:
 	void UnloadPage(int idx) const;
 
 private:
-	struct PageDesc
+	class PageDesc
 	{
+	public:
+		PageDesc();
+		~PageDesc();
+
+	private:
 		std::string filepath;
 
 		int size;
@@ -54,8 +59,9 @@ private:
 
 		mutable Page* page;
 
-		PageDesc() : page(NULL) {}
-	};
+		friend class Package;
+
+	}; // PageDesc
 
 	class PageDescLoader : public bimp::FileLoader
 	{

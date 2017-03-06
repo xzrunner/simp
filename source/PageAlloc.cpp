@@ -49,6 +49,13 @@ bool PageAlloc::Release(bimp::Allocator* alloc)
 	return true;
 }
 
+void PageAlloc::Clear()
+{
+	for (int i = 0, n = m_freelists.size(); i < n; ++i) {
+		m_freelists[i]->Clear();
+	}
+}
+
 int PageAlloc::CalcIndex(int size)
 {
 	int idx = 0;
@@ -59,6 +66,31 @@ int PageAlloc::CalcIndex(int size)
 		}
 	}
 	return idx;
+}
+
+/************************************************************************/
+/* class PageAlloc::Freelist                                            */
+/************************************************************************/
+
+PageAlloc::Freelist::
+Freelist(int size) 
+	: size(size) 
+{
+}
+
+PageAlloc::Freelist::
+~Freelist()
+{
+	Clear();
+}
+
+void PageAlloc::Freelist::
+Clear()
+{
+	for (int i = 0, n = freelist.size(); i < n; ++i) {
+		delete freelist[i];
+	}
+	freelist.clear();
 }
 
 }

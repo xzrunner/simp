@@ -87,6 +87,14 @@ int NodeFactory::Hash<T>::Query(const T& key) const
 	return -1;
 }
 
+template <typename T>
+void NodeFactory::Hash<T>::Clear()
+{
+	for (int i = 0; i < m_hash_sz; ++i) {
+		m_hash[i].clear();
+	}
+}
+
 }
 
 #endif // _SIMP_NODE_FACTORY_INL_

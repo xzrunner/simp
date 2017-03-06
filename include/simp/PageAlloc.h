@@ -16,14 +16,24 @@ public:
 	bimp::Allocator* Create(int size);
 	bool Release(bimp::Allocator*);
 
+	void Clear();
+
 private:
-	struct Freelist
+	class Freelist
 	{
+	public:
+		Freelist(int size);
+		~Freelist();
+
+		void Clear();
+
+	private:
 		int size;
 		std::vector<bimp::Allocator*> freelist;
 
-		Freelist(int size) : size(size) {}
-	};
+		friend class PageAlloc;
+
+	}; // Freelist
 
 	static int CalcIndex(int size);
 

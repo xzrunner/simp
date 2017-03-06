@@ -32,6 +32,8 @@ public:
 
 	void Do(const Page* page);
 
+	void Clear();
+
 private:
 	static int CalcKey(int pkg, int tex);
 

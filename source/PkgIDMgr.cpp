@@ -29,6 +29,11 @@ int PkgIDMgr::QueryPkgID(const std::string& name) const
 	}
 }
 
+void PkgIDMgr::Clear()
+{
+	m_pkgs.clear();
+}
+
 /************************************************************************/
 /* class PkgIDMgr::PkgIDsLoader                                         */
 /************************************************************************/

@@ -1,5 +1,6 @@
 #include "NodeFactory.h"
 #include "SIMP_Package.h"
+#include "PageAlloc.h"
 
 #include <assert.h>
 
@@ -47,6 +48,17 @@ uint32_t NodeFactory::GetNodeID(const std::string& pkg_name, const std::string& 
 
 	uint32_t pkg_id = m_pkgs[idx].id;
 	return NodeID::ComposeID(pkg_id, NodeID::GetNodeID(node_id));
+}
+
+void NodeFactory::Clear()
+{
+	for (int i = 0, n = m_pkgs.size(); i < n; ++i) {
+		delete m_pkgs[i].pkg;
+	}
+	m_pkgs.clear();	
+
+	m_hash_id.Clear();
+	m_hash_name.Clear();
 }
 
 /************************************************************************/

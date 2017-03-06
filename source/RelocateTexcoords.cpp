@@ -50,6 +50,12 @@ void RelocateTexcoords::Do(const Page* page)
 	const_cast<Page*>(page)->Traverse(visitor);
 }
 
+void RelocateTexcoords::Clear()
+{
+	m_pkgs.clear();
+	m_items.clear();
+}
+
 int RelocateTexcoords::CalcKey(int pkg, int tex)
 {
 	return NodeID::ComposeID(pkg, tex);
