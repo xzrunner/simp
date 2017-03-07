@@ -11,8 +11,12 @@ class NodeID
 {
 public:	
 	static uint32_t ComposeID(uint32_t pkg_id, uint32_t node_id) {
-		assert(pkg_id < (1 << PKG_ID_SIZE) && node_id < (1 << NODE_ID_SIZE));
-		return (pkg_id << NODE_ID_SIZE) | node_id;
+		if (pkg_id == 0xffffffff || node_id == 0xffffffff) {
+			return 0xffffffff;
+		} else {
+			assert(pkg_id < (1 << PKG_ID_SIZE) && node_id < (1 << NODE_ID_SIZE));
+			return (pkg_id << NODE_ID_SIZE) | node_id;
+		}
 	}
 
 	static uint32_t GetPkgID(uint32_t id)  { return (id & PKG_ID_MASK) >> NODE_ID_SIZE; }
