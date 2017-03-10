@@ -10,8 +10,8 @@ SINGLETON_DEFINITION(PageAlloc)
 
 PageAlloc::PageAlloc()
 {
-	int size = PAGE_SIZE_MIN;
-	while (size <= PAGE_SIZE_MAX) {
+	int size = SIMP_PAGE_SIZE_MIN;
+	while (size <= SIMP_PAGE_SIZE_MAX) {
 		m_freelists.push_back(new Freelist(size));
 		size *= 2;
 	}
@@ -59,9 +59,9 @@ void PageAlloc::Clear()
 int PageAlloc::CalcIndex(int size)
 {
 	int idx = 0;
-	while (PAGE_SIZE_MIN << idx != size) {
+	while (SIMP_PAGE_SIZE_MIN << idx != size) {
 		idx++;
-		if (PAGE_SIZE_MIN << idx > PAGE_SIZE_MAX) {
+		if (SIMP_PAGE_SIZE_MIN << idx > SIMP_PAGE_SIZE_MAX) {
 			return -1;
 		}
 	}
