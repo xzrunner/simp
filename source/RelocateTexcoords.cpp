@@ -45,9 +45,13 @@ void RelocateTexcoords::Do(const Page* page)
 	if (m_pkgs.find(page->GetPkgID()) == m_pkgs.end()) {
 		return;
 	}
+	if (page->IsTexcoordsRelocated()) {
+		return;
+	}
 
 	Visitor visitor(page->GetPkgID(), m_items);
 	const_cast<Page*>(page)->Traverse(visitor);
+	page->SetTexcoordsRelocated(true);
 }
 
 void RelocateTexcoords::Clear()

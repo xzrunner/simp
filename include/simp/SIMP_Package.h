@@ -18,6 +18,7 @@ namespace simp
 class Image;
 class Page;
 class NodeVisitor;
+class PageVisitor;
 
 class Package : private cu::Uncopyable
 {
@@ -26,6 +27,7 @@ public:
 	~Package();
 
 	void Traverse(NodeVisitor& visitor) const;
+	void Traverse(PageVisitor& visitor) const;
 
 	uint32_t QueryID(const std::string& name) const;
 

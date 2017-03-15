@@ -15,6 +15,15 @@ NodeFactory::NodeFactory()
 {
 }
 
+void NodeFactory::Traverse(PageVisitor& visitor) const
+{
+	for (int i = 0, n = m_pkgs.size(); i < n; ++i) {
+		if (m_pkgs[i].pkg) {
+			m_pkgs[i].pkg->Traverse(visitor);
+		}
+	}
+}
+
 bool NodeFactory::AddPkg(Package* pkg, const std::string& pkg_name, int pkg_id)
 {
 	PkgWrap wrap;

@@ -4,6 +4,7 @@
 #include "Page.h"
 #include "PageAlloc.h"
 #include "simp_define.h"
+#include "PageVisitor.h"
 
 #include <fs_file.h>
 #include <fault.h>
@@ -43,6 +44,16 @@ void Package::Traverse(NodeVisitor& visitor) const
 		page.page->Traverse(visitor);
 		if (!loaded) {
 			UnloadPage(i);
+		}
+	}
+}
+
+void Package::Traverse(PageVisitor& visitor) const
+{
+	for (int i = 0, n = m_pages.size(); i < n; ++i) {
+		const PageDesc& page = m_pages[i];
+		if (page.page) {
+			visitor.Visit(page.page);
 		}
 	}
 }

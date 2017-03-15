@@ -50,6 +50,7 @@ Page::Page(int pkg_id, bimp::Allocator* alloc, int begin_id, int end_id)
 	: m_pkg_id(pkg_id)
 	, m_begin_id(begin_id)
 	, m_end_id(end_id)
+	, m_flags(0)
 	, m_alloc(alloc)
 {
 }
@@ -61,7 +62,7 @@ Page::~Page()
 
 void Page::Traverse(NodeVisitor& visitor) const
 {
-	for (int id = m_begin_id; id < m_end_id; ++id) {
+	for (int id = m_begin_id; id <= m_end_id; ++id) {
 		int idx = id - m_begin_id;
 		visitor.Visit(id, m_types[idx], m_nodes[idx]);
 	}

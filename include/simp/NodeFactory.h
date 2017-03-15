@@ -13,10 +13,13 @@ namespace simp
 {
 
 class Package;
+class PageVisitor;
 
 class NodeFactory
 {
 public:
+	void Traverse(PageVisitor& visitor) const;
+
 	bool AddPkg(Package* pkg, const std::string& pkg_name, int pkg_id);
 	const Package* QueryPkg(int node_id) const;
 	const Package* QueryPkg(const std::string& pkg_name) const;

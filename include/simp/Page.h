@@ -52,11 +52,29 @@ private:
 	}; // Loader
 
 private:
+	static const uint32_t FLAG_TEXCOORDS_RELOCATED = 0x00000001;
+
+#define SIMP_FLAG_METHOD(name, bit) \
+	bool Is##name() const { \
+		return (m_flags & bit) != 0; \
+	} \
+	void Set##name(bool flag) const { \
+		if (flag) { \
+			m_flags |= bit; \
+		} else { \
+			m_flags &= ~bit; \
+		} \
+	}
+
+public:
+	SIMP_FLAG_METHOD(TexcoordsRelocated, FLAG_TEXCOORDS_RELOCATED)
+
+private:
 	int m_pkg_id;
 
 	int m_begin_id, m_end_id;
 
-	uint32_t m_padding;
+	mutable uint32_t m_flags;
 
 	bimp::Allocator* m_alloc;
 
