@@ -26,7 +26,6 @@ public:
 	uint32_t vertices_n;
 	uint32_t texcoords_n;
 	uint32_t triangle_n;
-	uint32_t padding;
 
 	uint8_t*  joints_n;
 	Joint*    joints;

@@ -18,7 +18,6 @@ public:
 	uint32_t vertices_n;
 	uint32_t texcoords_n;
 	uint32_t triangle_n;
-	uint32_t padding;
 
 	uint16_t* vertices;
 	uint16_t* texcoords;
