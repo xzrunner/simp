@@ -59,7 +59,7 @@ NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 
 int NodeAnim2::Size()
 {
-	return ALIGN_4BYTE(sizeof(NodeAnim2) + PTR_SIZE_DIFF * 3);
+	return ALIGN_4BYTE(sizeof(NodeAnim2) + PTR_SIZE_DIFF * 6);
 }
 
 /************************************************************************/

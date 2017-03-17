@@ -111,6 +111,7 @@ public:
 	struct TL_Deform
 	{
 		int count;
+		uint32_t padding;
 		DeformSample** samples;
 
 		void Load(bimp::Allocator& alloc, ImportStream& is);
