@@ -30,6 +30,9 @@ public:
 
 	void Clear();
 
+	void SetReleaseTag();
+	void ReleaseAfterLastTag();
+
 private:
 	struct PkgWrap
 	{
@@ -47,6 +50,8 @@ private:
 
 		bool Insert(const T& key, int val);
 		int  Query(const T& key) const;
+
+		bool Remove(const T& key);
 
 		void Clear();
 
@@ -83,6 +88,8 @@ private:
 
 	HashID   m_hash_id;
 	HashName m_hash_name;
+
+	int m_release_tag;
 
 	SINGLETON_DECLARATION(NodeFactory);
 

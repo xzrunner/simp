@@ -34,8 +34,13 @@ public:
 
 	void Clear();
 
+	void SetReleaseTag();
+	void ReleaseAfterLastTag();
+
 private:
 	static int CalcKey(int pkg, int tex);
+
+	void DeletePkg(int pkg);
 
 private:
 	class Visitor : public NodeVisitor
@@ -51,6 +56,9 @@ private:
 private:
 	std::set<int> m_pkgs;
 	std::map<int, Item> m_items;
+
+	bool m_release_tag;
+	std::set<int> m_pkg_tag;
 
 	SINGLETON_DECLARATION(RelocateTexcoords);
 

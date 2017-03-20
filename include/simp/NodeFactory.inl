@@ -88,6 +88,20 @@ int NodeFactory::Hash<T>::Query(const T& key) const
 }
 
 template <typename T>
+bool NodeFactory::Hash<T>::Remove(const T& key)
+{
+	int idx = GetHashVal(key);
+	std::vector<std::pair<T, int> >::iterator itr = m_hash[idx].begin();
+	for ( ; itr != m_hash[idx].end(); ++itr) {
+		if (itr->first == key) {
+			m_hash[idx].erase(itr);
+			return true;
+		}
+	}
+	return false;
+}
+
+template <typename T>
 void NodeFactory::Hash<T>::Clear()
 {
 	for (int i = 0; i < m_hash_sz; ++i) {

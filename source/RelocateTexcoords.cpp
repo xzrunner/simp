@@ -10,6 +10,7 @@ namespace simp
 SINGLETON_DEFINITION(RelocateTexcoords);
 
 RelocateTexcoords::RelocateTexcoords()
+	: m_release_tag(false)
 {
 }
 	
@@ -20,22 +21,27 @@ void RelocateTexcoords::Add(const Item& item)
 	int id = CalcKey(item.src_pkg, item.src_tex);
 	std::pair<std::map<int, Item>::iterator, bool> ret 
 		= m_items.insert(std::make_pair(id, item));
-//	todo
-//	assert(ret.second);
+	//	todo
+	//	assert(ret.second);
+	if (ret.second && m_release_tag) {
+		m_pkg_tag.insert(item.src_pkg);
+	}
 }
 
 void RelocateTexcoords::Delete(int pkg)
 {
-	m_pkgs.erase(pkg);
+	DeletePkg(pkg);
 
-	std::map<int, Item>::iterator itr = m_items.begin();
-	while (itr != m_items.end())
+	if (m_release_tag) 
 	{
-		int id = itr->first;
-		if (NodeID::GetPkgID(id) == pkg) {
-			m_items.erase(itr++);
-		} else {
-			++itr;
+		std::set<int>::iterator itr = m_pkg_tag.begin();
+		while (itr != m_pkg_tag.end())
+		{
+			if (NodeID::GetPkgID(*itr) == pkg) {
+				m_pkg_tag.erase(itr++);
+			} else {
+				++itr;
+			}
 		}
 	}
 }
@@ -60,9 +66,40 @@ void RelocateTexcoords::Clear()
 	m_items.clear();
 }
 
+void RelocateTexcoords::SetReleaseTag()
+{
+	m_release_tag = true;
+}
+
+void RelocateTexcoords::ReleaseAfterLastTag()
+{
+	std::set<int>::iterator itr = m_pkg_tag.begin();
+	for ( ; itr != m_pkg_tag.end(); ++itr) {
+		DeletePkg(*itr);
+	}
+	m_pkg_tag.clear();
+	m_release_tag = false;
+}
+
 int RelocateTexcoords::CalcKey(int pkg, int tex)
 {
 	return NodeID::ComposeID(pkg, tex);
+}
+
+void RelocateTexcoords::DeletePkg(int pkg)
+{
+	m_pkgs.erase(pkg);
+
+	std::map<int, Item>::iterator itr = m_items.begin();
+	while (itr != m_items.end())
+	{
+		int id = itr->first;
+		if (NodeID::GetPkgID(id) == pkg) {
+			m_items.erase(itr++);
+		} else {
+			++itr;
+		}
+	}
 }
 
 /************************************************************************/
