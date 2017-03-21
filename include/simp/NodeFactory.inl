@@ -91,7 +91,7 @@ template <typename T>
 bool NodeFactory::Hash<T>::Remove(const T& key)
 {
 	int idx = GetHashVal(key);
-	std::vector<std::pair<T, int> >::iterator itr = m_hash[idx].begin();
+	typename std::vector<std::pair<T, int> >::iterator itr = m_hash[idx].begin();
 	for ( ; itr != m_hash[idx].end(); ++itr) {
 		if (itr->first == key) {
 			m_hash[idx].erase(itr);
