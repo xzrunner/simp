@@ -7,6 +7,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 
 namespace simp
 {
@@ -16,6 +17,9 @@ class PkgIDMgr
 public:
 	void LoadPkgIDs(const std::string& filepath);
 	int  QueryPkgID(const std::string& name) const;
+
+	int GetPkgSize() const { return m_pkgs.size(); }
+	void GetAllPkgNames(const char* names[]) const;
 
 	void Clear();
 

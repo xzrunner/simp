@@ -29,6 +29,14 @@ int PkgIDMgr::QueryPkgID(const std::string& name) const
 	}
 }
 
+void PkgIDMgr::GetAllPkgNames(const char* names[]) const
+{
+	std::map<std::string, PkgID>::const_iterator itr = m_pkgs.begin();
+	for (int i = 0; itr != m_pkgs.end(); ++itr, ++i) {
+		names[i] = itr->first.c_str();
+	}
+}
+
 void PkgIDMgr::Clear()
 {
 	m_pkgs.clear();
