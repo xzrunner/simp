@@ -128,7 +128,9 @@ Page* Package::QueryPage(int id)
 		}
 	}
 
-	assert(idx != -1);
+	if (idx == -1) {
+		fault("query page fail, pkg %d, id %d, start %d, end %d\n", m_id, id, start, end);
+	}
 	if (!m_pages[idx].page) {
 		LoadPage(idx);
 	}
