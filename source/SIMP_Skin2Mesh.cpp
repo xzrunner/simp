@@ -28,7 +28,7 @@ Skin2Mesh::Skin2Mesh(bimp::Allocator& alloc, ImportStream& is)
 		joints[i].joint  = is.UInt16();
 		joints[i].vx     = (int16_t)(is.UInt16());
 		joints[i].vy     = (int16_t)(is.UInt16());
-		joints[i].weight = is.UInt16();
+		joints[i].weight = (int16_t)(is.UInt16());
 	}
 
 	texcoords = NodeArray::Load16(alloc, is, 2, n);

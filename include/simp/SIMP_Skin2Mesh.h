@@ -19,7 +19,7 @@ public:
 	{
 		uint16_t joint;
 		int16_t  vx, vy;
-		uint16_t weight;
+		int16_t  weight;
 	};
 
 public:
