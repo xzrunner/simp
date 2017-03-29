@@ -39,6 +39,8 @@ public:
 
 	int GetMaxNodeID() const { return m_max_node_id; }
 
+	void ClearPages();
+
 private:
 	void LoadIndex(const std::string& filepath);
 
@@ -52,6 +54,8 @@ private:
 	public:
 		PageDesc();
 		~PageDesc();
+
+		void ClearPage();
 
 	private:
 		std::string filepath;

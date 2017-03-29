@@ -12,7 +12,6 @@ SINGLETON_DEFINITION(NodeFactory);
 NodeFactory::NodeFactory()
 	: m_hash_id(197)
 	, m_hash_name(197)
-	, m_release_tag(-1)
 {
 }
 
@@ -71,26 +70,12 @@ void NodeFactory::Clear()
 	m_hash_name.Clear();
 }
 
-void NodeFactory::SetReleaseTag()
+void NodeFactory::ClearPkgPages(int pkg_id)
 {
-	m_release_tag = m_pkgs.size();
-}
-
-void NodeFactory::ReleaseAfterLastTag()
-{
-	if (m_release_tag == -1) {
-		return;
+	int idx = m_hash_id.Query(pkg_id);
+	if (idx >= 0 && idx < m_pkgs.size()) {
+		m_pkgs[idx].pkg->ClearPages();
 	}
-
-	int begin = m_release_tag;
-	for (int i = begin, n = m_pkgs.size(); i < n; ++i) {
-		m_hash_id.Remove(m_pkgs[i].id);
-		m_hash_name.Remove(m_pkgs[i].name);
-		delete m_pkgs[i].pkg;
-	}
-	m_pkgs.erase(m_pkgs.begin() + begin, m_pkgs.end());
-
-	m_release_tag = -1;
 }
 
 /************************************************************************/

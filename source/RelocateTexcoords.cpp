@@ -3,6 +3,7 @@
 #include "Page.h"
 #include "simp_types.h"
 #include "NodePicture.h"
+#include "NodeFactory.h"
 
 namespace simp
 {
@@ -74,8 +75,11 @@ void RelocateTexcoords::SetReleaseTag()
 void RelocateTexcoords::ReleaseAfterLastTag()
 {
 	std::set<int>::iterator itr = m_pkg_tag.begin();
-	for ( ; itr != m_pkg_tag.end(); ++itr) {
-		DeletePkg(*itr);
+	for ( ; itr != m_pkg_tag.end(); ++itr) 
+	{
+		int pkg_id = *itr;
+		DeletePkg(pkg_id);
+		NodeFactory::Instance()->ClearPkgPages(pkg_id);
 	}
 	m_pkg_tag.clear();
 	m_release_tag = false;

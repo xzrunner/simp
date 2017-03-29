@@ -89,6 +89,13 @@ void Package::SetPagePath(int idx, const std::string& path)
 	m_pages[idx].filepath = path;
 }
 
+void Package::ClearPages()
+{
+	for (int i = 0, n = m_pages.size(); i < n; ++i) {
+		m_pages[i].ClearPage();
+	}
+}
+
 void Package::LoadIndex(const std::string& filepath)
 {
 	m_export_names.clear();
@@ -182,6 +189,15 @@ Package::PageDesc::
 ~PageDesc()
 {
 	delete page;
+}
+
+void Package::PageDesc::
+ClearPage()
+{
+	if (page) {
+		delete page;
+		page = 0;
+	}
 }
 
 /************************************************************************/

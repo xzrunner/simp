@@ -29,9 +29,7 @@ public:
 	uint32_t GetNodeID(const std::string& pkg_name, const std::string& node_name) const;
 
 	void Clear();
-
-	void SetReleaseTag();
-	void ReleaseAfterLastTag();
+	void ClearPkgPages(int pkg_id);
 
 private:
 	struct PkgWrap
@@ -88,8 +86,6 @@ private:
 
 	HashID   m_hash_id;
 	HashName m_hash_name;
-
-	int m_release_tag;
 
 	SINGLETON_DECLARATION(NodeFactory);
 
