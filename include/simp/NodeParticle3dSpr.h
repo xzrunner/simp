@@ -18,6 +18,7 @@ public:
 	uint8_t local;
 	uint8_t alone;
 	uint8_t reuse;
+	float radius;
 
 public:
 	NodeParticle3dSpr(ImportStream& is);

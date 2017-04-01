@@ -65,6 +65,9 @@ NodeParticle3d::NodeParticle3d(bimp::Allocator& alloc, ImportStream& is)
 
 	orient_to_movement	= is.UInt8();
 
+	loop                = is.UInt8();
+	local               = is.UInt8();
+
 	blend				= is.UInt8();
 }
 

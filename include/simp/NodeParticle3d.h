@@ -50,6 +50,7 @@ public:
 
 	uint8_t static_mode;
 	uint8_t orient_to_movement;
+	uint8_t loop, local;
 	uint8_t ground;
 	uint8_t blend;
 
