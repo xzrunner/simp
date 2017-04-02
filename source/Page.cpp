@@ -39,9 +39,10 @@
 #include <bimp/Allocator.h>
 
 #include <new>
-#include <string.h>
 
+#include <string.h>
 #include <assert.h>
+#include <fault.h>
 
 namespace simp
 {
@@ -120,7 +121,11 @@ OnLoad(bimp::ImportStream& is)
 		int idx = node_id - m_page->m_begin_id;
 		uint8_t type = is.UInt8();
 		m_page->m_types[idx] = type;
-		m_page->m_nodes[idx] = CreateNode(type, alloc, is);
+		void* node = CreateNode(type, alloc, is);
+		if (!node) {
+			fault("++ create node %d fail, pkg %d\n", id, NodeID::GetPkgID(id));
+		}
+		m_page->m_nodes[idx] = node;
 	}
 }
 
@@ -289,8 +294,6 @@ CreateNode(uint8_t type, bimp::Allocator& alloc, bimp::ImportStream& is)
 			ret = new (ptr) NodeAnim2Spr(_is);
 		}
 		break;
-	default:
-		assert(0);
 	}
 
 	return ret;
