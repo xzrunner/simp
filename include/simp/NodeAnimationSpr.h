@@ -17,6 +17,7 @@ public:
 	uint32_t interval;
 	uint16_t fps;
 	uint8_t  loop;
+	uint8_t  start_random;
 
 public:
 	NodeAnimationSpr(ImportStream& is);

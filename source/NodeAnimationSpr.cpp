@@ -9,7 +9,11 @@ namespace simp
 NodeAnimationSpr::NodeAnimationSpr(ImportStream& is)
 {
 	sym = is.UInt32();
-	loop = is.UInt8();
+
+	uint8_t pack8 = is.UInt8();
+	loop = (pack8 & 0x1) ? 1 : 0;
+	start_random = (pack8 & 0x2) ? 1 : 0;
+
 	interval = is.UInt32();
 	fps = is.UInt16();
 }
