@@ -13,6 +13,11 @@ NodeTrans::NodeTrans()
 {
 }
 
+bool NodeTrans::IsNeedActor() const
+{
+	return (type & NodeTrans::ACTOR_MASK);
+}
+
 int NodeTrans::Size()
 {
 	return sizeof(NodeTrans) + PTR_SIZE_DIFF - sizeof(uint32_t);

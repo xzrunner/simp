@@ -17,6 +17,8 @@ class NodeTrans : private cu::Uncopyable
 public:
 	NodeTrans();
 
+	bool IsNeedActor() const;
+
 	static int Size();
 
 	static NodeTrans* LoadTrans(bimp::Allocator& alloc, ImportStream& is);
@@ -41,6 +43,9 @@ public:
 	static const int FAST_BLEND_MASK	= 1 << 22;
 	static const int FILTER_MASK		= 1 << 23;	
 	static const int CAMERA_MASK		= 1 << 24;
+
+	// actor
+	static const int ACTOR_MASK         = 1 << 28;
 
 public:
 	const char* name;
