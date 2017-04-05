@@ -15,7 +15,7 @@ NodeParticle3dSpr::NodeParticle3dSpr(ImportStream& is)
 	loop  = (pack8 & 0x1) ? 1 : 0;
 	local = (pack8 & 0x2) ? 1 : 0;
 	alone = (pack8 & 0x4) ? 1 : 0;
-	reuse = (pack8 & 0x8) ? 1 : 0;
+	reuse = (pack8 >> 3) & 0xff;
 
 	radius = int2float(is.UInt16(), 16);
 }
