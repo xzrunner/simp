@@ -65,11 +65,15 @@ void RelocateTexcoords::Clear()
 {
 	m_pkgs.clear();
 	m_items.clear();
+
+	m_release_tag = false;
+	m_pkg_tag.clear();
 }
 
 void RelocateTexcoords::SetReleaseTag()
 {
 	m_release_tag = true;
+	m_pkg_tag.clear();
 }
 
 void RelocateTexcoords::ReleaseAfterLastTag()
