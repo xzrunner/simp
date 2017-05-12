@@ -139,16 +139,18 @@ Page* Package::QueryPage(int id)
 		fault("query page fail, pkg %d, id %d, start %d, end %d\n", m_id, id, start, end);
 	}
 	if (!m_pages[idx].page) {
-		LoadPage(idx);
+		if(!LoadPage(idx)) {
+			return NULL;
+		}
 	}
 
 	return m_pages[idx].page;	
 }
 
-void Package::LoadPage(int idx) const
+bool Package::LoadPage(int idx) const
 {
 	if (idx < 0 || idx >= m_pages.size()) {
-		return;
+		return true;
 	}
 
 	const PageDesc& desc = m_pages[idx];
@@ -156,6 +158,9 @@ void Package::LoadPage(int idx) const
 	assert(!desc.page);
 
 	bimp::Allocator* alloc = PageAlloc::Instance()->Create(desc.size);
+	if(!alloc) {
+		return false;
+	}
 
 	int sz = ALIGN_4BYTE(Page::Size());
 	void* ptr = alloc->Alloc(sz);
@@ -163,6 +168,7 @@ void Package::LoadPage(int idx) const
  	page->Load(desc.filepath);
 
 	desc.page = page;
+	return true;
 }
 
 void Package::UnloadPage(int idx) const

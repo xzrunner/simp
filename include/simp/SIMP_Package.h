@@ -45,7 +45,7 @@ private:
 	void LoadIndex(const std::string& filepath);
 
 	Page* QueryPage(int id);
-	void LoadPage(int idx) const;
+	bool LoadPage(int idx) const;
 	void UnloadPage(int idx) const;
 
 private:
