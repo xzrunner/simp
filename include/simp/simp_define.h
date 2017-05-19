@@ -14,7 +14,7 @@ static const int SCREEN_SCALE		= 16;
 
 static const int SIMP_PAGE_SIZE			= 1024 * 16;
 static const int SIMP_PAGE_SIZE_MIN		= 1024 * 4;
-static const int SIMP_PAGE_SIZE_MAX		= 1024 * 64;
+static const int SIMP_PAGE_SIZE_MAX		= 1024 * 256;
 
 }
 
