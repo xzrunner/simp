@@ -96,6 +96,16 @@ void Package::ClearPages()
 	}
 }
 
+void Package::GetExportNames(std::vector<std::string>& names) const
+{
+	names.reserve(m_export_names.size());
+	std::map<std::string, uint32_t>::const_iterator itr 
+		= m_export_names.begin();
+	for ( ; itr != m_export_names.end(); ++itr) {
+		names.push_back(itr->first);
+	}
+}
+
 void Package::LoadIndex(const std::string& filepath)
 {
 	m_export_names.clear();

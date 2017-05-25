@@ -41,6 +41,8 @@ public:
 
 	void ClearPages();
 
+	void GetExportNames(std::vector<std::string>& names) const;
+
 private:
 	void LoadIndex(const std::string& filepath);
 
