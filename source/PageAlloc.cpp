@@ -40,7 +40,7 @@ bool PageAlloc::Release(bimp::Allocator* alloc)
 		return false;
 	}
 
-	int sz = alloc->GetCap();
+	int sz = alloc->GetSize();
 	int idx = CalcIndex(sz);
 	if (idx == -1) {
 		return false;

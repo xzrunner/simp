@@ -187,7 +187,8 @@ void Package::UnloadPage(int idx) const
 		return;
 	}
 
-	delete m_pages[idx].page;
+	m_pages[idx].page->~Page();
+	// delete m_pages[idx].page;
 	m_pages[idx].page = NULL;
 }
 
@@ -204,14 +205,18 @@ PageDesc()
 Package::PageDesc::
 ~PageDesc()
 {
-	delete page;
+	if(page) {
+		page->~Page();
+	}
+	// delete page;
 }
 
 void Package::PageDesc::
 ClearPage()
 {
 	if (page) {
-		delete page;
+		page->~Page();
+		// delete page;
 		page = 0;
 	}
 }
