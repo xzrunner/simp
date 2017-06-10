@@ -137,6 +137,19 @@ void RelocateTexcoords::Visitor::Visit(int id, int type, const void* node)
 
 	NodePicture* new_pic = const_cast<NodePicture*>(pic);
 	new_pic->texid = dst.dst_tex_id + NodePicture::MAX_IN_PKG;
+
+	if (dst.src_lod == 1) {
+		for (int i = 0; i < 4; ++i) {
+			new_pic->region[i] /= 2;
+		}
+	} else if (dst.src_lod == 2) {
+		for (int i = 0; i < 4; ++i) {
+			new_pic->region[i] /= 4;
+		}
+	}
+
+	new_pic->lod = dst.src_lod;
+
 	new_pic->region[0] += dst.dst_xmin;
 	new_pic->region[1] += dst.dst_ymin;
 	new_pic->region[2] += dst.dst_xmin;

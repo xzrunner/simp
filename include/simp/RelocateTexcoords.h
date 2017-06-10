@@ -20,6 +20,7 @@ public:
 	{
 		int src_pkg;
 		int src_tex;
+		int src_lod;
 
 		int dst_tex_id;
 		int dst_w, dst_h;

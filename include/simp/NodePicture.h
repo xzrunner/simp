@@ -13,7 +13,8 @@ class ImportStream;
 class NodePicture : private cu::Uncopyable
 {
 public:
-	int texid;
+	uint16_t texid;
+	uint16_t lod;
 	uint16_t region[4];
 	int16_t offx, offy;
 
