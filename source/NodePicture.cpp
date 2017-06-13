@@ -9,6 +9,7 @@ namespace simp
 NodePicture::NodePicture(ImportStream& is)
 {
 	texid = is.UInt8();
+	lod = 0;
 	for (int i = 0; i < 4; ++i) {
 		region[i] = is.UInt16();
 	}

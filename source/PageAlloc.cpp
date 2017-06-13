@@ -27,6 +27,7 @@ bimp::Allocator* PageAlloc::Create(int size)
 	bimp::Allocator* ret = NULL;
 	if (!m_freelists[idx]->freelist.empty()) {
 		ret = m_freelists[idx]->freelist.back();
+		ret->Reset();
 		m_freelists[idx]->freelist.pop_back();
 	} else {
 		ret = new bimp::Allocator(size);
@@ -40,7 +41,7 @@ bool PageAlloc::Release(bimp::Allocator* alloc)
 		return false;
 	}
 
-	int sz = alloc->GetCap();
+	int sz = alloc->GetSize();
 	int idx = CalcIndex(sz);
 	if (idx == -1) {
 		return false;
