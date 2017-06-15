@@ -10,9 +10,8 @@ namespace simp
 {
 
 inline
-const Package* NodeFactory::QueryPkg(int node_id) const
+const Package* NodeFactory::QueryPkg(int pkg_id) const
 {
-	uint32_t pkg_id = NodeID::GetPkgID(node_id);
 	int idx = m_hash_id.Query(pkg_id);
 	if (idx >= 0 && idx < m_pkgs.size()) {
 		return m_pkgs[idx].pkg;
