@@ -24,6 +24,7 @@ Package::Package(const std::string& filepath, int id)
 	: m_id(id)
 	, m_min_node_id(0)
 	, m_max_node_id(0)
+	, m_scale(1)
 {
 	LoadIndex(filepath);
 }
@@ -111,7 +112,7 @@ void Package::LoadIndex(const std::string& filepath)
 	m_export_names.clear();
 	m_pages.clear();
 
-	PageDescLoader loader(filepath, m_export_names, m_pages);
+	PageDescLoader loader(filepath, m_export_names, m_pages, m_scale);
 	loader.Load();
 
 	m_min_node_id = INT_MAX;
@@ -227,10 +228,11 @@ ClearPage()
 
 Package::PageDescLoader::
 PageDescLoader(const std::string& filepath, std::map<std::string, uint32_t>& export_names, 
-			   std::vector<PageDesc>& pages)
+			   std::vector<PageDesc>& pages, float& scale)
 	: FileLoader(filepath)
 	, m_export_names(export_names)
 	, m_pages(pages)
+	, m_scale(scale)
 {
 }
 
@@ -253,6 +255,10 @@ void Package::PageDescLoader::OnLoad(bimp::ImportStream& is)
 		page.min = is.UInt32();
 		page.max = is.UInt32();
 		m_pages.push_back(page);
+	}
+
+	if (!is.Empty()) {
+		m_scale = is.Float();
 	}
 }
 

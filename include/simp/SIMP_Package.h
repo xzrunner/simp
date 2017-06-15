@@ -43,6 +43,8 @@ public:
 
 	void GetExportNames(std::vector<std::string>& names) const;
 
+	float GetScale() const { return m_scale; }
+
 private:
 	void LoadIndex(const std::string& filepath);
 
@@ -75,7 +77,7 @@ private:
 	{
 	public:
 		PageDescLoader(const std::string& filepath, std::map<std::string, uint32_t>& export_names,
-			std::vector<PageDesc>& pages);
+			std::vector<PageDesc>& pages, float& scale);
 
 	protected:
 		virtual void OnLoad(bimp::ImportStream& is);
@@ -84,6 +86,8 @@ private:
 		std::map<std::string, uint32_t>& m_export_names;
 
 		std::vector<PageDesc>& m_pages;
+
+		float& m_scale;
 
 	}; // PageDescLoader
 
@@ -96,6 +100,8 @@ private:
 	int m_id;
 
 	int m_min_node_id, m_max_node_id;
+
+	float m_scale;
 
 }; // Package
 
