@@ -69,10 +69,17 @@ void Page::Traverse(NodeVisitor& visitor) const
 	}
 }
 
-void Page::Load(const std::string& filepath)
+void Page::Load(const bimp::FilePath& filepath)
 {
-	Loader loader(filepath, this);
-	loader.Load();
+	if (filepath.IsSingleFile()) {
+		Loader loader(filepath.GetFilepath(), this);
+		loader.Load();
+	} else {
+		fs_file* file = fs_open(filepath.GetFilepath().c_str(), "rb");
+		Loader loader(file, filepath.GetOffset(), this);
+		loader.Load();
+		fs_close(file);
+	}
 
 	RelocateTexcoords::Instance()->Do(this);
 }
@@ -97,6 +104,13 @@ int Page::Size()
 Page::Loader::
 Loader(const std::string& filepath, Page* page)
 	: bimp::FileLoader(filepath)
+	, m_page(page)
+{
+}
+
+Page::Loader::
+Loader(fs_file* file, uint32_t offset, Page* page)
+	: bimp::FileLoader(file, offset)
 	, m_page(page)
 {
 }

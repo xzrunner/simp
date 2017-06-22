@@ -29,6 +29,15 @@ Package::Package(const std::string& filepath, int id)
 	LoadIndex(filepath);
 }
 
+Package::Package(fs_file* file, uint32_t offset, int id)
+	: m_id(id)
+	, m_min_node_id(0)
+	, m_max_node_id(0)
+	, m_scale(1)
+{
+	LoadIndex(file, offset);		
+}
+
 Package::~Package()
 {
 }
@@ -81,7 +90,7 @@ const void* Package::QueryNode(uint32_t id, int* type)
 	}	
 }
 
-void Package::SetPagePath(int idx, const std::string& path)
+void Package::SetPagePath(int idx, const bimp::FilePath& path)
 {
 	if (idx < 0 || idx >= m_pages.size()) {
 		return;
@@ -113,6 +122,26 @@ void Package::LoadIndex(const std::string& filepath)
 	m_pages.clear();
 
 	PageDescLoader loader(filepath, m_export_names, m_pages, m_scale, m_ref_pkgs);
+	loader.Load();
+
+	m_min_node_id = INT_MAX;
+	m_max_node_id = -INT_MAX;
+	for (int i = 0, n = m_pages.size(); i < n; ++i) {
+		if (m_pages[i].min < m_min_node_id) {
+			m_min_node_id = m_pages[i].min;
+		}
+		if (m_pages[i].max > m_max_node_id) {
+			m_max_node_id = m_pages[i].max;
+		}
+	}
+}
+
+void Package::LoadIndex(fs_file* file, uint32_t offset)
+{
+	m_export_names.clear();
+	m_pages.clear();
+
+	PageDescLoader loader(file, offset, m_export_names, m_pages, m_scale, m_ref_pkgs);
 	loader.Load();
 
 	m_min_node_id = INT_MAX;
@@ -230,6 +259,17 @@ Package::PageDescLoader::
 PageDescLoader(const std::string& filepath, std::map<std::string, uint32_t>& export_names, 
 			   std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs)
 	: FileLoader(filepath)
+	, m_export_names(export_names)
+	, m_pages(pages)
+	, m_scale(scale)
+	, m_ref_pkgs(ref_pkgs)
+{
+}
+
+Package::PageDescLoader::
+PageDescLoader(fs_file* file, uint32_t offset, std::map<std::string, uint32_t>& export_names, 
+			   std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs)
+	: FileLoader(file, offset)
 	, m_export_names(export_names)
 	, m_pages(pages)
 	, m_scale(scale)

@@ -3,6 +3,7 @@
 
 #include <CU_Uncopyable.h>
 #include <bimp/FileLoader.h>
+#include <bimp/FilePath.h>
 
 #include <string>
 #include <vector>
@@ -24,6 +25,7 @@ class Package : private cu::Uncopyable
 {
 public:
 	Package(const std::string& filepath, int id);
+	Package(fs_file* file, uint32_t offset, int id);
 	~Package();
 
 	void Traverse(NodeVisitor& visitor) const;
@@ -35,7 +37,7 @@ public:
 
 	int GetPageCount() const { return m_pages.size(); }
 
-	void SetPagePath(int idx, const std::string& path);
+	void SetPagePath(int idx, const bimp::FilePath& path);
 
 	int GetMaxNodeID() const { return m_max_node_id; }
 
@@ -49,6 +51,7 @@ public:
 
 private:
 	void LoadIndex(const std::string& filepath);
+	void LoadIndex(fs_file* file, uint32_t offset);
 
 	Page* QueryPage(int id);
 	bool LoadPage(int idx) const;
@@ -64,7 +67,7 @@ private:
 		void ClearPage();
 
 	private:
-		std::string filepath;
+		bimp::FilePath filepath;
 
 		int size;
 		int min, max;
@@ -79,6 +82,8 @@ private:
 	{
 	public:
 		PageDescLoader(const std::string& filepath, std::map<std::string, uint32_t>& export_names,
+			std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs);
+		PageDescLoader(fs_file* file, uint32_t offset, std::map<std::string, uint32_t>& export_names,
 			std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs);
 
 	protected:

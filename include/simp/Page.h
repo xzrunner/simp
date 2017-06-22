@@ -8,7 +8,7 @@
 
 #include <stdint.h>
 
-namespace bimp { class Allocator; }
+namespace bimp { class Allocator; class FilePath; }
 
 namespace simp
 {
@@ -24,7 +24,7 @@ public:
 
 	void Traverse(NodeVisitor& visitor) const;
 
-	void Load(const std::string& filepath);
+	void Load(const bimp::FilePath& filepath);
 
 	const void* Query(uint32_t id, int* type) const;
 
@@ -39,6 +39,7 @@ private:
 	{
 	public:
 		Loader(const std::string& filepath, Page* page);
+		Loader(fs_file* file, uint32_t offset, Page* page);
 
 	protected:
 		virtual void OnLoad(bimp::ImportStream& is);
