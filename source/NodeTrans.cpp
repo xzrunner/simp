@@ -67,6 +67,9 @@ NodeTrans* NodeTrans::LoadTrans(bimp::Allocator& alloc, ImportStream& is)
 	if (type & NodeTrans::FILTER_MASK) {
 		sz += sizeof(uint32_t);
 	}
+	if (type & NodeTrans::DOWNSMAPLE_MASK) {
+		sz += sizeof(uint32_t);
+	}
 	if (type & NodeTrans::CAMERA_MASK) {
 		sz += sizeof(uint32_t);
 	}
@@ -116,6 +119,9 @@ NodeTrans* NodeTrans::LoadTrans(bimp::Allocator& alloc, ImportStream& is)
 		trans->data[idx++] = is.UInt32();
 	}
 	if (type & NodeTrans::FILTER_MASK) {
+		trans->data[idx++] = is.UInt32();
+	}
+	if (type & NodeTrans::DOWNSMAPLE_MASK) {
 		trans->data[idx++] = is.UInt32();
 	}
 	if (type & NodeTrans::CAMERA_MASK) {

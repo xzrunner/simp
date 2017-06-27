@@ -43,6 +43,7 @@ public:
 	static const int FAST_BLEND_MASK	= 1 << 22;
 	static const int FILTER_MASK		= 1 << 23;	
 	static const int CAMERA_MASK		= 1 << 24;
+	static const int DOWNSMAPLE_MASK    = 1 << 25;
 
 	// actor
 	static const int ACTOR_MASK         = 1 << 28;
