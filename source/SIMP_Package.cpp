@@ -22,6 +22,7 @@ namespace simp
 
 Package::Package(const std::string& filepath, int id)
 	: m_id(id)
+	, m_version(0)
 	, m_min_node_id(0)
 	, m_max_node_id(0)
 	, m_scale(1)
@@ -31,6 +32,7 @@ Package::Package(const std::string& filepath, int id)
 
 Package::Package(fs_file* file, uint32_t offset, int id)
 	: m_id(id)
+	, m_version(0)
 	, m_min_node_id(0)
 	, m_max_node_id(0)
 	, m_scale(1)
@@ -124,6 +126,8 @@ void Package::LoadIndex(const std::string& filepath)
 	PageDescLoader loader(filepath, m_export_names, m_pages, m_scale, m_ref_pkgs);
 	loader.Load();
 
+	m_version = loader.GetVersion();
+
 	m_min_node_id = INT_MAX;
 	m_max_node_id = -INT_MAX;
 	for (int i = 0, n = m_pages.size(); i < n; ++i) {
@@ -143,6 +147,8 @@ void Package::LoadIndex(fs_file* file, uint32_t offset)
 
 	PageDescLoader loader(file, offset, m_export_names, m_pages, m_scale, m_ref_pkgs);
 	loader.Load();
+
+	m_version = loader.GetVersion();
 
 	m_min_node_id = INT_MAX;
 	m_max_node_id = -INT_MAX;
@@ -204,7 +210,7 @@ bool Package::LoadPage(int idx) const
 
 	int sz = ALIGN_4BYTE(Page::Size());
 	void* ptr = alloc->Alloc(sz);
-	Page* page = new (ptr) Page(m_id, alloc, desc.min, desc.max);
+	Page* page = new (ptr) Page(m_id, m_version, alloc, desc.min, desc.max);
  	page->Load(desc.filepath);
 
 	desc.page = page;
@@ -259,6 +265,7 @@ Package::PageDescLoader::
 PageDescLoader(const std::string& filepath, std::map<std::string, uint32_t>& export_names, 
 			   std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs)
 	: FileLoader(filepath)
+	, m_version(0)
 	, m_export_names(export_names)
 	, m_pages(pages)
 	, m_scale(scale)
@@ -270,6 +277,7 @@ Package::PageDescLoader::
 PageDescLoader(fs_file* file, uint32_t offset, std::map<std::string, uint32_t>& export_names, 
 			   std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs)
 	: FileLoader(file, offset)
+	, m_version(0)
 	, m_export_names(export_names)
 	, m_pages(pages)
 	, m_scale(scale)
@@ -279,7 +287,15 @@ PageDescLoader(fs_file* file, uint32_t offset, std::map<std::string, uint32_t>& 
 
 void Package::PageDescLoader::OnLoad(bimp::ImportStream& is)
 {
-	int export_n = is.UInt16();
+	int export_n = 0;
+	int version_flag = is.UInt16();
+	if (version_flag == 0xffff) {
+		m_version = is.UInt16();
+		export_n = is.UInt16();
+	} else {
+		export_n = version_flag;
+	}
+
 	for (int i = 0; i < export_n; ++i)
 	{
 		std::string name = is.String();

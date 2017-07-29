@@ -8,7 +8,8 @@
 namespace simp
 {
 
-NodeLabel::NodeLabel(bimp::Allocator& alloc, ImportStream& is)
+NodeLabel::NodeLabel(bimp::Allocator& alloc, ImportStream& is,
+					 bool long_text)
 {
 	width		= is.UInt16();
 	height		= is.UInt16();
@@ -31,7 +32,11 @@ NodeLabel::NodeLabel(bimp::Allocator& alloc, ImportStream& is)
 	richtext = (pack8 & 0x1) ? 1 : 0;
 	overflow = (pack8 & 0x2) ? 1 : 0;
 
-	text		= is.String(alloc);
+	if (long_text) {
+		text = is.LongString(alloc);
+	} else {
+		text = is.String(alloc);
+	}
 	tid			= is.String(alloc);
 }
 

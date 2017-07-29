@@ -86,10 +86,14 @@ private:
 		PageDescLoader(fs_file* file, uint32_t offset, std::map<std::string, uint32_t>& export_names,
 			std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs);
 
+		int GetVersion() const { return m_version; }
+
 	protected:
 		virtual void OnLoad(bimp::ImportStream& is);
 
 	private:
+		int m_version;
+
 		std::map<std::string, uint32_t>& m_export_names;
 
 		std::vector<PageDesc>& m_pages;
@@ -107,6 +111,8 @@ protected:
 
 private:
 	int m_id;
+
+	int m_version;
 
 	int m_min_node_id, m_max_node_id;
 

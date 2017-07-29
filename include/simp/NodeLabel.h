@@ -39,7 +39,7 @@ public:
 	const char* tid;
 
 public:
-	NodeLabel(bimp::Allocator& alloc, ImportStream& is);
+	NodeLabel(bimp::Allocator& alloc, ImportStream& is, bool long_text);
 
 	static int Size();
 

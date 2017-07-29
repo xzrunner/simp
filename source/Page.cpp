@@ -47,8 +47,9 @@
 namespace simp
 {
 
-Page::Page(int pkg_id, bimp::Allocator* alloc, int begin_id, int end_id)
+Page::Page(int pkg_id, int pkg_version, bimp::Allocator* alloc, int begin_id, int end_id)
 	: m_pkg_id(pkg_id)
+	, m_pkg_version(pkg_version)
 	, m_begin_id(begin_id)
 	, m_end_id(end_id)
 	, m_flags(0)
@@ -72,11 +73,11 @@ void Page::Traverse(NodeVisitor& visitor) const
 void Page::Load(const bimp::FilePath& filepath)
 {
 	if (filepath.IsSingleFile()) {
-		Loader loader(filepath.GetFilepath(), this);
+		Loader loader(m_pkg_version, filepath.GetFilepath(), this);
 		loader.Load();
 	} else {
 		fs_file* file = fs_open(filepath.GetFilepath().c_str(), "rb");
-		Loader loader(file, filepath.GetOffset(), this);
+		Loader loader(m_pkg_version, file, filepath.GetOffset(), this);
 		loader.Load();
 		fs_close(file);
 	}
@@ -102,15 +103,17 @@ int Page::Size()
 /************************************************************************/
 
 Page::Loader::
-Loader(const std::string& filepath, Page* page)
+Loader(int pkg_version, const std::string& filepath, Page* page)
 	: bimp::FileLoader(filepath)
+	, m_pkg_version(pkg_version)
 	, m_page(page)
 {
 }
 
 Page::Loader::
-Loader(fs_file* file, uint32_t offset, Page* page)
+Loader(int pkg_version, fs_file* file, uint32_t offset, Page* page)
 	: bimp::FileLoader(file, offset)
+	, m_pkg_version(pkg_version)
 	, m_page(page)
 {
 }
@@ -144,7 +147,7 @@ OnLoad(bimp::ImportStream& is)
 }
 
 void* Page::Loader::
-CreateNode(uint8_t type, bimp::Allocator& alloc, bimp::ImportStream& is)
+CreateNode(uint8_t type, bimp::Allocator& alloc, bimp::ImportStream& is) const
 {
 	void* ret = NULL;
 
@@ -197,7 +200,7 @@ CreateNode(uint8_t type, bimp::Allocator& alloc, bimp::ImportStream& is)
 	case TYPE_LABEL:
 		{
 			void* ptr = alloc.Alloc(NodeLabel::Size());
-			ret = new (ptr) NodeLabel(alloc, _is);
+			ret = new (ptr) NodeLabel(alloc, _is, m_pkg_version >= 1);
 		}
 		break;
 	case TYPE_COMPLEX:
