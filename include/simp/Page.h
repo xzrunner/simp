@@ -73,8 +73,8 @@ public:
 	SIMP_FLAG_METHOD(TexcoordsRelocated, FLAG_TEXCOORDS_RELOCATED)
 
 private:
-	int m_pkg_id;
-	int m_pkg_version;
+	uint16_t m_pkg_id;
+	uint16_t m_pkg_version;
 
 	int m_begin_id, m_end_id;
 
