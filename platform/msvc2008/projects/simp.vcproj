@@ -176,14 +176,26 @@
 				RelativePath="..\..\..\include\simp\PageAlloc.h"
 				>
 			</File>
-			<File
-				RelativePath="..\..\..\source\SIMP_Package.cpp"
+			<Filter
+				Name="pkg"
 				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\simp\SIMP_Package.h"
-				>
-			</File>
+				<File
+					RelativePath="..\..\..\source\PkgIdxLoader.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\simp\PkgIdxLoader.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\source\SIMP_Package.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\simp\SIMP_Package.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="preprocess"
