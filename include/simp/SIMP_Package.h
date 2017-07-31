@@ -1,9 +1,9 @@
 #ifndef _SIMP_PACKAGE_H_
 #define _SIMP_PACKAGE_H_
 
-#include <CU_Uncopyable.h>
-#include <bimp/FileLoader.h>
 #include <bimp/FilePath.h>
+
+#include <CU_Uncopyable.h>
 
 #include <string>
 #include <vector>
@@ -12,6 +12,8 @@
 #include <stdint.h>
 
 namespace bimp { class ImportStream; }
+
+struct fs_file;
 
 namespace simp
 {
@@ -49,6 +51,28 @@ public:
 
 	const std::vector<int>& GetRefPkgs() const { return m_ref_pkgs; }
 
+public:
+	class PageDesc
+	{
+	public:
+		PageDesc();
+		PageDesc(int size, int min, int max);
+		~PageDesc();
+
+		void ClearPage();
+
+	private:
+		bimp::FilePath m_filepath;
+
+		int m_size;
+		int m_min, m_max;
+
+		mutable Page* m_page;
+
+		friend class Package;
+
+	}; // PageDesc
+
 private:
 	void LoadIndex(const std::string& filepath);
 	void LoadIndex(fs_file* file, uint32_t offset);
@@ -56,53 +80,6 @@ private:
 	Page* QueryPage(int id);
 	bool LoadPage(int idx) const;
 	void UnloadPage(int idx) const;
-
-private:
-	class PageDesc
-	{
-	public:
-		PageDesc();
-		~PageDesc();
-
-		void ClearPage();
-
-	private:
-		bimp::FilePath filepath;
-
-		int size;
-		int min, max;
-
-		mutable Page* page;
-
-		friend class Package;
-
-	}; // PageDesc
-
-	class PageDescLoader : public bimp::FileLoader
-	{
-	public:
-		PageDescLoader(const std::string& filepath, std::map<std::string, uint32_t>& export_names,
-			std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs);
-		PageDescLoader(fs_file* file, uint32_t offset, std::map<std::string, uint32_t>& export_names,
-			std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs);
-
-		int GetVersion() const { return m_version; }
-
-	protected:
-		virtual void OnLoad(bimp::ImportStream& is);
-
-	private:
-		int m_version;
-
-		std::map<std::string, uint32_t>& m_export_names;
-
-		std::vector<PageDesc>& m_pages;
-
-		float& m_scale;
-
-		std::vector<int>& m_ref_pkgs;
-
-	}; // PageDescLoader
 
 protected:
 	std::map<std::string, uint32_t> m_export_names;

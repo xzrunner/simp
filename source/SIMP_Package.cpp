@@ -1,5 +1,5 @@
 #include "SIMP_Package.h"
-#include "ImportStream.h"
+#include "PkgIdxLoader.h"
 #include "simp_types.h"
 #include "Page.h"
 #include "PageAlloc.h"
@@ -49,11 +49,11 @@ void Package::Traverse(NodeVisitor& visitor) const
 	for (int i = 0, n = m_pages.size(); i < n; ++i) 
 	{
 		const PageDesc& page = m_pages[i];
-		bool loaded = page.page != NULL;
+		bool loaded = page.m_page != NULL;
 		if (!loaded) {
 			LoadPage(i);
 		}
-		page.page->Traverse(visitor);
+		page.m_page->Traverse(visitor);
 		if (!loaded) {
 			UnloadPage(i);
 		}
@@ -64,8 +64,8 @@ void Package::Traverse(PageVisitor& visitor) const
 {
 	for (int i = 0, n = m_pages.size(); i < n; ++i) {
 		const PageDesc& page = m_pages[i];
-		if (page.page) {
-			visitor.Visit(page.page);
+		if (page.m_page) {
+			visitor.Visit(page.m_page);
 		}
 	}
 }
@@ -98,7 +98,7 @@ void Package::SetPagePath(int idx, const bimp::FilePath& path)
 		return;
 	}
 
-	m_pages[idx].filepath = path;
+	m_pages[idx].m_filepath = path;
 }
 
 void Package::ClearPages()
@@ -123,19 +123,23 @@ void Package::LoadIndex(const std::string& filepath)
 	m_export_names.clear();
 	m_pages.clear();
 
-	PageDescLoader loader(filepath, m_export_names, m_pages, m_scale, m_ref_pkgs);
+	PkgIdxLoader loader(filepath);
 	loader.Load();
 
-	m_version = loader.GetVersion();
+	m_version      = loader.GetVersion();
+	m_export_names = loader.GetExportNames();
+	m_pages        = loader.GetPages();
+	m_scale        = loader.GetScale();
+	m_ref_pkgs     = loader.GetRefPkgs();
 
 	m_min_node_id = INT_MAX;
 	m_max_node_id = -INT_MAX;
 	for (int i = 0, n = m_pages.size(); i < n; ++i) {
-		if (m_pages[i].min < m_min_node_id) {
-			m_min_node_id = m_pages[i].min;
+		if (m_pages[i].m_min < m_min_node_id) {
+			m_min_node_id = m_pages[i].m_min;
 		}
-		if (m_pages[i].max > m_max_node_id) {
-			m_max_node_id = m_pages[i].max;
+		if (m_pages[i].m_max > m_max_node_id) {
+			m_max_node_id = m_pages[i].m_max;
 		}
 	}
 }
@@ -145,19 +149,23 @@ void Package::LoadIndex(fs_file* file, uint32_t offset)
 	m_export_names.clear();
 	m_pages.clear();
 
-	PageDescLoader loader(file, offset, m_export_names, m_pages, m_scale, m_ref_pkgs);
+	PkgIdxLoader loader(file, offset);
 	loader.Load();
 
-	m_version = loader.GetVersion();
+	m_version      = loader.GetVersion();
+	m_export_names = loader.GetExportNames();
+	m_pages        = loader.GetPages();
+	m_scale        = loader.GetScale();
+	m_ref_pkgs     = loader.GetRefPkgs();
 
 	m_min_node_id = INT_MAX;
 	m_max_node_id = -INT_MAX;
 	for (int i = 0, n = m_pages.size(); i < n; ++i) {
-		if (m_pages[i].min < m_min_node_id) {
-			m_min_node_id = m_pages[i].min;
+		if (m_pages[i].m_min < m_min_node_id) {
+			m_min_node_id = m_pages[i].m_min;
 		}
-		if (m_pages[i].max > m_max_node_id) {
-			m_max_node_id = m_pages[i].max;
+		if (m_pages[i].m_max > m_max_node_id) {
+			m_max_node_id = m_pages[i].m_max;
 		}
 	}
 }
@@ -171,10 +179,10 @@ Page* Package::QueryPage(int id)
 	{
 		int mid = (start + end) / 2;
 		const PageDesc& p = m_pages[mid];
-		if (id >= p.min && id <= p.max) {
+		if (id >= p.m_min && id <= p.m_max) {
 			idx = mid;
 			break;
-		} else if (id < p.min) {
+		} else if (id < p.m_min) {
 			end = mid - 1;
 		} else {
 			start = mid + 1;
@@ -184,13 +192,13 @@ Page* Package::QueryPage(int id)
 	if (idx == -1) {
 		fault("query page fail, pkg %d, id %d, start %d, end %d\n", m_id, id, start, end);
 	}
-	if (!m_pages[idx].page) {
+	if (!m_pages[idx].m_page) {
 		if(!LoadPage(idx)) {
 			return NULL;
 		}
 	}
 
-	return m_pages[idx].page;	
+	return m_pages[idx].m_page;	
 }
 
 bool Package::LoadPage(int idx) const
@@ -201,31 +209,31 @@ bool Package::LoadPage(int idx) const
 
 	const PageDesc& desc = m_pages[idx];
 
-	assert(!desc.page);
+	assert(!desc.m_page);
 
-	bimp::Allocator* alloc = PageAlloc::Instance()->Create(desc.size);
+	bimp::Allocator* alloc = PageAlloc::Instance()->Create(desc.m_size);
 	if(!alloc) {
 		return false;
 	}
 
 	int sz = ALIGN_4BYTE(Page::Size());
 	void* ptr = alloc->Alloc(sz);
-	Page* page = new (ptr) Page(m_id, m_version, alloc, desc.min, desc.max);
- 	page->Load(desc.filepath);
+	Page* page = new (ptr) Page(m_id, m_version, alloc, desc.m_min, desc.m_max);
+ 	page->Load(desc.m_filepath);
 
-	desc.page = page;
+	desc.m_page = page;
 	return true;
 }
 
 void Package::UnloadPage(int idx) const
 {
-	if (idx < 0 || idx >= m_pages.size() || !m_pages[idx].page) {
+	if (idx < 0 || idx >= m_pages.size() || !m_pages[idx].m_page) {
 		return;
 	}
 
-	m_pages[idx].page->~Page();
+	m_pages[idx].m_page->~Page();
 	// delete m_pages[idx].page;
-	m_pages[idx].page = NULL;
+	m_pages[idx].m_page = NULL;
 }
 
 /************************************************************************/
@@ -234,15 +242,27 @@ void Package::UnloadPage(int idx) const
 
 Package::PageDesc::
 PageDesc() 
-	: page(NULL) 
+	: m_size(0)
+	, m_min(0)
+	, m_max(0)
+	, m_page(NULL) 
+{
+}
+
+Package::PageDesc::
+PageDesc(int size, int min, int max)
+	: m_size(size)
+	, m_min(min)
+	, m_max(max)
+	, m_page(NULL) 
 {
 }
 
 Package::PageDesc::
 ~PageDesc()
 {
-	if(page) {
-		page->~Page();
+	if(m_page) {
+		m_page->~Page();
 	}
 	// delete page;
 }
@@ -250,84 +270,10 @@ Package::PageDesc::
 void Package::PageDesc::
 ClearPage()
 {
-	if (page) {
-		page->~Page();
+	if (m_page) {
+		m_page->~Page();
 		// delete page;
-		page = 0;
-	}
-}
-
-/************************************************************************/
-/* class Package::PageDescLoader                                        */
-/************************************************************************/
-
-Package::PageDescLoader::
-PageDescLoader(const std::string& filepath, std::map<std::string, uint32_t>& export_names, 
-			   std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs)
-	: FileLoader(filepath)
-	, m_version(0)
-	, m_export_names(export_names)
-	, m_pages(pages)
-	, m_scale(scale)
-	, m_ref_pkgs(ref_pkgs)
-{
-}
-
-Package::PageDescLoader::
-PageDescLoader(fs_file* file, uint32_t offset, std::map<std::string, uint32_t>& export_names, 
-			   std::vector<PageDesc>& pages, float& scale, std::vector<int>& ref_pkgs)
-	: FileLoader(file, offset)
-	, m_version(0)
-	, m_export_names(export_names)
-	, m_pages(pages)
-	, m_scale(scale)
-	, m_ref_pkgs(ref_pkgs)
-{
-}
-
-void Package::PageDescLoader::OnLoad(bimp::ImportStream& is)
-{
-	int export_n = 0;
-	int version_flag = is.UInt16();
-	if (version_flag == 0xffff) {
-		m_version = is.UInt16();
-		export_n = is.UInt16();
-	} else {
-		export_n = version_flag;
-	}
-
-	for (int i = 0; i < export_n; ++i)
-	{
-		std::string name = is.String();
-		uint32_t id = is.UInt32();
-		m_export_names.insert(std::make_pair(name, id));
-	}
-
-	int page_n = is.UInt16();
-	m_pages.reserve(page_n);
-	for (int i = 0; i < page_n; ++i)
-	{
-		PageDesc page;
-		page.size = is.UInt32();
-		page.min = is.UInt32();
-		page.max = is.UInt32();
-		m_pages.push_back(page);
-	}
-
-	// scale
-	if (!is.Empty()) {
-		m_scale = is.Float();
-	}
-
-	// ref pkgs
-	if (!is.Empty()) 
-	{
-		uint16_t num = is.UInt16();
-		m_ref_pkgs.reserve(num);
-		for (int i = 0; i < num; ++i) {
-			uint16_t pkg = is.UInt16();
-			m_ref_pkgs.push_back(pkg);
-		}
+		m_page = 0;
 	}
 }
 
