@@ -308,7 +308,7 @@ void Package::PageDescLoader::OnLoad(bimp::ImportStream& is)
 	for (int i = 0; i < page_n; ++i)
 	{
 		PageDesc page;
-		page.size = is.UInt32();
+		page.size = is.UInt32() * 2;
 		page.min = is.UInt32();
 		page.max = is.UInt32();
 		m_pages.push_back(page);
