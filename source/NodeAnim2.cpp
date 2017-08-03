@@ -18,6 +18,13 @@ NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 		joints[i].Load(is);
 	}
 
+	// iks
+	ik_count = is.UInt16();
+	iks = static_cast<IK*>(alloc.Alloc(IK::Size() * ik_count));
+	for (int i = 0; i < ik_count; ++i) {
+		iks[i].Load(is);
+	}
+
 	// skins
 	skin_count = is.UInt16();
 	skins = static_cast<Skin*>(alloc.Alloc(Skin::Size() * skin_count));
@@ -91,6 +98,28 @@ Load(ImportStream& is)
 int NodeAnim2::Joint::Size()
 {
 	return ALIGN_4BYTE(sizeof(Joint));
+}
+
+/************************************************************************/
+/* struct NodeAnim2::IK                                                 */
+/************************************************************************/
+
+void NodeAnim2::IK::
+Load(ImportStream& is)
+{
+	joints[0] = is.UInt16();
+	joints[1] = is.UInt16();
+
+	target = is.UInt16();
+	bend_positive = is.UInt16();
+
+	length[0] = is.Float();
+	length[1] = is.Float();
+}
+
+int NodeAnim2::IK::Size()
+{
+	return ALIGN_4BYTE(sizeof(IK));
 }
 
 /************************************************************************/

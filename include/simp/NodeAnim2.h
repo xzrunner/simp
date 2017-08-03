@@ -37,6 +37,18 @@ public:
 		static int Size();
 	};
 
+	struct IK
+	{
+		uint16_t joints[2];
+		uint16_t target;
+		uint16_t bend_positive;
+		float	 length[2];
+
+		void Load(ImportStream& is);
+
+		static int Size();
+	};
+
 	struct Skin
 	{
 		uint32_t node;
@@ -123,10 +135,13 @@ public:
 	uint16_t root;	
 
 	uint16_t joint_count;
+	uint16_t ik_count;
 	uint16_t skin_count;
 	uint16_t slot_count;
+	uint16_t padding[3];
 
 	Joint* joints;
+	IK*    iks;
 	Skin*  skins;
 	Slot*  slots;
 
