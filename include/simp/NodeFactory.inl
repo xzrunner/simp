@@ -36,12 +36,6 @@ const void* NodeFactory::Create(uint32_t id, int* type)
 {
 	uint32_t pkg_id = NodeID::GetPkgID(id);
 	uint32_t node_id = NodeID::GetNodeID(id);
-
-	if (pkg_id >= 384 && pkg_id <= 488 ||
-		pkg_id >= 3138 && pkg_id <= 3169) {
-		return NULL;
-	}
-
 	int idx = m_hash_id.Query(pkg_id);
 	if (idx >= 0 && idx < m_pkgs.size()) {
 		return m_pkgs[idx].pkg->QueryNode(node_id, type);
