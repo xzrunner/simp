@@ -28,7 +28,7 @@ NodeAnimation::NodeAnimation(bimp::Allocator& alloc, ImportStream& is)
 		{
 			void* ptr = alloc.Alloc(FrameSize());
 			Frame* frame = new (ptr) Frame();
-			frame->index = is.UInt16();
+			frame->index = (int16_t)(is.UInt16());
 			frame->tween = int2bool(is.UInt8());
 			frame->n = is.UInt16();
 			frame->actors = static_cast<Actor**>(alloc.Alloc(SIZEOF_POINTER * frame->n));

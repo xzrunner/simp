@@ -27,7 +27,7 @@ public:
 	{
 		Actor** actors;
 		uint16_t n;
-		uint16_t index;
+		int16_t index;
 		uint8_t tween;
 		uint8_t padding[3];
 	};
