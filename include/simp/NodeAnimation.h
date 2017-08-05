@@ -34,7 +34,7 @@ public:
 
 	struct Frame
 	{
-		Actor** actors;
+		Actor**  actors;
 		Lerp**   lerps;
 		uint16_t actors_n;
 		uint16_t lerps_n;

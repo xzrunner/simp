@@ -97,6 +97,7 @@ void NodeAnimation::InitLerps(Frame* frame, bimp::Allocator& alloc, ImportStream
 		for (int j = 0; j < lerp->data_n; ++j) {
 			lerp->data[j] = is.UInt32();
 		}
+		frame->lerps[i] = lerp;
 	}
 }
 
