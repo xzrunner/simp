@@ -29,6 +29,10 @@ void PkgIdxLoader::OnLoad(bimp::ImportStream& is)
 		export_n = version_flag;
 	}
 
+	if (m_version != 2) {
+		return;
+	}
+
 	for (int i = 0; i < export_n; ++i)
 	{
 		std::string name = is.String();
@@ -47,19 +51,14 @@ void PkgIdxLoader::OnLoad(bimp::ImportStream& is)
 	}
 
 	// scale
-	if (!is.Empty()) {
-		m_scale = is.Float();
-	}
+	m_scale = is.Float();
 
 	// ref pkgs
-	if (!is.Empty()) 
-	{
-		uint16_t num = is.UInt16();
-		m_ref_pkgs.reserve(num);
-		for (int i = 0; i < num; ++i) {
-			uint16_t pkg = is.UInt16();
-			m_ref_pkgs.push_back(pkg);
-		}
+	uint16_t ref_n = is.UInt16();
+	m_ref_pkgs.reserve(ref_n);
+	for (int i = 0; i < ref_n; ++i) {
+		uint16_t pkg = is.UInt16();
+		m_ref_pkgs.push_back(pkg);
 	}
 }
 
