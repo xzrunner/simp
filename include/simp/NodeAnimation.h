@@ -23,13 +23,24 @@ public:
 		uint32_t padding;
 	};
 
+	struct Lerp
+	{
+		uint16_t spr_data;
+		uint16_t type;
+		uint16_t data_n;
+		uint16_t padding;
+		uint32_t data[1];
+	};
+
 	struct Frame
 	{
 		Actor** actors;
-		uint16_t n;
-		int16_t index;
-		uint8_t tween;
-		uint8_t padding[3];
+		Lerp**   lerps;
+		uint16_t actors_n;
+		uint16_t lerps_n;
+		int16_t  index;
+		uint8_t  tween;
+		uint8_t  padding[1];
 	};
 
 	struct Layer
@@ -48,8 +59,14 @@ public:
 
 	static int Size();
 	static int ActorSize();
+	static int LerpSize();
 	static int FrameSize();
 	static int LayerSize();
+
+private:
+	void Init(bimp::Allocator& alloc, ImportStream& is);
+	void InitActors(Frame* frame, bimp::Allocator& alloc, ImportStream& is);
+	void InitLerps(Frame* frame, bimp::Allocator& alloc, ImportStream& is);
 
 }; // NodeAnimation
 
