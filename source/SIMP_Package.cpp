@@ -172,6 +172,10 @@ void Package::LoadIndex(fs_file* file, uint32_t offset)
 
 Page* Package::QueryPage(int id)
 {
+	if (m_pages.empty()) {
+		return NULL;
+	}
+
 	int idx = -1;
 	int start = 0;
 	int end = m_pages.size() - 1;
