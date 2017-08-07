@@ -29,7 +29,7 @@ void PkgIdxLoader::OnLoad(bimp::ImportStream& is)
 		export_n = version_flag;
 	}
 
-	if (m_version != 2) {
+	if (m_version < 2) {
 		return;
 	}
 
