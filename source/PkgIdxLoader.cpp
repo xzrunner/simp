@@ -20,19 +20,13 @@ PkgIdxLoader::PkgIdxLoader(fs_file* file, uint32_t offset)
 
 void PkgIdxLoader::OnLoad(bimp::ImportStream& is)
 {
-	int export_n = 0;
-	int version_flag = is.UInt16();
-	if (version_flag == 0xffff) {
-		m_version = is.UInt16();
-		export_n = is.UInt16();
-	} else {
-		export_n = version_flag;
-	}
-
+	is.UInt16();	// todo: version flag
+	m_version = is.UInt16();
 	if (m_version < 2) {
 		return;
 	}
 
+	int export_n = is.UInt16();
 	for (int i = 0; i < export_n; ++i)
 	{
 		std::string name = is.String();
