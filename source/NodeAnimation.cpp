@@ -36,7 +36,7 @@ int NodeAnimation::LerpSize()
 
 int NodeAnimation::FrameSize()
 {
-	return ALIGN_4BYTE(sizeof(Frame) + PTR_SIZE_DIFF);
+	return ALIGN_4BYTE(sizeof(Frame) + PTR_SIZE_DIFF * 2);
 }
 
 int NodeAnimation::LayerSize()
