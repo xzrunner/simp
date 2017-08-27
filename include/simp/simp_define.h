@@ -16,6 +16,8 @@ static const int SIMP_PAGE_SIZE			= 1024 * 16;
 static const int SIMP_PAGE_SIZE_MIN		= 1024 * 4;
 static const int SIMP_PAGE_SIZE_MAX		= 1024 * 256;
 
+static const uint32_t AUDIO_ID      = 0xfff;
+
 }
 
 #endif // _SIMP_DEFINES_H_

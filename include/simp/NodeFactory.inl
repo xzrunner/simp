@@ -3,6 +3,8 @@
 
 #include "SIMP_Package.h"
 #include "NodeID.h"
+#include "simp_types.h"
+#include "simp_define.h"
 
 #include <assert.h>
 
@@ -35,6 +37,11 @@ inline
 const void* NodeFactory::Create(uint32_t id, int* type)
 {
 	uint32_t pkg_id = NodeID::GetPkgID(id);
+	if (pkg_id == AUDIO_ID) {
+		*type = TYPE_AUDIO;
+		return NULL;
+	}
+
 	uint32_t node_id = NodeID::GetNodeID(id);
 	int idx = m_hash_id.Query(pkg_id);
 	if (idx >= 0 && idx < m_pkgs.size()) {
