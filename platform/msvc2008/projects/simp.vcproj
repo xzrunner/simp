@@ -532,6 +532,26 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="16.audio"
+				>
+				<File
+					RelativePath="..\..\..\source\NodeAudio.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\simp\NodeAudio.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\source\NodeAudioSpr.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\simp\NodeAudioSpr.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="utility"

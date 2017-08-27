@@ -31,6 +31,8 @@ static const int TYPE_TRAIL			= 25;
 static const int TYPE_TRAIL_SPR		= 26;
 static const int TYPE_ANIM2			= 27;
 static const int TYPE_ANIM2_SPR		= 28;
+static const int TYPE_AUDIO			= 29;
+static const int TYPE_AUDIO_SPR		= 30;
 
 }
 
