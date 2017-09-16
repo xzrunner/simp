@@ -6,6 +6,7 @@
 #include "simp_define.h"
 #include "PageVisitor.h"
 
+#include <logger.h>
 #include <fs_file.h>
 #include <fault.h>
 #include <bimp/bimp_typedef.h>
@@ -194,7 +195,8 @@ Page* Package::QueryPage(int id)
 	}
 
 	if (idx == -1) {
-		fault("query page fail, pkg %d, id %d, start %d, end %d\n", m_id, id, start, end);
+		LOGD("query page fail, pkg %d, id %d, start %d, end %d\n", m_id, id, start, end);
+		return NULL;
 	}
 	if (!m_pages[idx].m_page) {
 		if(!LoadPage(idx)) {
