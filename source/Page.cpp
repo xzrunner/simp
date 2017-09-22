@@ -87,7 +87,7 @@ void Page::Load(const bimp::FilePath& filepath)
 
 const void* Page::Query(uint32_t id, int* type) const
 {
-	assert(id >= m_begin_id && id <= m_end_id);
+	assert(static_cast<int>(id) >= m_begin_id && static_cast<int>(id) <= m_end_id);
 	int idx = id - m_begin_id;
 	*type = m_types[idx];
 	return m_nodes[idx];

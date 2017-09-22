@@ -44,7 +44,7 @@ bool NodeFactory::AddPkg(Package* pkg, const std::string& pkg_name, int pkg_id)
 uint32_t NodeFactory::GetNodeID(const std::string& pkg_name, const std::string& node_name) const
 {
 	int idx = m_hash_name.Query(pkg_name);
-	if (idx < 0 || idx >= m_pkgs.size()) {
+	if (idx < 0 || idx >= static_cast<int>(m_pkgs.size())) {
 		return 0xffffffff;
 	}
 
@@ -73,7 +73,7 @@ void NodeFactory::Clear()
 void NodeFactory::ClearPkgPages(int pkg_id)
 {
 	int idx = m_hash_id.Query(pkg_id);
-	if (idx >= 0 && idx < m_pkgs.size()) {
+	if (idx >= 0 && idx < static_cast<int>(m_pkgs.size())) {
 		m_pkgs[idx].pkg->ClearPages();
 	}
 }

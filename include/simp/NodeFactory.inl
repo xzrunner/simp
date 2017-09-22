@@ -15,7 +15,7 @@ inline
 const Package* NodeFactory::QueryPkg(int pkg_id) const
 {
 	int idx = m_hash_id.Query(pkg_id);
-	if (idx >= 0 && idx < m_pkgs.size()) {
+	if (idx >= 0 && idx < static_cast<int>(m_pkgs.size())) {
 		return m_pkgs[idx].pkg;
 	} else {
 		return NULL;
@@ -26,7 +26,7 @@ inline
 const Package* NodeFactory::QueryPkg(const std::string& pkg_name) const
 {
 	int idx = m_hash_name.Query(pkg_name);
-	if (idx >= 0 && idx < m_pkgs.size()) {
+	if (idx >= 0 && idx < static_cast<int>(m_pkgs.size())) {
 		return m_pkgs[idx].pkg;
 	} else {
 		return NULL;
@@ -44,7 +44,7 @@ const void* NodeFactory::Create(uint32_t id, int* type)
 
 	uint32_t node_id = NodeID::GetNodeID(id);
 	int idx = m_hash_id.Query(pkg_id);
-	if (idx >= 0 && idx < m_pkgs.size()) {
+	if (idx >= 0 && idx < static_cast<int>(m_pkgs.size())) {
 		return m_pkgs[idx].pkg->QueryNode(node_id, type);
 	} else {
 		return NULL;

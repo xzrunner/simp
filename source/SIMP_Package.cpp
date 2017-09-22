@@ -95,7 +95,7 @@ const void* Package::QueryNode(uint32_t id, int* type)
 
 void Package::SetPagePath(int idx, const bimp::FilePath& path)
 {
-	if (idx < 0 || idx >= m_pages.size()) {
+	if (idx < 0 || idx >= static_cast<int>(m_pages.size())) {
 		return;
 	}
 
@@ -209,7 +209,7 @@ Page* Package::QueryPage(int id)
 
 bool Package::LoadPage(int idx) const
 {
-	if (idx < 0 || idx >= m_pages.size()) {
+	if (idx < 0 || idx >= static_cast<int>(m_pages.size())) {
 		return true;
 	}
 
@@ -233,7 +233,7 @@ bool Package::LoadPage(int idx) const
 
 void Package::UnloadPage(int idx) const
 {
-	if (idx < 0 || idx >= m_pages.size() || !m_pages[idx].m_page) {
+	if (idx < 0 || idx >= static_cast<int>(m_pages.size()) || !m_pages[idx].m_page) {
 		return;
 	}
 

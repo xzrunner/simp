@@ -18,7 +18,7 @@ Skin2Mesh::Skin2Mesh(bimp::Allocator& alloc, ImportStream& is)
 	vertices_n = n;
 
 	int count = 0;
-	for (int i = 0; i < vertices_n; ++i) {
+	for (uint32_t i = 0; i < vertices_n; ++i) {
 		count += joints_n[i];
 	}
 
