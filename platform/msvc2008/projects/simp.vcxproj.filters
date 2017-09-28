@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="storage">
+      <UniqueIdentifier>{d6775683-cacc-4337-82c9-9948cd4e1e13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="storage\pkg">
+      <UniqueIdentifier>{980890ae-64ed-40fb-973f-0a27989abb25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="preprocess">
+      <UniqueIdentifier>{b27f72af-4459-433a-850d-c7016609ecd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node">
+      <UniqueIdentifier>{b38e628f-f14f-4212-b216-9672709d8b0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\01.picture">
+      <UniqueIdentifier>{e0d941c3-3ac4-4350-b88a-3265bd3a1386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\07.animation">
+      <UniqueIdentifier>{89be1a54-84df-4478-8557-0834d16fb4f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\02.scale9">
+      <UniqueIdentifier>{2ba9e752-c167-4df1-8f06-28de773ed2b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\03.icon">
+      <UniqueIdentifier>{2dafc39e-cb2a-4304-ad9a-f11d697f1b33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\04.texture">
+      <UniqueIdentifier>{a7f3f7af-d84c-421e-ace7-bb52b322e8eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\05.label">
+      <UniqueIdentifier>{62e75f98-9820-487e-9d58-e737adef644f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\06.complex">
+      <UniqueIdentifier>{37267e38-b422-4eaf-9fc5-c6e0008db19f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\08.particle3d">
+      <UniqueIdentifier>{16e5554b-ef38-4b67-bd89-5558c3c9c541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\09.particle2d">
+      <UniqueIdentifier>{7974ac26-7a37-4bfd-a24e-e63b1cc56f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\13.trail">
+      <UniqueIdentifier>{ab1eb999-5769-4404-a739-275a31f7bd07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\12.mask">
+      <UniqueIdentifier>{b7c16f0a-5df3-4ea4-9653-a197ec8f80b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\11.mesh">
+      <UniqueIdentifier>{afa82e08-f1c5-4ded-a6e7-e8d786b7250e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\11.mesh\shape">
+      <UniqueIdentifier>{a452dbd8-e075-4a96-b559-e1cc7a4a09b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\10.shape">
+      <UniqueIdentifier>{fb890cb9-852b-4a64-b2e8-a447da253f83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\07.anim2">
+      <UniqueIdentifier>{71f6dbc0-a130-4bc9-a84a-3a6696317fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\16.audio">
+      <UniqueIdentifier>{a3a81654-38e7-4694-84fc-bf16bfa0a8a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{ba370af8-63b7-4313-b2d4-fee609486be3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\AudioIDMgr.cpp">
+      <Filter>storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeFactory.cpp">
+      <Filter>storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Page.cpp">
+      <Filter>storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\PageAlloc.cpp">
+      <Filter>storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\PkgIdxLoader.cpp">
+      <Filter>storage\pkg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\SIMP_Package.cpp">
+      <Filter>storage\pkg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\RelocateTexcoords.cpp">
+      <Filter>preprocess</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeArray.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeTrans.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodePicture.cpp">
+      <Filter>node\01.picture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAnimation.cpp">
+      <Filter>node\07.animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAnimationSpr.cpp">
+      <Filter>node\07.animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeScale9.cpp">
+      <Filter>node\02.scale9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeScale9Spr.cpp">
+      <Filter>node\02.scale9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeIcon.cpp">
+      <Filter>node\03.icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeIconSpr.cpp">
+      <Filter>node\03.icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeTexture.cpp">
+      <Filter>node\04.texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeTextureSpr.cpp">
+      <Filter>node\04.texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeLabel.cpp">
+      <Filter>node\05.label</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeComplex.cpp">
+      <Filter>node\06.complex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeComplexSpr.cpp">
+      <Filter>node\06.complex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeParticle3d.cpp">
+      <Filter>node\08.particle3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeParticle3dSpr.cpp">
+      <Filter>node\08.particle3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeParticle2d.cpp">
+      <Filter>node\09.particle2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeParticle2dSpr.cpp">
+      <Filter>node\09.particle2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeTrail.cpp">
+      <Filter>node\13.trail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeTrailSpr.cpp">
+      <Filter>node\13.trail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeMask.cpp">
+      <Filter>node\12.mask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeMaskSpr.cpp">
+      <Filter>node\12.mask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeMesh.cpp">
+      <Filter>node\11.mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeMeshSpr.cpp">
+      <Filter>node\11.mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\SIMP_PointsMesh.cpp">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\SIMP_Skin2Mesh.cpp">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\SIMP_TrianglesMesh.cpp">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeShape.cpp">
+      <Filter>node\10.shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeShapeSpr.cpp">
+      <Filter>node\10.shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAnim2.cpp">
+      <Filter>node\07.anim2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAnim2Spr.cpp">
+      <Filter>node\07.anim2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAudio.cpp">
+      <Filter>node\16.audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAudioSpr.cpp">
+      <Filter>node\16.audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\ImportStream.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\simp\AudioIDMgr.h">
+      <Filter>storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeFactory.h">
+      <Filter>storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\Page.h">
+      <Filter>storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\PageAlloc.h">
+      <Filter>storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\PkgIdxLoader.h">
+      <Filter>storage\pkg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\SIMP_Package.h">
+      <Filter>storage\pkg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\RelocateTexcoords.h">
+      <Filter>preprocess</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\from_int.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeArray.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeTrans.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodePicture.h">
+      <Filter>node\01.picture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAnimation.h">
+      <Filter>node\07.animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAnimationSpr.h">
+      <Filter>node\07.animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeScale9.h">
+      <Filter>node\02.scale9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeScale9Spr.h">
+      <Filter>node\02.scale9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeIcon.h">
+      <Filter>node\03.icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeIconSpr.h">
+      <Filter>node\03.icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeTexture.h">
+      <Filter>node\04.texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeTextureSpr.h">
+      <Filter>node\04.texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeLabel.h">
+      <Filter>node\05.label</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeComplex.h">
+      <Filter>node\06.complex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeComplexSpr.h">
+      <Filter>node\06.complex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeParticle3d.h">
+      <Filter>node\08.particle3d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeParticle3dSpr.h">
+      <Filter>node\08.particle3d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeParticle2d.h">
+      <Filter>node\09.particle2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeParticle2dSpr.h">
+      <Filter>node\09.particle2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeTrail.h">
+      <Filter>node\13.trail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeTrailSpr.h">
+      <Filter>node\13.trail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeMask.h">
+      <Filter>node\12.mask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeMaskSpr.h">
+      <Filter>node\12.mask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\MeshShape.h">
+      <Filter>node\11.mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeMesh.h">
+      <Filter>node\11.mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeMeshSpr.h">
+      <Filter>node\11.mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\SIMP_MeshType.h">
+      <Filter>node\11.mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\SIMP_PointsMesh.h">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\SIMP_Skin2Mesh.h">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\SIMP_TrianglesMesh.h">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeShape.h">
+      <Filter>node\10.shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeShapeSpr.h">
+      <Filter>node\10.shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAnim2.h">
+      <Filter>node\07.anim2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAnim2Spr.h">
+      <Filter>node\07.anim2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAudio.h">
+      <Filter>node\16.audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAudioSpr.h">
+      <Filter>node\16.audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\ImportStream.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeID.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\simp_define.h" />
+    <ClInclude Include="..\..\..\include\simp\simp_types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\include\simp\NodeFactory.inl">
+      <Filter>storage</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>1.simp</ProjectName>
+    <ProjectGuid>{D19B530F-A257-4465-A92C-381E91B47746}</ProjectGuid>
+    <RootNamespace>simp</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.26730.12</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\simp\x86\Debug\</OutDir>
+    <IntDir>..\simp\x86\Debug\obj\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\simp\x86\Release\</OutDir>
+    <IntDir>..\simp\x86\Release\obj\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\include\simp;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\cu\src\cu;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;EASY_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\..\..\include\simp;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\cu\src\cu;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;EASY_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\AudioIDMgr.cpp" />
+    <ClCompile Include="..\..\..\source\ImportStream.cpp" />
+    <ClCompile Include="..\..\..\source\NodeAnim2.cpp" />
+    <ClCompile Include="..\..\..\source\NodeAnim2Spr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeAnimation.cpp" />
+    <ClCompile Include="..\..\..\source\NodeAnimationSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeArray.cpp" />
+    <ClCompile Include="..\..\..\source\NodeAudio.cpp" />
+    <ClCompile Include="..\..\..\source\NodeAudioSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeComplex.cpp" />
+    <ClCompile Include="..\..\..\source\NodeComplexSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeFactory.cpp" />
+    <ClCompile Include="..\..\..\source\NodeIcon.cpp" />
+    <ClCompile Include="..\..\..\source\NodeIconSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeLabel.cpp" />
+    <ClCompile Include="..\..\..\source\NodeMask.cpp" />
+    <ClCompile Include="..\..\..\source\NodeMaskSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeMesh.cpp" />
+    <ClCompile Include="..\..\..\source\NodeMeshSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeParticle2d.cpp" />
+    <ClCompile Include="..\..\..\source\NodeParticle2dSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeParticle3d.cpp" />
+    <ClCompile Include="..\..\..\source\NodeParticle3dSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodePicture.cpp" />
+    <ClCompile Include="..\..\..\source\NodeScale9.cpp" />
+    <ClCompile Include="..\..\..\source\NodeScale9Spr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeShape.cpp" />
+    <ClCompile Include="..\..\..\source\NodeShapeSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeTexture.cpp" />
+    <ClCompile Include="..\..\..\source\NodeTextureSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeTrail.cpp" />
+    <ClCompile Include="..\..\..\source\NodeTrailSpr.cpp" />
+    <ClCompile Include="..\..\..\source\NodeTrans.cpp" />
+    <ClCompile Include="..\..\..\source\Page.cpp" />
+    <ClCompile Include="..\..\..\source\PageAlloc.cpp" />
+    <ClCompile Include="..\..\..\source\PkgIdxLoader.cpp" />
+    <ClCompile Include="..\..\..\source\RelocateTexcoords.cpp" />
+    <ClCompile Include="..\..\..\source\SIMP_Package.cpp" />
+    <ClCompile Include="..\..\..\source\SIMP_PointsMesh.cpp" />
+    <ClCompile Include="..\..\..\source\SIMP_Skin2Mesh.cpp" />
+    <ClCompile Include="..\..\..\source\SIMP_TrianglesMesh.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\simp\AudioIDMgr.h" />
+    <ClInclude Include="..\..\..\include\simp\from_int.h" />
+    <ClInclude Include="..\..\..\include\simp\ImportStream.h" />
+    <ClInclude Include="..\..\..\include\simp\MeshShape.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeAnim2.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeAnim2Spr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeAnimation.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeAnimationSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeArray.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeAudio.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeAudioSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeComplex.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeComplexSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeFactory.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeIcon.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeIconSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeID.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeLabel.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeMask.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeMaskSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeMesh.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeMeshSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeParticle2d.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeParticle2dSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeParticle3d.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeParticle3dSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodePicture.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeScale9.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeScale9Spr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeShape.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeShapeSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeTexture.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeTextureSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeTrail.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeTrailSpr.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeTrans.h" />
+    <ClInclude Include="..\..\..\include\simp\Page.h" />
+    <ClInclude Include="..\..\..\include\simp\PageAlloc.h" />
+    <ClInclude Include="..\..\..\include\simp\PkgIdxLoader.h" />
+    <ClInclude Include="..\..\..\include\simp\RelocateTexcoords.h" />
+    <ClInclude Include="..\..\..\include\simp\simp_define.h" />
+    <ClInclude Include="..\..\..\include\simp\SIMP_MeshType.h" />
+    <ClInclude Include="..\..\..\include\simp\SIMP_Package.h" />
+    <ClInclude Include="..\..\..\include\simp\SIMP_PointsMesh.h" />
+    <ClInclude Include="..\..\..\include\simp\SIMP_Skin2Mesh.h" />
+    <ClInclude Include="..\..\..\include\simp\SIMP_TrianglesMesh.h" />
+    <ClInclude Include="..\..\..\include\simp\simp_types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\include\simp\NodeFactory.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

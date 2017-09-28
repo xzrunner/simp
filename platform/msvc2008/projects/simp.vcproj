@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="1.simp"
-	ProjectGUID="{EE2229A3-AD5F-46E7-AFAB-729F8AA18036}"
+	ProjectGUID="{D19B530F-A257-4465-A92C-381E91B47746}"
 	RootNamespace="simp"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
