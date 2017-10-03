@@ -1,7 +1,7 @@
 #ifndef _SIMP_PKG_ID_MGR_H_
 #define _SIMP_PKG_ID_MGR_H_
 
-#include <CU_Singleton.h>
+#include <cu/cu_macro.h>
 
 #include <bimp/FileLoader.h>
 
@@ -46,7 +46,7 @@ private:
 private:
 	std::map<std::string, PkgID> m_pkgs;
 
-	SINGLETON_DECLARATION(PkgIDMgr);
+	CU_SINGLETON_DECLARATION(PkgIDMgr);
 
 }; // PkgIDMgr
 

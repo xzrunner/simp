@@ -8,7 +8,7 @@
 namespace simp
 {
 
-SINGLETON_DEFINITION(RelocateTexcoords);
+CU_SINGLETON_DEFINITION(RelocateTexcoords);
 
 RelocateTexcoords::RelocateTexcoords()
 	: m_release_tag(false)

@@ -1,8 +1,8 @@
 #ifndef _SIMP_NODE_FACTORY_H_
 #define _SIMP_NODE_FACTORY_H_
 
-#include <CU_Uncopyable.h>
-#include <CU_Singleton.h>
+#include <cu/uncopyable.h>
+#include <cu/cu_macro.h>
 
 #include <string>
 #include <vector>
@@ -87,7 +87,7 @@ private:
 	HashID   m_hash_id;
 	HashName m_hash_name;
 
-	SINGLETON_DECLARATION(NodeFactory);
+	CU_SINGLETON_DECLARATION(NodeFactory);
 
 }; // NodeFactory
 

@@ -3,7 +3,7 @@
 
 #include <bimp/FilePath.h>
 
-#include <CU_Uncopyable.h>
+#include <cu/uncopyable.h>
 
 #include <string>
 #include <vector>

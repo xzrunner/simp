@@ -1,7 +1,7 @@
 #ifndef _SIMP_AUDIO_ID_MGR_H_
 #define _SIMP_AUDIO_ID_MGR_H_
 
-#include <CU_Singleton.h>
+#include <cu/cu_macro.h>
 
 #include <bimp/FileLoader.h>
 
@@ -47,7 +47,7 @@ private:
 	std::map<std::string, AudioID> m_map2id;
 	std::map<int, std::string> m_map2path;
 
-	SINGLETON_DECLARATION(AudioIDMgr);
+	CU_SINGLETON_DECLARATION(AudioIDMgr);
 
 }; // AudioIDMgr
 

@@ -5,7 +5,7 @@
 namespace simp
 {
 
-SINGLETON_DEFINITION(AudioIDMgr);
+CU_SINGLETON_DEFINITION(AudioIDMgr);
 
 AudioIDMgr::AudioIDMgr()
 {

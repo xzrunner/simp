@@ -1,7 +1,7 @@
 #ifndef _SIMP_PAGE_ALLOC_H_
 #define _SIMP_PAGE_ALLOC_H_
 
-#include <CU_Singleton.h>
+#include <cu/cu_macro.h>
 
 #include <vector>
 
@@ -40,7 +40,7 @@ private:
 private:
 	std::vector<Freelist*> m_freelists;
 	
-	SINGLETON_DECLARATION(PageAlloc);
+	CU_SINGLETON_DECLARATION(PageAlloc);
 
 }; // PageAlloc
 

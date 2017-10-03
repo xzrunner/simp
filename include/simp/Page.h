@@ -1,7 +1,7 @@
 #ifndef _SIMP_PAGE_H_
 #define _SIMP_PAGE_H_
 
-#include <CU_Uncopyable.h>
+#include <cu/uncopyable.h>
 #include <bimp/FileLoader.h>
 
 #include <string>

@@ -7,7 +7,7 @@
 namespace simp
 {
 
-SINGLETON_DEFINITION(NodeFactory);
+CU_SINGLETON_DEFINITION(NodeFactory);
 
 NodeFactory::NodeFactory()
 	: m_hash_id(197)

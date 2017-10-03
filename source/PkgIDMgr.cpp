@@ -5,7 +5,7 @@
 namespace simp
 {
 
-SINGLETON_DEFINITION(PkgIDMgr);
+CU_SINGLETON_DEFINITION(PkgIDMgr);
 
 PkgIDMgr::PkgIDMgr()
 {

@@ -3,7 +3,7 @@
 
 #include "NodeVisitor.h"
 
-#include <CU_Singleton.h>
+#include <cu/cu_macro.h>
 
 #include <set>
 #include <map>
@@ -61,7 +61,7 @@ private:
 	bool m_release_tag;
 	std::set<int> m_pkg_tag;
 
-	SINGLETON_DECLARATION(RelocateTexcoords);
+	CU_SINGLETON_DECLARATION(RelocateTexcoords);
 
 }; // RelocateTexcoords
 

@@ -6,7 +6,7 @@
 namespace simp
 {
 
-SINGLETON_DEFINITION(PageAlloc)
+CU_SINGLETON_DEFINITION(PageAlloc)
 
 PageAlloc::PageAlloc()
 {

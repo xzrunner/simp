@@ -1,7 +1,7 @@
 #ifndef _SIMP_NODE_ICON_H_
 #define _SIMP_NODE_ICON_H_
 
-#include <CU_Uncopyable.h>
+#include <cu/uncopyable.h>
 
 #include <stdint.h>
 

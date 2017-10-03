@@ -1,7 +1,7 @@
 #ifndef _SIMP_NODE_ANIMATION_SPR_H_
 #define _SIMP_NODE_ANIMATION_SPR_H_
 
-#include <CU_Uncopyable.h>
+#include <cu/uncopyable.h>
 
 #include <stdint.h>
 
