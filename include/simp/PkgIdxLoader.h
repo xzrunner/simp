@@ -14,14 +14,14 @@ namespace simp
 class PkgIdxLoader : public bimp::FileLoader
 {
 public:
-	PkgIdxLoader(const std::string& filepath);
-	PkgIdxLoader(fs_file* file, uint32_t offset);
+	PkgIdxLoader(const bimp::ResString& filepath,
+		std::map<mm::AllocString, uint32_t>& export_names,
+		std::vector<Package::PageDesc>& pages);
+	PkgIdxLoader(fs_file* file, uint32_t offset, 
+		std::map<mm::AllocString, uint32_t>& export_names,
+		std::vector<Package::PageDesc>& pages);
 
 	int GetVersion() const { return m_version; }
-
-	const std::map<std::string, uint32_t>& GetExportNames() const { return m_export_names; }
-
-	const std::vector<Package::PageDesc>& GetPages() const { return m_pages; }
 
 	float GetScale() const { return m_scale; }
 
@@ -33,9 +33,9 @@ protected:
 private:
 	int m_version;
 
-	std::map<std::string, uint32_t> m_export_names;
+	std::map<mm::AllocString, uint32_t>& m_export_names;
 
-	std::vector<Package::PageDesc> m_pages;
+	std::vector<Package::PageDesc>& m_pages;
 
 	float m_scale;
 

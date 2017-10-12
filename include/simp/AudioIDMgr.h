@@ -32,7 +32,7 @@ private:
 	class AudioIDsLoader : public bimp::FileLoader
 	{
 	public:
-		AudioIDsLoader(const std::string& filepath, 
+		AudioIDsLoader(const bimp::ResString& filepath,
 			std::map<std::string, AudioID>& audios);
 
 	protected:

@@ -103,7 +103,7 @@ int Page::Size()
 /************************************************************************/
 
 Page::Loader::
-Loader(int pkg_version, const std::string& filepath, Page* page)
+Loader(int pkg_version, const bimp::ResString& filepath, Page* page)
 	: bimp::FileLoader(filepath)
 	, m_pkg_version(pkg_version)
 	, m_page(page)

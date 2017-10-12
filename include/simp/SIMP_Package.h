@@ -1,9 +1,9 @@
 #ifndef _SIMP_PACKAGE_H_
 #define _SIMP_PACKAGE_H_
 
-#include <bimp/FilePath.h>
-
 #include <cu/uncopyable.h>
+#include <memmgr/Allocator.h>
+#include <bimp/FilePath.h>
 
 #include <string>
 #include <vector>
@@ -82,7 +82,7 @@ private:
 	void UnloadPage(int idx) const;
 
 protected:
-	std::map<std::string, uint32_t> m_export_names;
+	std::map<mm::AllocString, uint32_t> m_export_names;
 
 	std::vector<PageDesc> m_pages;
 

@@ -4,16 +4,24 @@
 namespace simp
 {
 
-PkgIdxLoader::PkgIdxLoader(const std::string& filepath)
+PkgIdxLoader::PkgIdxLoader(const bimp::ResString& filepath,
+	                       std::map<mm::AllocString, uint32_t>& export_names,
+	                       std::vector<Package::PageDesc>& pages)
 	: FileLoader(filepath)
 	, m_version(0)
+	, m_export_names(export_names)
+	, m_pages(pages)
 	, m_scale(1)
 {
 }
 
-PkgIdxLoader::PkgIdxLoader(fs_file* file, uint32_t offset)
+PkgIdxLoader::PkgIdxLoader(fs_file* file, uint32_t offset, 
+	                       std::map<mm::AllocString, uint32_t>& export_names,
+	                       std::vector<Package::PageDesc>& pages)
 	: FileLoader(file, offset)
 	, m_version(0)
+	, m_export_names(export_names)
+	, m_pages(pages)
 	, m_scale(1)
 {
 }
@@ -29,7 +37,7 @@ void PkgIdxLoader::OnLoad(bimp::ImportStream& is)
 	int export_n = is.UInt16();
 	for (int i = 0; i < export_n; ++i)
 	{
-		std::string name = is.String();
+		mm::AllocString name(is.String().c_str());
 		uint32_t id = is.UInt32();
 		m_export_names.insert(std::make_pair(name, id));
 	}

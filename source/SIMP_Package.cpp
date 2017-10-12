@@ -73,8 +73,7 @@ void Package::Traverse(PageVisitor& visitor) const
 
 uint32_t Package::QueryID(const std::string& name) const
 {
-	std::map<std::string, uint32_t>::const_iterator itr 
-		= m_export_names.find(name);
+	auto& itr = m_export_names.find(name.c_str());
 	if (itr != m_export_names.end()) {
 		return itr->second;
 	} else {
@@ -112,10 +111,9 @@ void Package::ClearPages()
 void Package::GetExportNames(std::vector<std::string>& names) const
 {
 	names.reserve(m_export_names.size());
-	std::map<std::string, uint32_t>::const_iterator itr 
-		= m_export_names.begin();
+	auto& itr = m_export_names.begin();
 	for ( ; itr != m_export_names.end(); ++itr) {
-		names.push_back(itr->first);
+		names.push_back(itr->first.c_str());
 	}
 }
 
@@ -124,12 +122,10 @@ void Package::LoadIndex(const std::string& filepath)
 	m_export_names.clear();
 	m_pages.clear();
 
-	PkgIdxLoader loader(filepath);
+	PkgIdxLoader loader(filepath.c_str(), m_export_names, m_pages);
 	loader.Load();
 
 	m_version      = loader.GetVersion();
-	m_export_names = loader.GetExportNames();
-	m_pages        = loader.GetPages();
 	m_scale        = loader.GetScale();
 	m_ref_pkgs     = loader.GetRefPkgs();
 
@@ -150,15 +146,13 @@ void Package::LoadIndex(fs_file* file, uint32_t offset)
 	m_export_names.clear();
 	m_pages.clear();
 
-	PkgIdxLoader loader(file, offset);
+	PkgIdxLoader loader(file, offset, m_export_names, m_pages);
 	loader.Load();
 
 	m_version      = loader.GetVersion();
-	m_export_names = loader.GetExportNames();
-	m_pages        = loader.GetPages();
 	m_scale        = loader.GetScale();
 	m_ref_pkgs     = loader.GetRefPkgs();
-
+	
 	m_min_node_id = INT_MAX;
 	m_max_node_id = -INT_MAX;
 	for (int i = 0, n = m_pages.size(); i < n; ++i) {
