@@ -51,7 +51,7 @@ std::string AudioIDMgr::QueryAudioPath(int id) const
 /************************************************************************/
 
 AudioIDMgr::AudioIDsLoader::
-AudioIDsLoader(const bimp::ResString& filepath, std::map<std::string, AudioID>& audios)
+AudioIDsLoader(const std::string& filepath, std::map<std::string, AudioID>& audios)
 	: FileLoader(filepath)
 	, m_audios(audios)
 {

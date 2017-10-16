@@ -47,7 +47,7 @@ void PkgIDMgr::Clear()
 /************************************************************************/
 
 PkgIDMgr::PkgIDsLoader::
-PkgIDsLoader(const bimp::ResString& filepath, std::map<std::string, PkgID>& pkgs)
+PkgIDsLoader(const std::string& filepath, std::map<std::string, PkgID>& pkgs)
 	: FileLoader(filepath)
 	, m_pkgs(pkgs)
 {

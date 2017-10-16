@@ -4,7 +4,7 @@
 namespace simp
 {
 
-PkgIdxLoader::PkgIdxLoader(const bimp::ResString& filepath,
+PkgIdxLoader::PkgIdxLoader(const std::string& filepath,
 	                       std::map<mm::AllocString, uint32_t>& export_names,
 	                       std::vector<Package::PageDesc>& pages)
 	: FileLoader(filepath)

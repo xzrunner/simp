@@ -73,7 +73,7 @@ void Page::Traverse(NodeVisitor& visitor) const
 void Page::Load(const bimp::FilePath& filepath)
 {
 	if (filepath.IsSingleFile()) {
-		Loader loader(m_pkg_version, filepath.GetFilepath(), this);
+		Loader loader(m_pkg_version, filepath.GetFilepath().c_str(), this);
 		loader.Load();
 	} else {
 		fs_file* file = fs_open(filepath.GetFilepath().c_str(), "rb");
@@ -103,7 +103,7 @@ int Page::Size()
 /************************************************************************/
 
 Page::Loader::
-Loader(int pkg_version, const bimp::ResString& filepath, Page* page)
+Loader(int pkg_version, const std::string& filepath, Page* page)
 	: bimp::FileLoader(filepath)
 	, m_pkg_version(pkg_version)
 	, m_page(page)
