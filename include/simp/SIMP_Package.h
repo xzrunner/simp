@@ -2,12 +2,7 @@
 #define _SIMP_PACKAGE_H_
 
 #include <cu/uncopyable.h>
-#include <memmgr/Allocator.h>
 #include <bimp/FilePath.h>
-
-#include <string>
-#include <vector>
-#include <map>
 
 #include <stdint.h>
 
@@ -26,14 +21,14 @@ class PageVisitor;
 class Package : private cu::Uncopyable
 {
 public:
-	Package(const std::string& filepath, int id);
+	Package(const CU_STR& filepath, int id);
 	Package(fs_file* file, uint32_t offset, int id);
 	~Package();
 
 	void Traverse(NodeVisitor& visitor) const;
 	void Traverse(PageVisitor& visitor) const;
 
-	uint32_t QueryID(const std::string& name) const;
+	uint32_t QueryID(const CU_STR& name) const;
 
 	const void* QueryNode(uint32_t id, int* type);
 
@@ -45,11 +40,11 @@ public:
 
 	void ClearPages();
 
-	void GetExportNames(std::vector<std::string>& names) const;
+	void GetExportNames(CU_VEC<CU_STR>& names) const;
 
 	float GetScale() const { return m_scale; }
 
-	const std::vector<int>& GetRefPkgs() const { return m_ref_pkgs; }
+	auto& GetRefPkgs() const { return m_ref_pkgs; }
 
 public:
 	class PageDesc
@@ -74,7 +69,7 @@ public:
 	}; // PageDesc
 
 private:
-	void LoadIndex(const std::string& filepath);
+	void LoadIndex(const CU_STR& filepath);
 	void LoadIndex(fs_file* file, uint32_t offset);
 
 	Page* QueryPage(int id);
@@ -82,9 +77,9 @@ private:
 	void UnloadPage(int idx) const;
 
 protected:
-	std::map<mm::AllocString, uint32_t> m_export_names;
+	CU_MAP<CU_STR, uint32_t> m_export_names;
 
-	std::vector<PageDesc> m_pages;
+	CU_VEC<PageDesc> m_pages;
 
 private:
 	int m_id;
@@ -95,9 +90,11 @@ private:
 
 	float m_scale;
 
-	std::vector<int> m_ref_pkgs;
+	CU_VEC<int> m_ref_pkgs;
 
 }; // Package
+
+using PackagePtr = std::unique_ptr<Package, mm::alloc_deleter<mm::Allocator<Package>>>;
 
 }
 

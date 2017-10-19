@@ -5,24 +5,28 @@ namespace simp
 {
 
 PkgIdxLoader::PkgIdxLoader(const std::string& filepath,
-	                       std::map<mm::AllocString, uint32_t>& export_names,
-	                       std::vector<Package::PageDesc>& pages)
+	                       CU_MAP<CU_STR, uint32_t>& export_names,
+	                       CU_VEC<Package::PageDesc>& pages,
+                           CU_VEC<int>& ref_pkgs)
 	: FileLoader(filepath)
 	, m_version(0)
 	, m_export_names(export_names)
 	, m_pages(pages)
 	, m_scale(1)
+	, m_ref_pkgs(ref_pkgs)
 {
 }
 
 PkgIdxLoader::PkgIdxLoader(fs_file* file, uint32_t offset, 
-	                       std::map<mm::AllocString, uint32_t>& export_names,
-	                       std::vector<Package::PageDesc>& pages)
+	                       CU_MAP<CU_STR, uint32_t>& export_names,
+	                       CU_VEC<Package::PageDesc>& pages,
+	                       CU_VEC<int>& ref_pkgs)
 	: FileLoader(file, offset)
 	, m_version(0)
 	, m_export_names(export_names)
 	, m_pages(pages)
 	, m_scale(1)
+	, m_ref_pkgs(ref_pkgs)
 {
 }
 
@@ -37,7 +41,7 @@ void PkgIdxLoader::OnLoad(bimp::ImportStream& is)
 	int export_n = is.UInt16();
 	for (int i = 0; i < export_n; ++i)
 	{
-		mm::AllocString name(is.String().c_str());
+		CU_STR name(is.String());
 		uint32_t id = is.UInt32();
 		m_export_names.insert(std::make_pair(name, id));
 	}

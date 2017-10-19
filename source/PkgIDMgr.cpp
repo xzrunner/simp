@@ -11,17 +11,16 @@ PkgIDMgr::PkgIDMgr()
 {
 }
 
-void PkgIDMgr::LoadPkgIDs(const std::string& filepath)
+void PkgIDMgr::LoadPkgIDs(const CU_STR& filepath)
 {
 	m_pkgs.clear();
 	PkgIDsLoader loader(filepath.c_str(), m_pkgs);
 	loader.Load();
 }
 
-int PkgIDMgr::QueryPkgID(const std::string& name) const
+int PkgIDMgr::QueryPkgID(const CU_STR& name) const
 {
-	std::map<std::string, PkgID>::const_iterator itr 
-		= m_pkgs.find(name);
+	auto& itr = m_pkgs.find(CU_STR(name));
 	if (itr != m_pkgs.end()) {
 		return itr->second.id;
 	} else {
@@ -31,7 +30,7 @@ int PkgIDMgr::QueryPkgID(const std::string& name) const
 
 void PkgIDMgr::GetAllPkgNames(const char* names[]) const
 {
-	std::map<std::string, PkgID>::const_iterator itr = m_pkgs.begin();
+	auto itr = m_pkgs.begin();
 	for (int i = 0; itr != m_pkgs.end(); ++itr, ++i) {
 		names[i] = itr->first.c_str();
 	}
@@ -47,7 +46,7 @@ void PkgIDMgr::Clear()
 /************************************************************************/
 
 PkgIDMgr::PkgIDsLoader::
-PkgIDsLoader(const std::string& filepath, std::map<std::string, PkgID>& pkgs)
+PkgIDsLoader(const std::string& filepath, CU_MAP<CU_STR, PkgID>& pkgs)
 	: FileLoader(filepath)
 	, m_pkgs(pkgs)
 {
@@ -59,7 +58,7 @@ OnLoad(bimp::ImportStream& is)
 	int n = is.UInt16();
 	for (int i = 0; i < n; ++i) 
 	{
-		std::string name = is.String();
+		CU_STR name(is.String());
 		PkgID pkg;
 		pkg.path = is.String();
 		pkg.id = is.UInt16();

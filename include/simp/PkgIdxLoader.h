@@ -5,9 +5,6 @@
 
 #include <bimp/FileLoader.h>
 
-#include <map>
-#include <vector>
-
 namespace simp
 {
 
@@ -15,17 +12,17 @@ class PkgIdxLoader : public bimp::FileLoader
 {
 public:
 	PkgIdxLoader(const std::string& filepath,
-		std::map<mm::AllocString, uint32_t>& export_names,
-		std::vector<Package::PageDesc>& pages);
+		CU_MAP<CU_STR, uint32_t>& export_names,
+		CU_VEC<Package::PageDesc>& pages,
+		CU_VEC<int>& ref_pkgs);
 	PkgIdxLoader(fs_file* file, uint32_t offset, 
-		std::map<mm::AllocString, uint32_t>& export_names,
-		std::vector<Package::PageDesc>& pages);
+		CU_MAP<CU_STR, uint32_t>& export_names,
+		CU_VEC<Package::PageDesc>& pages,
+		CU_VEC<int>& ref_pkgs);
 
 	int GetVersion() const { return m_version; }
 
 	float GetScale() const { return m_scale; }
-
-	const std::vector<int>& GetRefPkgs() const { return m_ref_pkgs; }
 
 protected:
 	virtual void OnLoad(bimp::ImportStream& is);
@@ -33,13 +30,13 @@ protected:
 private:
 	int m_version;
 
-	std::map<mm::AllocString, uint32_t>& m_export_names;
+	CU_MAP<CU_STR, uint32_t>& m_export_names;
 
-	std::vector<Package::PageDesc>& m_pages;
+	CU_VEC<Package::PageDesc>& m_pages;
 
 	float m_scale;
 
-	std::vector<int> m_ref_pkgs;
+	CU_VEC<int>& m_ref_pkgs;
 
 }; // PkgIdxLoader
 

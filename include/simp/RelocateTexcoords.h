@@ -4,9 +4,7 @@
 #include "NodeVisitor.h"
 
 #include <cu/cu_macro.h>
-
-#include <set>
-#include <map>
+#include <cu/cu_stl.h>
 
 namespace simp
 {
@@ -47,19 +45,19 @@ private:
 	class Visitor : public NodeVisitor
 	{
 	public:
-		Visitor(int pkg_id, const std::map<int, Item>& items);
+		Visitor(int pkg_id, const CU_MAP<int, Item>& items);
 		virtual void Visit(int id, int type, const void* node);
 	private:
 		int m_pkg_id;
-		const std::map<int, Item>& m_items;
+		const CU_MAP<int, Item>& m_items;
 	}; // Visitor
 
 private:
-	std::set<int> m_pkgs;
-	std::map<int, Item> m_items;
+	CU_SET<int> m_pkgs;
+	CU_MAP<int, Item> m_items;
 
 	bool m_release_tag;
-	std::set<int> m_pkg_tag;
+	CU_SET<int> m_pkg_tag;
 
 	CU_SINGLETON_DECLARATION(RelocateTexcoords);
 

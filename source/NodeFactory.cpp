@@ -24,24 +24,17 @@ void NodeFactory::Traverse(PageVisitor& visitor) const
 	}
 }
 
-bool NodeFactory::AddPkg(Package* pkg, const std::string& pkg_name, int pkg_id)
+bool NodeFactory::AddPkg(PackagePtr& pkg, const CU_STR& pkg_name, int pkg_id)
 {
-	PkgWrap wrap;
-	wrap.pkg  = pkg;
-	wrap.name = pkg_name;
-	wrap.id   = pkg_id;
-
 	int idx = m_pkgs.size();
-
 	if (!m_hash_id.Insert(pkg_id, idx) || !m_hash_name.Insert(pkg_name, idx)) {
 		return false;
 	}
-
-	m_pkgs.push_back(wrap);
+	m_pkgs.emplace_back(pkg, pkg_name, pkg_id);
 	return true;
 }
 
-uint32_t NodeFactory::GetNodeID(const std::string& pkg_name, const std::string& node_name) const
+uint32_t NodeFactory::GetNodeID(const CU_STR& pkg_name, const CU_STR& node_name) const
 {
 	int idx = m_hash_name.Query(pkg_name);
 	if (idx < 0 || idx >= static_cast<int>(m_pkgs.size())) {
@@ -61,9 +54,6 @@ uint32_t NodeFactory::GetNodeID(const std::string& pkg_name, const std::string& 
 
 void NodeFactory::Clear()
 {
-	for (int i = 0, n = m_pkgs.size(); i < n; ++i) {
-		delete m_pkgs[i].pkg;
-	}
 	m_pkgs.clear();	
 
 	m_hash_id.Clear();
@@ -97,11 +87,11 @@ int NodeFactory::HashID::GetHashVal(const uint32_t& id) const
 /************************************************************************/
 
 NodeFactory::HashName::HashName(int hash_sz)
-	: NodeFactory::Hash<std::string>(hash_sz)
+	: NodeFactory::Hash<CU_STR>(hash_sz)
 {
 }
 
-int NodeFactory::HashName::GetHashVal(const std::string& name) const
+int NodeFactory::HashName::GetHashVal(const CU_STR& name) const
 {
 	const char* str = name.c_str();
 

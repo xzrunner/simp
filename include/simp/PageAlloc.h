@@ -2,8 +2,7 @@
 #define _SIMP_PAGE_ALLOC_H_
 
 #include <cu/cu_macro.h>
-
-#include <vector>
+#include <cu/cu_stl.h>
 
 namespace bimp { class Allocator; }
 
@@ -29,7 +28,7 @@ private:
 
 	private:
 		int size;
-		std::vector<bimp::Allocator*> freelist;
+		CU_VEC<bimp::Allocator*> freelist;
 
 		friend class PageAlloc;
 
@@ -38,7 +37,7 @@ private:
 	static int CalcIndex(int size);
 
 private:
-	std::vector<Freelist*> m_freelists;
+	CU_VEC<Freelist*> m_freelists;
 	
 	CU_SINGLETON_DECLARATION(PageAlloc);
 

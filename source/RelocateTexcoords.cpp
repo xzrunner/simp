@@ -20,7 +20,7 @@ void RelocateTexcoords::Add(const Item& item)
 	m_pkgs.insert(item.src_pkg);
 
 	int id = CalcKey(item.src_pkg, item.src_tex);
-	std::pair<std::map<int, Item>::iterator, bool> ret 
+	std::pair<CU_MAP<int, Item>::iterator, bool> ret 
 		= m_items.insert(std::make_pair(id, item));
 	//	todo
 	//	assert(ret.second);
@@ -35,7 +35,7 @@ void RelocateTexcoords::Delete(int pkg)
 
 	if (m_release_tag) 
 	{
-		std::set<int>::iterator itr = m_pkg_tag.begin();
+		CU_SET<int>::iterator itr = m_pkg_tag.begin();
 		while (itr != m_pkg_tag.end())
 		{
 			if (NodeID::GetPkgID(*itr) == pkg) {
@@ -78,7 +78,7 @@ void RelocateTexcoords::SetReleaseTag()
 
 void RelocateTexcoords::ReleaseAfterLastTag()
 {
-	std::set<int>::iterator itr = m_pkg_tag.begin();
+	CU_SET<int>::iterator itr = m_pkg_tag.begin();
 	for ( ; itr != m_pkg_tag.end(); ++itr) 
 	{
 		int pkg_id = *itr;
@@ -98,7 +98,7 @@ void RelocateTexcoords::DeletePkg(int pkg)
 {
 	m_pkgs.erase(pkg);
 
-	std::map<int, Item>::iterator itr = m_items.begin();
+	CU_MAP<int, Item>::iterator itr = m_items.begin();
 	while (itr != m_items.end())
 	{
 		int id = itr->first;
@@ -114,7 +114,7 @@ void RelocateTexcoords::DeletePkg(int pkg)
 /* class RelocateTexcoords::Visitor                                     */
 /************************************************************************/
 
-RelocateTexcoords::Visitor::Visitor(int pkg_id, const std::map<int, Item>& items)
+RelocateTexcoords::Visitor::Visitor(int pkg_id, const CU_MAP<int, Item>& items)
 	: m_pkg_id(pkg_id)
 	, m_items(items)
 {
@@ -128,7 +128,7 @@ void RelocateTexcoords::Visitor::Visit(int id, int type, const void* node)
 
 	const NodePicture* pic = static_cast<const NodePicture*>(node);
 	int key = CalcKey(m_pkg_id, pic->texid);
-	std::map<int, Item>::const_iterator itr = m_items.find(key);
+	CU_MAP<int, Item>::const_iterator itr = m_items.find(key);
 	if (itr == m_items.end()) {
 		return;
 	}

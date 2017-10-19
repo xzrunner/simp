@@ -1,18 +1,17 @@
 #ifndef _SIMP_NODE_FACTORY_H_
 #define _SIMP_NODE_FACTORY_H_
 
+#include "SIMP_Package.h"
+
 #include <cu/uncopyable.h>
 #include <cu/cu_macro.h>
-
-#include <string>
-#include <vector>
+#include <cu/cu_stl.h>
 
 #include <stdint.h>
 
 namespace simp
 {
 
-class Package;
 class PageVisitor;
 
 class NodeFactory
@@ -20,13 +19,13 @@ class NodeFactory
 public:
 	void Traverse(PageVisitor& visitor) const;
 
-	bool AddPkg(Package* pkg, const std::string& pkg_name, int pkg_id);
+	bool AddPkg(PackagePtr& pkg, const CU_STR& pkg_name, int pkg_id);
 	const Package* QueryPkg(int pkg_id) const;
-	const Package* QueryPkg(const std::string& pkg_name) const;
+	const Package* QueryPkg(const CU_STR& pkg_name) const;
 
 	const void* Create(uint32_t id, int* type);
 
-	uint32_t GetNodeID(const std::string& pkg_name, const std::string& node_name) const;
+	uint32_t GetNodeID(const CU_STR& pkg_name, const CU_STR& node_name) const;
 
 	void Clear();
 	void ClearPkgPages(int pkg_id);
@@ -34,8 +33,11 @@ public:
 private:
 	struct PkgWrap
 	{
-		Package* pkg;
-		std::string name;
+		PkgWrap(PackagePtr& pkg, const CU_STR& pkg_name, int pkg_id)
+			: pkg(std::move(pkg)), name(pkg_name), id(pkg_id) {}
+
+		PackagePtr pkg;
+		CU_STR name;
 		int id;
 	};
 
@@ -61,7 +63,7 @@ private:
 	private:
 		int m_hash_sz;
 
-		std::vector<std::pair<T, int> >* m_hash;
+		CU_VEC<std::pair<T, int> >* m_hash;
 
 	}; // Hash
 
@@ -73,16 +75,16 @@ private:
 		virtual int GetHashVal(const uint32_t& id) const;
 	}; // HashID
 
-	struct HashName : public Hash<std::string>
+	struct HashName : public Hash<CU_STR>
 	{
 	public:
 		HashName(int hash_sz);
 	protected:
-		int GetHashVal(const std::string& name) const;
+		int GetHashVal(const CU_STR& name) const;
 	}; // HashName
 
 private:
-	std::vector<PkgWrap> m_pkgs;
+	CU_VEC<PkgWrap> m_pkgs;
 
 	HashID   m_hash_id;
 	HashName m_hash_name;

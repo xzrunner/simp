@@ -3,8 +3,6 @@
 
 #include <bimp/BIMP_ImportStream.h>
 
-#include <string>
-
 namespace bimp { class Allocator; }
 
 namespace simp

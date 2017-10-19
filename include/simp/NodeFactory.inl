@@ -16,18 +16,18 @@ const Package* NodeFactory::QueryPkg(int pkg_id) const
 {
 	int idx = m_hash_id.Query(pkg_id);
 	if (idx >= 0 && idx < static_cast<int>(m_pkgs.size())) {
-		return m_pkgs[idx].pkg;
+		return m_pkgs[idx].pkg.get();
 	} else {
 		return NULL;
 	}
 }
 
 inline
-const Package* NodeFactory::QueryPkg(const std::string& pkg_name) const
+const Package* NodeFactory::QueryPkg(const CU_STR& pkg_name) const
 {
 	int idx = m_hash_name.Query(pkg_name);
 	if (idx >= 0 && idx < static_cast<int>(m_pkgs.size())) {
-		return m_pkgs[idx].pkg;
+		return m_pkgs[idx].pkg.get();
 	} else {
 		return NULL;
 	}
@@ -59,7 +59,7 @@ template <typename T>
 NodeFactory::Hash<T>::Hash(int hash_sz)
 	: m_hash_sz(hash_sz)
 {
-	m_hash = new std::vector<std::pair<T, int> >[m_hash_sz];
+	m_hash = new CU_VEC<std::pair<T, int>>[m_hash_sz];
 }
 
 template <typename T>
@@ -97,7 +97,7 @@ template <typename T>
 bool NodeFactory::Hash<T>::Remove(const T& key)
 {
 	int idx = GetHashVal(key);
-	typename std::vector<std::pair<T, int> >::iterator itr = m_hash[idx].begin();
+	typename CU_VEC<std::pair<T, int> >::iterator itr = m_hash[idx].begin();
 	for ( ; itr != m_hash[idx].end(); ++itr) {
 		if (itr->first == key) {
 			m_hash[idx].erase(itr);

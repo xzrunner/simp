@@ -4,8 +4,6 @@
 #include <cu/uncopyable.h>
 #include <bimp/FileLoader.h>
 
-#include <string>
-
 #include <stdint.h>
 
 namespace bimp { class Allocator; class FilePath; }

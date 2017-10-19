@@ -2,12 +2,8 @@
 #define _SIMP_PKG_ID_MGR_H_
 
 #include <cu/cu_macro.h>
-
+#include <cu/cu_stl.h>
 #include <bimp/FileLoader.h>
-
-#include <map>
-#include <string>
-#include <vector>
 
 namespace simp
 {
@@ -15,8 +11,8 @@ namespace simp
 class PkgIDMgr
 {
 public:
-	void LoadPkgIDs(const std::string& filepath);
-	int  QueryPkgID(const std::string& name) const;
+	void LoadPkgIDs(const CU_STR& filepath);
+	int  QueryPkgID(const CU_STR& name) const;
 
 	int GetPkgSize() const { return m_pkgs.size(); }
 	void GetAllPkgNames(const char* names[]) const;
@@ -26,25 +22,25 @@ public:
 private:
 	struct PkgID
 	{
-		std::string path;
-		int         id;
+		CU_STR path;
+		int             id;
 	};
 
 	class PkgIDsLoader : public bimp::FileLoader
 	{
 	public:
-		PkgIDsLoader(const std::string& filepath, std::map<std::string, PkgID>& pkgs);
+		PkgIDsLoader(const std::string& filepath, CU_MAP<CU_STR, PkgID>& pkgs);
 
 	protected:
 		virtual void OnLoad(bimp::ImportStream& is);
 
 	private:
-		std::map<std::string, PkgID>& m_pkgs;
+		CU_MAP<CU_STR, PkgID>& m_pkgs;
 
 	}; // PkgIDsLoader
 
 private:
-	std::map<std::string, PkgID> m_pkgs;
+	CU_MAP<CU_STR, PkgID> m_pkgs;
 
 	CU_SINGLETON_DECLARATION(PkgIDMgr);
 
