@@ -20,7 +20,7 @@ void PkgIDMgr::LoadPkgIDs(const CU_STR& filepath)
 
 int PkgIDMgr::QueryPkgID(const CU_STR& name) const
 {
-	auto& itr = m_pkgs.find(CU_STR(name));
+	auto itr = m_pkgs.find(CU_STR(name));
 	if (itr != m_pkgs.end()) {
 		return itr->second.id;
 	} else {

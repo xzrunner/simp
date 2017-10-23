@@ -73,7 +73,7 @@ void Package::Traverse(PageVisitor& visitor) const
 
 uint32_t Package::QueryID(const CU_STR& name) const
 {
-	auto& itr = m_export_names.find(name);
+	auto itr = m_export_names.find(name);
 	if (itr != m_export_names.end()) {
 		return itr->second;
 	} else {
@@ -111,7 +111,7 @@ void Package::ClearPages()
 void Package::GetExportNames(CU_VEC<CU_STR>& names) const
 {
 	names.reserve(m_export_names.size());
-	auto& itr = m_export_names.begin();
+	auto itr = m_export_names.begin();
 	for ( ; itr != m_export_names.end(); ++itr) {
 		names.push_back(itr->first);
 	}

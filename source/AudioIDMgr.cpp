@@ -28,7 +28,7 @@ void AudioIDMgr::GetAllAudioNames(const char* names[]) const
 
 void AudioIDMgr::SetAudioPath(const CU_STR& name, const CU_STR& filepath)
 {
-	auto& itr = m_map2id.find(name);
+	auto itr = m_map2id.find(name);
 	if (itr != m_map2id.end()) {
 		itr->second.path = filepath;
 		m_map2path.insert(std::make_pair(itr->second.id, itr->second.path));
@@ -38,7 +38,7 @@ void AudioIDMgr::SetAudioPath(const CU_STR& name, const CU_STR& filepath)
 CU_STR AudioIDMgr::QueryAudioPath(int id) const
 {
 	CU_STR path;
-	auto& itr = m_map2path.find(id);
+	auto itr = m_map2path.find(id);
 	if (itr != m_map2path.end()) {
 		path = itr->second;
 	}
