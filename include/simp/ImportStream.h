@@ -1,7 +1,7 @@
 #ifndef _SIMP_IMPORT_STREAM_H_
 #define _SIMP_IMPORT_STREAM_H_
 
-#include <bimp/BIMP_ImportStream.h>
+#include <bimp/ImportStream.h>
 
 namespace bimp { class Allocator; }
 

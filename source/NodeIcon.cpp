@@ -1,8 +1,8 @@
-#include "NodeIcon.h"
-#include "ImportStream.h"
-#include "NodeArray.h"
+#include "simp/NodeIcon.h"
+#include "simp/ImportStream.h"
+#include "simp/NodeArray.h"
 
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {

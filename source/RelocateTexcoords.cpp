@@ -1,9 +1,9 @@
-#include "RelocateTexcoords.h"
-#include "NodeID.h"
-#include "Page.h"
-#include "simp_types.h"
-#include "NodePicture.h"
-#include "NodeFactory.h"
+#include "simp/RelocateTexcoords.h"
+#include "simp/NodeID.h"
+#include "simp/Page.h"
+#include "simp/simp_types.h"
+#include "simp/NodePicture.h"
+#include "simp/NodeFactory.h"
 
 namespace simp
 {

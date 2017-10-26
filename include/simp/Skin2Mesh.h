@@ -1,7 +1,7 @@
 #ifndef _SIMP_SKIN2_MESH_H_
 #define _SIMP_SKIN2_MESH_H_
 
-#include "MeshShape.h"
+#include "simp/MeshShape.h"
 
 #include <stdint.h>
 

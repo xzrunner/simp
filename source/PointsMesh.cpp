@@ -1,9 +1,9 @@
-#include "SIMP_PointsMesh.h"
-#include "ImportStream.h"
-#include "simp_define.h"
-#include "NodeArray.h"
+#include "simp/PointsMesh.h"
+#include "simp/ImportStream.h"
+#include "simp/simp_define.h"
+#include "simp/NodeArray.h"
 
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {

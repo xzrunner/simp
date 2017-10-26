@@ -1,8 +1,8 @@
-#include "SIMP_Facade.h"
-#include "NodeFactory.h"
-#include "PageAlloc.h"
-#include "PkgIDMgr.h"
-#include "RelocateTexcoords.h"
+#include "simp/Facade.h"
+#include "simp/NodeFactory.h"
+#include "simp/PageAlloc.h"
+#include "simp/PkgIDMgr.h"
+#include "simp/RelocateTexcoords.h"
 
 namespace simp
 {

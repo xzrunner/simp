@@ -1,7 +1,7 @@
 #ifndef _SIMP_RELOCATE_TEXCOORDS_H_
 #define _SIMP_RELOCATE_TEXCOORDS_H_
 
-#include "NodeVisitor.h"
+#include "simp/NodeVisitor.h"
 
 #include <cu/cu_macro.h>
 #include <cu/cu_stl.h>

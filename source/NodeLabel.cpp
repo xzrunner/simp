@@ -1,9 +1,9 @@
-#include "NodeLabel.h"
-#include "ImportStream.h"
-#include "simp_define.h"
+#include "simp/NodeLabel.h"
+#include "simp/ImportStream.h"
+#include "simp/simp_define.h"
 
 #include <bimp/Allocator.h>
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {

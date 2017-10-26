@@ -1,5 +1,5 @@
-#include "PageAlloc.h"
-#include "simp_define.h"
+#include "simp/PageAlloc.h"
+#include "simp/simp_define.h"
 
 #include <bimp/Allocator.h>
 

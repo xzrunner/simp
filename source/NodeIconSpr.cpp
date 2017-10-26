@@ -1,7 +1,7 @@
-#include "NodeIconSpr.h"
-#include "ImportStream.h"
+#include "simp/NodeIconSpr.h"
+#include "simp/ImportStream.h"
 
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {

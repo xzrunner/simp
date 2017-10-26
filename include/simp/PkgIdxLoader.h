@@ -1,7 +1,7 @@
 #ifndef _SIMP_PKG_IDX_LOADER_H_
 #define _SIMP_PKG_IDX_LOADER_H_
 
-#include "SIMP_Package.h"
+#include "simp/Package.h"
 
 #include <bimp/FileLoader.h>
 

@@ -1,7 +1,7 @@
-#include "NodeArray.h"
-#include "ImportStream.h"
+#include "simp/NodeArray.h"
+#include "simp/ImportStream.h"
 
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 #include <bimp/Allocator.h>
 
 namespace simp

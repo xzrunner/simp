@@ -1,6 +1,6 @@
-#include "AudioIDMgr.h"
+#include "simp/AudioIDMgr.h"
 
-#include <bimp/BIMP_ImportStream.h>
+#include <bimp/ImportStream.h>
 
 namespace simp
 {

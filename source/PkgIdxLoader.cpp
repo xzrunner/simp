@@ -1,5 +1,5 @@
-#include "PkgIdxLoader.h"
-#include "ImportStream.h"
+#include "simp/PkgIdxLoader.h"
+#include "simp/ImportStream.h"
 
 namespace simp
 {

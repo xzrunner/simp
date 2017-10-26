@@ -1,8 +1,8 @@
-#include "NodeParticle2d.h"
-#include "ImportStream.h"
+#include "simp/NodeParticle2d.h"
+#include "simp/ImportStream.h"
 
 #include <bimp/Allocator.h>
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 #include <ps_2d.h>
 
 #include <assert.h>

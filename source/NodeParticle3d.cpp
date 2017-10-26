@@ -1,8 +1,8 @@
-#include "NodeParticle3d.h"
-#include "ImportStream.h"
+#include "simp/NodeParticle3d.h"
+#include "simp/ImportStream.h"
 
 #include <bimp/Allocator.h>
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {

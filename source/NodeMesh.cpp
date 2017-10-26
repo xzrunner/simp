@@ -1,12 +1,12 @@
-#include "NodeMesh.h"
-#include "ImportStream.h"
-#include "simp_define.h"
+#include "simp/NodeMesh.h"
+#include "simp/ImportStream.h"
+#include "simp/simp_define.h"
 
-#include "SIMP_PointsMesh.h"
-#include "SIMP_TrianglesMesh.h"
-#include "SIMP_Skin2Mesh.h"
+#include "simp/PointsMesh.h"
+#include "simp/TrianglesMesh.h"
+#include "simp/Skin2Mesh.h"
 
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 #include <bimp/Allocator.h>
 
 namespace simp

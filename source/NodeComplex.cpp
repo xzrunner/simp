@@ -1,13 +1,13 @@
 #include <string.h>
 
-#include "NodeComplex.h"
-#include "ImportStream.h"
-#include "simp_define.h"
-#include "NodeTrans.h"
-#include "NodeArray.h"
+#include "simp/NodeComplex.h"
+#include "simp/ImportStream.h"
+#include "simp/simp_define.h"
+#include "simp/NodeTrans.h"
+#include "simp/NodeArray.h"
 
 #include <bimp/Allocator.h>
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 
 #include <string.h>
 

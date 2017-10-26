@@ -1,7 +1,7 @@
 #ifndef _SIMP_NODE_FACTORY_H_
 #define _SIMP_NODE_FACTORY_H_
 
-#include "SIMP_Package.h"
+#include "simp/Package.h"
 
 #include <cu/uncopyable.h>
 #include <cu/cu_macro.h>
@@ -95,6 +95,6 @@ private:
 
 }
 
-#include "NodeFactory.inl"
+#include "simp/NodeFactory.inl"
 
 #endif // _SIMP_NODE_FACTORY_H_

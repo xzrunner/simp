@@ -1,8 +1,8 @@
-#include "NodeParticle3dSpr.h"
-#include "ImportStream.h"
-#include "from_int.h"
+#include "simp/NodeParticle3dSpr.h"
+#include "simp/ImportStream.h"
+#include "simp/from_int.h"
 
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {

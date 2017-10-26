@@ -1,7 +1,7 @@
-#include "NodeScale9Spr.h"
-#include "ImportStream.h"
+#include "simp/NodeScale9Spr.h"
+#include "simp/ImportStream.h"
 
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 
 namespace simp
 {

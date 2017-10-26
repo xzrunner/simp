@@ -1,10 +1,10 @@
 #ifndef _SIMP_NODE_FACTORY_INL_
 #define _SIMP_NODE_FACTORY_INL_
 
-#include "SIMP_Package.h"
-#include "NodeID.h"
-#include "simp_types.h"
-#include "simp_define.h"
+#include "simp/Package.h"
+#include "simp/NodeID.h"
+#include "simp/simp_types.h"
+#include "simp/simp_define.h"
 
 #include <assert.h>
 

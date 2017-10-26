@@ -1,15 +1,15 @@
-#include "SIMP_Package.h"
-#include "PkgIdxLoader.h"
-#include "simp_types.h"
-#include "Page.h"
-#include "PageAlloc.h"
-#include "simp_define.h"
-#include "PageVisitor.h"
+#include "simp/Package.h"
+#include "simp/PkgIdxLoader.h"
+#include "simp/simp_types.h"
+#include "simp/Page.h"
+#include "simp/PageAlloc.h"
+#include "simp/simp_define.h"
+#include "simp/PageVisitor.h"
 
 #include <logger.h>
 #include <fs_file.h>
 #include <fault.h>
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 #include <bimp/Allocator.h>
 
 #include <sstream>

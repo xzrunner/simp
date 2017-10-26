@@ -1,6 +1,6 @@
-#include "PkgIDMgr.h"
+#include "simp/PkgIDMgr.h"
 
-#include <bimp/BIMP_ImportStream.h>
+#include <bimp/ImportStream.h>
 
 namespace simp
 {

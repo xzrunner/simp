@@ -1,12 +1,12 @@
 #include <string.h>
 
-#include "NodeAnimation.h"
-#include "simp_define.h"
-#include "ImportStream.h"
-#include "NodeTrans.h"
-#include "from_int.h"
+#include "simp/NodeAnimation.h"
+#include "simp/simp_define.h"
+#include "simp/ImportStream.h"
+#include "simp/NodeTrans.h"
+#include "simp/from_int.h"
 
-#include <bimp/bimp_typedef.h>
+#include <bimp/typedef.h>
 #include <bimp/Allocator.h>
 
 #include <string.h>

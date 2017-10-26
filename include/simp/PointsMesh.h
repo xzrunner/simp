@@ -1,7 +1,7 @@
 #ifndef _SIMP_POINTS_MESH_H_
 #define _SIMP_POINTS_MESH_H_
 
-#include "MeshShape.h"
+#include "simp/MeshShape.h"
 
 #include <stdint.h>
 

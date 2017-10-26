@@ -1,6 +1,6 @@
-#include "NodeFactory.h"
-#include "SIMP_Package.h"
-#include "PageAlloc.h"
+#include "simp/NodeFactory.h"
+#include "simp/Package.h"
+#include "simp/PageAlloc.h"
 
 #include <assert.h>
 
