@@ -50,7 +50,7 @@ void Package::Traverse(NodeVisitor& visitor) const
 	for (int i = 0, n = m_pages.size(); i < n; ++i) 
 	{
 		const PageDesc& page = m_pages[i];
-		bool loaded = page.m_page != NULL;
+		bool loaded = page.m_page != nullptr;
 		if (!loaded) {
 			LoadPage(i);
 		}
@@ -88,7 +88,7 @@ const void* Package::QueryNode(uint32_t id, int* type)
 	if (page) {
 		return page->Query(id, type);
 	} else {
-		return NULL;
+		return nullptr;
 	}	
 }
 
@@ -166,7 +166,7 @@ void Package::LoadIndex(fs_file* file, uint32_t offset)
 Page* Package::QueryPage(int id)
 {
 	if (m_pages.empty()) {
-		return NULL;
+		return nullptr;
 	}
 
 	int idx = -1;
@@ -188,11 +188,11 @@ Page* Package::QueryPage(int id)
 
 	if (idx == -1) {
 		LOGD("query page fail, pkg %d, id %d, start %d, end %d\n", m_id, id, start, end);
-		return NULL;
+		return nullptr;
 	}
 	if (!m_pages[idx].m_page) {
 		if(!LoadPage(idx)) {
-			return NULL;
+			return nullptr;
 		}
 	}
 
@@ -231,7 +231,7 @@ void Package::UnloadPage(int idx) const
 
 	m_pages[idx].m_page->~Page();
 	// delete m_pages[idx].page;
-	m_pages[idx].m_page = NULL;
+	m_pages[idx].m_page = nullptr;
 }
 
 /************************************************************************/
@@ -243,7 +243,7 @@ PageDesc()
 	: m_size(0)
 	, m_min(0)
 	, m_max(0)
-	, m_page(NULL) 
+	, m_page(nullptr) 
 {
 }
 
@@ -252,7 +252,7 @@ PageDesc(int size, int min, int max)
 	: m_size(size)
 	, m_min(min)
 	, m_max(max)
-	, m_page(NULL) 
+	, m_page(nullptr) 
 {
 }
 

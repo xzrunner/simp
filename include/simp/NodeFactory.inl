@@ -18,7 +18,7 @@ const Package* NodeFactory::QueryPkg(int pkg_id) const
 	if (idx >= 0 && idx < static_cast<int>(m_pkgs.size())) {
 		return m_pkgs[idx].pkg.get();
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -29,7 +29,7 @@ const Package* NodeFactory::QueryPkg(const CU_STR& pkg_name) const
 	if (idx >= 0 && idx < static_cast<int>(m_pkgs.size())) {
 		return m_pkgs[idx].pkg.get();
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -39,7 +39,7 @@ const void* NodeFactory::Create(uint32_t id, int* type)
 	uint32_t pkg_id = NodeID::GetPkgID(id);
 	if (pkg_id == AUDIO_ID) {
 		*type = TYPE_AUDIO;
-		return NULL;
+		return nullptr;
 	}
 
 	uint32_t node_id = NodeID::GetNodeID(id);
@@ -47,7 +47,7 @@ const void* NodeFactory::Create(uint32_t id, int* type)
 	if (idx >= 0 && idx < static_cast<int>(m_pkgs.size())) {
 		return m_pkgs[idx].pkg->QueryNode(node_id, type);
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 

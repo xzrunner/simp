@@ -9,7 +9,7 @@ namespace simp
 {
 
 NodeTrans::NodeTrans()
-	: name(NULL)
+	: name(nullptr)
 {
 }
 

@@ -13,7 +13,7 @@ namespace simp
 {
 
 NodeMesh::NodeMesh(bimp::Allocator& alloc, ImportStream& is)
-	: shape(NULL)
+	: shape(nullptr)
 {
 	base_id = is.UInt32();
 	

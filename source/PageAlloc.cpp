@@ -21,10 +21,10 @@ bimp::Allocator* PageAlloc::Create(int size)
 {
 	int idx = CalcIndex(size);
 	if (idx == -1) {
-		return NULL;
+		return nullptr;
 	}
 
-	bimp::Allocator* ret = NULL;
+	bimp::Allocator* ret = nullptr;
 	if (!m_freelists[idx]->freelist.empty()) {
 		ret = m_freelists[idx]->freelist.back();
 		ret->Reset();

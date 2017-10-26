@@ -149,7 +149,7 @@ OnLoad(bimp::ImportStream& is)
 void* Page::Loader::
 CreateNode(uint8_t type, bimp::Allocator& alloc, bimp::ImportStream& is) const
 {
-	void* ret = NULL;
+	void* ret = nullptr;
 
 	ImportStream& _is = static_cast<ImportStream&>(is);
 
