@@ -52,7 +52,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\include\simp;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\cu\src\cu;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\memmgr\include;..\..\..\..\flatten\include;..\..\..\..\cooking\include;..\..\..\..\ds\src\ds;..\..\..\..\cu\src;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;EASY_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -66,7 +66,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\..\include\simp;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\cu\src\cu;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\memmgr\include;..\..\..\..\flatten\include;..\..\..\..\cooking\include;..\..\..\..\ds\src\ds;..\..\..\..\cu\src;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;EASY_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -83,8 +83,6 @@
     <ClCompile Include="..\..\..\source\NodeAnimation.cpp" />
     <ClCompile Include="..\..\..\source\NodeAnimationSpr.cpp" />
     <ClCompile Include="..\..\..\source\NodeArray.cpp" />
-    <ClCompile Include="..\..\..\source\NodeAudio.cpp" />
-    <ClCompile Include="..\..\..\source\NodeAudioSpr.cpp" />
     <ClCompile Include="..\..\..\source\NodeComplex.cpp" />
     <ClCompile Include="..\..\..\source\NodeComplexSpr.cpp" />
     <ClCompile Include="..\..\..\source\NodeFactory.cpp" />
@@ -111,12 +109,14 @@
     <ClCompile Include="..\..\..\source\NodeTrans.cpp" />
     <ClCompile Include="..\..\..\source\Page.cpp" />
     <ClCompile Include="..\..\..\source\PageAlloc.cpp" />
+    <ClCompile Include="..\..\..\source\PkgIDMgr.cpp" />
     <ClCompile Include="..\..\..\source\PkgIdxLoader.cpp" />
     <ClCompile Include="..\..\..\source\RelocateTexcoords.cpp" />
-    <ClCompile Include="..\..\..\source\SIMP_Package.cpp" />
-    <ClCompile Include="..\..\..\source\SIMP_PointsMesh.cpp" />
-    <ClCompile Include="..\..\..\source\SIMP_Skin2Mesh.cpp" />
-    <ClCompile Include="..\..\..\source\SIMP_TrianglesMesh.cpp" />
+    <ClCompile Include="..\..\..\source\Facade.cpp" />
+    <ClCompile Include="..\..\..\source\Package.cpp" />
+    <ClCompile Include="..\..\..\source\PointsMesh.cpp" />
+    <ClCompile Include="..\..\..\source\Skin2Mesh.cpp" />
+    <ClCompile Include="..\..\..\source\TrianglesMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\simp\AudioIDMgr.h" />
@@ -128,8 +128,6 @@
     <ClInclude Include="..\..\..\include\simp\NodeAnimation.h" />
     <ClInclude Include="..\..\..\include\simp\NodeAnimationSpr.h" />
     <ClInclude Include="..\..\..\include\simp\NodeArray.h" />
-    <ClInclude Include="..\..\..\include\simp\NodeAudio.h" />
-    <ClInclude Include="..\..\..\include\simp\NodeAudioSpr.h" />
     <ClInclude Include="..\..\..\include\simp\NodeComplex.h" />
     <ClInclude Include="..\..\..\include\simp\NodeComplexSpr.h" />
     <ClInclude Include="..\..\..\include\simp\NodeFactory.h" />
@@ -155,16 +153,20 @@
     <ClInclude Include="..\..\..\include\simp\NodeTrail.h" />
     <ClInclude Include="..\..\..\include\simp\NodeTrailSpr.h" />
     <ClInclude Include="..\..\..\include\simp\NodeTrans.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeVisitor.h" />
     <ClInclude Include="..\..\..\include\simp\Page.h" />
     <ClInclude Include="..\..\..\include\simp\PageAlloc.h" />
+    <ClInclude Include="..\..\..\include\simp\PageVisitor.h" />
+    <ClInclude Include="..\..\..\include\simp\PkgIDMgr.h" />
     <ClInclude Include="..\..\..\include\simp\PkgIdxLoader.h" />
     <ClInclude Include="..\..\..\include\simp\RelocateTexcoords.h" />
     <ClInclude Include="..\..\..\include\simp\simp_define.h" />
-    <ClInclude Include="..\..\..\include\simp\SIMP_MeshType.h" />
-    <ClInclude Include="..\..\..\include\simp\SIMP_Package.h" />
-    <ClInclude Include="..\..\..\include\simp\SIMP_PointsMesh.h" />
-    <ClInclude Include="..\..\..\include\simp\SIMP_Skin2Mesh.h" />
-    <ClInclude Include="..\..\..\include\simp\SIMP_TrianglesMesh.h" />
+    <ClInclude Include="..\..\..\include\simp\Facade.h" />
+    <ClInclude Include="..\..\..\include\simp\MeshType.h" />
+    <ClInclude Include="..\..\..\include\simp\Package.h" />
+    <ClInclude Include="..\..\..\include\simp\PointsMesh.h" />
+    <ClInclude Include="..\..\..\include\simp\Skin2Mesh.h" />
+    <ClInclude Include="..\..\..\include\simp\TrianglesMesh.h" />
     <ClInclude Include="..\..\..\include\simp\simp_types.h" />
   </ItemGroup>
   <ItemGroup>

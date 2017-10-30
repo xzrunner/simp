@@ -1,91 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="storage">
-      <UniqueIdentifier>{d6775683-cacc-4337-82c9-9948cd4e1e13}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="storage\pkg">
-      <UniqueIdentifier>{980890ae-64ed-40fb-973f-0a27989abb25}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="preprocess">
-      <UniqueIdentifier>{b27f72af-4459-433a-850d-c7016609ecd3}</UniqueIdentifier>
+    <Filter Include="utility">
+      <UniqueIdentifier>{da74fcc5-1472-43b2-a51a-41d16fb35f8d}</UniqueIdentifier>
     </Filter>
     <Filter Include="node">
-      <UniqueIdentifier>{b38e628f-f14f-4212-b216-9672709d8b0c}</UniqueIdentifier>
+      <UniqueIdentifier>{2d3d78d0-ca44-41cb-9f86-0673363e3c86}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\01.picture">
-      <UniqueIdentifier>{e0d941c3-3ac4-4350-b88a-3265bd3a1386}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="node\07.animation">
-      <UniqueIdentifier>{89be1a54-84df-4478-8557-0834d16fb4f3}</UniqueIdentifier>
+      <UniqueIdentifier>{041d6775-bff8-4bfa-96c8-3ff714649375}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\02.scale9">
-      <UniqueIdentifier>{2ba9e752-c167-4df1-8f06-28de773ed2b9}</UniqueIdentifier>
+      <UniqueIdentifier>{d4ebd80c-63dc-4243-ac78-217064c1f7f8}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\03.icon">
-      <UniqueIdentifier>{2dafc39e-cb2a-4304-ad9a-f11d697f1b33}</UniqueIdentifier>
+      <UniqueIdentifier>{c8d3bc36-962b-4e90-ab59-6a2e1f4a9424}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\04.texture">
-      <UniqueIdentifier>{a7f3f7af-d84c-421e-ace7-bb52b322e8eb}</UniqueIdentifier>
+      <UniqueIdentifier>{da2fa618-bddb-4a4e-8cc0-0e4577ce993c}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\05.label">
-      <UniqueIdentifier>{62e75f98-9820-487e-9d58-e737adef644f}</UniqueIdentifier>
+      <UniqueIdentifier>{c58c3998-e7d2-4b57-86b9-2512697423a0}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\06.complex">
-      <UniqueIdentifier>{37267e38-b422-4eaf-9fc5-c6e0008db19f}</UniqueIdentifier>
+      <UniqueIdentifier>{afa8d6e2-c7e7-4097-a37c-9b0b9a4db0c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\07.animation">
+      <UniqueIdentifier>{a57c95d8-e6e9-4d1f-99f9-5cf0e0a1f036}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\08.particle3d">
-      <UniqueIdentifier>{16e5554b-ef38-4b67-bd89-5558c3c9c541}</UniqueIdentifier>
+      <UniqueIdentifier>{31a18dc4-4b69-4a1b-a2e1-b46ebfdadc09}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\09.particle2d">
-      <UniqueIdentifier>{7974ac26-7a37-4bfd-a24e-e63b1cc56f4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="node\13.trail">
-      <UniqueIdentifier>{ab1eb999-5769-4404-a739-275a31f7bd07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="node\12.mask">
-      <UniqueIdentifier>{b7c16f0a-5df3-4ea4-9653-a197ec8f80b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="node\11.mesh">
-      <UniqueIdentifier>{afa82e08-f1c5-4ded-a6e7-e8d786b7250e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="node\11.mesh\shape">
-      <UniqueIdentifier>{a452dbd8-e075-4a96-b559-e1cc7a4a09b4}</UniqueIdentifier>
+      <UniqueIdentifier>{465b83a8-d4a7-4832-ab2a-9deb1b0b2e2f}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\10.shape">
-      <UniqueIdentifier>{fb890cb9-852b-4a64-b2e8-a447da253f83}</UniqueIdentifier>
+      <UniqueIdentifier>{afcad0e2-c76b-4b36-8601-c1dd6da497c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\11.mesh">
+      <UniqueIdentifier>{032ae364-9cf3-46d2-a202-5708fa25d89c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\11.mesh\shape">
+      <UniqueIdentifier>{0e240122-9f1e-4331-b78f-f31c4b7ca944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\12.mask">
+      <UniqueIdentifier>{86a27180-c3b2-4564-a337-6b2dbd4d4c5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="node\13.trail">
+      <UniqueIdentifier>{d177d9d9-9642-4a24-bbce-c08e978d2bab}</UniqueIdentifier>
     </Filter>
     <Filter Include="node\07.anim2">
-      <UniqueIdentifier>{71f6dbc0-a130-4bc9-a84a-3a6696317fc8}</UniqueIdentifier>
+      <UniqueIdentifier>{4d2a16cd-aaf5-4eb9-802e-ad40185dace6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="node\16.audio">
-      <UniqueIdentifier>{a3a81654-38e7-4694-84fc-bf16bfa0a8a9}</UniqueIdentifier>
+    <Filter Include="storage">
+      <UniqueIdentifier>{78e26b57-20ec-4a34-a31f-ac7e19579987}</UniqueIdentifier>
     </Filter>
-    <Filter Include="utility">
-      <UniqueIdentifier>{ba370af8-63b7-4313-b2d4-fee609486be3}</UniqueIdentifier>
+    <Filter Include="storage\pkg">
+      <UniqueIdentifier>{fd17b05c-8793-48c6-89cc-f9eede086102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="preprocess">
+      <UniqueIdentifier>{5b586577-c3fb-4bb7-813e-1a1ad0dd695d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\source\AudioIDMgr.cpp">
-      <Filter>storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeFactory.cpp">
-      <Filter>storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\Page.cpp">
-      <Filter>storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\PageAlloc.cpp">
-      <Filter>storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\PkgIdxLoader.cpp">
-      <Filter>storage\pkg</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\SIMP_Package.cpp">
-      <Filter>storage\pkg</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\RelocateTexcoords.cpp">
-      <Filter>preprocess</Filter>
+    <ClCompile Include="..\..\..\source\ImportStream.cpp">
+      <Filter>utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\NodeArray.cpp">
       <Filter>node</Filter>
@@ -95,12 +74,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\NodePicture.cpp">
       <Filter>node\01.picture</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeAnimation.cpp">
-      <Filter>node\07.animation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeAnimationSpr.cpp">
-      <Filter>node\07.animation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\NodeScale9.cpp">
       <Filter>node\02.scale9</Filter>
@@ -129,6 +102,12 @@
     <ClCompile Include="..\..\..\source\NodeComplexSpr.cpp">
       <Filter>node\06.complex</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAnimation.cpp">
+      <Filter>node\07.animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAnimationSpr.cpp">
+      <Filter>node\07.animation</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\source\NodeParticle3d.cpp">
       <Filter>node\08.particle3d</Filter>
     </ClCompile>
@@ -141,17 +120,11 @@
     <ClCompile Include="..\..\..\source\NodeParticle2dSpr.cpp">
       <Filter>node\09.particle2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeTrail.cpp">
-      <Filter>node\13.trail</Filter>
+    <ClCompile Include="..\..\..\source\NodeShape.cpp">
+      <Filter>node\10.shape</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeTrailSpr.cpp">
-      <Filter>node\13.trail</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeMask.cpp">
-      <Filter>node\12.mask</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeMaskSpr.cpp">
-      <Filter>node\12.mask</Filter>
+    <ClCompile Include="..\..\..\source\NodeShapeSpr.cpp">
+      <Filter>node\10.shape</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\NodeMesh.cpp">
       <Filter>node\11.mesh</Filter>
@@ -159,20 +132,17 @@
     <ClCompile Include="..\..\..\source\NodeMeshSpr.cpp">
       <Filter>node\11.mesh</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\SIMP_PointsMesh.cpp">
-      <Filter>node\11.mesh\shape</Filter>
+    <ClCompile Include="..\..\..\source\NodeMask.cpp">
+      <Filter>node\12.mask</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\SIMP_Skin2Mesh.cpp">
-      <Filter>node\11.mesh\shape</Filter>
+    <ClCompile Include="..\..\..\source\NodeMaskSpr.cpp">
+      <Filter>node\12.mask</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\SIMP_TrianglesMesh.cpp">
-      <Filter>node\11.mesh\shape</Filter>
+    <ClCompile Include="..\..\..\source\NodeTrail.cpp">
+      <Filter>node\13.trail</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeShape.cpp">
-      <Filter>node\10.shape</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeShapeSpr.cpp">
-      <Filter>node\10.shape</Filter>
+    <ClCompile Include="..\..\..\source\NodeTrailSpr.cpp">
+      <Filter>node\13.trail</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\NodeAnim2.cpp">
       <Filter>node\07.anim2</Filter>
@@ -180,37 +150,47 @@
     <ClCompile Include="..\..\..\source\NodeAnim2Spr.cpp">
       <Filter>node\07.anim2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeAudio.cpp">
-      <Filter>node\16.audio</Filter>
+    <ClCompile Include="..\..\..\source\AudioIDMgr.cpp">
+      <Filter>storage</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeAudioSpr.cpp">
-      <Filter>node\16.audio</Filter>
+    <ClCompile Include="..\..\..\source\NodeFactory.cpp">
+      <Filter>storage</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\ImportStream.cpp">
-      <Filter>utility</Filter>
+    <ClCompile Include="..\..\..\source\Page.cpp">
+      <Filter>storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\PageAlloc.cpp">
+      <Filter>storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\PkgIDMgr.cpp">
+      <Filter>storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\PkgIdxLoader.cpp">
+      <Filter>storage\pkg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\RelocateTexcoords.cpp">
+      <Filter>preprocess</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Package.cpp">
+      <Filter>storage\pkg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Facade.cpp" />
+    <ClCompile Include="..\..\..\source\PointsMesh.cpp">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Skin2Mesh.cpp">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\TrianglesMesh.cpp">
+      <Filter>node\11.mesh\shape</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\simp\AudioIDMgr.h">
-      <Filter>storage</Filter>
+    <ClInclude Include="..\..\..\include\simp\ImportStream.h">
+      <Filter>utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeFactory.h">
-      <Filter>storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\Page.h">
-      <Filter>storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\PageAlloc.h">
-      <Filter>storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\PkgIdxLoader.h">
-      <Filter>storage\pkg</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\SIMP_Package.h">
-      <Filter>storage\pkg</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\RelocateTexcoords.h">
-      <Filter>preprocess</Filter>
+    <ClInclude Include="..\..\..\include\simp\NodeID.h">
+      <Filter>utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\simp\from_int.h">
       <Filter>node</Filter>
@@ -223,12 +203,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\simp\NodePicture.h">
       <Filter>node\01.picture</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeAnimation.h">
-      <Filter>node\07.animation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeAnimationSpr.h">
-      <Filter>node\07.animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\simp\NodeScale9.h">
       <Filter>node\02.scale9</Filter>
@@ -257,6 +231,12 @@
     <ClInclude Include="..\..\..\include\simp\NodeComplexSpr.h">
       <Filter>node\06.complex</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAnimation.h">
+      <Filter>node\07.animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAnimationSpr.h">
+      <Filter>node\07.animation</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\simp\NodeParticle3d.h">
       <Filter>node\08.particle3d</Filter>
     </ClInclude>
@@ -269,17 +249,11 @@
     <ClInclude Include="..\..\..\include\simp\NodeParticle2dSpr.h">
       <Filter>node\09.particle2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeTrail.h">
-      <Filter>node\13.trail</Filter>
+    <ClInclude Include="..\..\..\include\simp\NodeShape.h">
+      <Filter>node\10.shape</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeTrailSpr.h">
-      <Filter>node\13.trail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeMask.h">
-      <Filter>node\12.mask</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeMaskSpr.h">
-      <Filter>node\12.mask</Filter>
+    <ClInclude Include="..\..\..\include\simp\NodeShapeSpr.h">
+      <Filter>node\10.shape</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\simp\MeshShape.h">
       <Filter>node\11.mesh</Filter>
@@ -290,23 +264,17 @@
     <ClInclude Include="..\..\..\include\simp\NodeMeshSpr.h">
       <Filter>node\11.mesh</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\SIMP_MeshType.h">
-      <Filter>node\11.mesh</Filter>
+    <ClInclude Include="..\..\..\include\simp\NodeMask.h">
+      <Filter>node\12.mask</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\SIMP_PointsMesh.h">
-      <Filter>node\11.mesh\shape</Filter>
+    <ClInclude Include="..\..\..\include\simp\NodeMaskSpr.h">
+      <Filter>node\12.mask</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\SIMP_Skin2Mesh.h">
-      <Filter>node\11.mesh\shape</Filter>
+    <ClInclude Include="..\..\..\include\simp\NodeTrail.h">
+      <Filter>node\13.trail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\SIMP_TrianglesMesh.h">
-      <Filter>node\11.mesh\shape</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeShape.h">
-      <Filter>node\10.shape</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeShapeSpr.h">
-      <Filter>node\10.shape</Filter>
+    <ClInclude Include="..\..\..\include\simp\NodeTrailSpr.h">
+      <Filter>node\13.trail</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\simp\NodeAnim2.h">
       <Filter>node\07.anim2</Filter>
@@ -314,20 +282,51 @@
     <ClInclude Include="..\..\..\include\simp\NodeAnim2Spr.h">
       <Filter>node\07.anim2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeAudio.h">
-      <Filter>node\16.audio</Filter>
+    <ClInclude Include="..\..\..\include\simp\AudioIDMgr.h">
+      <Filter>storage</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeAudioSpr.h">
-      <Filter>node\16.audio</Filter>
+    <ClInclude Include="..\..\..\include\simp\NodeFactory.h">
+      <Filter>storage</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\ImportStream.h">
-      <Filter>utility</Filter>
+    <ClInclude Include="..\..\..\include\simp\NodeVisitor.h">
+      <Filter>storage</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\NodeID.h">
-      <Filter>utility</Filter>
+    <ClInclude Include="..\..\..\include\simp\Page.h">
+      <Filter>storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\PageAlloc.h">
+      <Filter>storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\PageVisitor.h">
+      <Filter>storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\PkgIDMgr.h">
+      <Filter>storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\PkgIdxLoader.h">
+      <Filter>storage\pkg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\RelocateTexcoords.h">
+      <Filter>preprocess</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\simp\simp_define.h" />
     <ClInclude Include="..\..\..\include\simp\simp_types.h" />
+    <ClInclude Include="..\..\..\include\simp\Package.h">
+      <Filter>storage\pkg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\Facade.h" />
+    <ClInclude Include="..\..\..\include\simp\PointsMesh.h">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\Skin2Mesh.h">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\TrianglesMesh.h">
+      <Filter>node\11.mesh\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\MeshType.h">
+      <Filter>node\11.mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\simp\NodeFactory.inl">
