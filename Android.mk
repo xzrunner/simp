@@ -9,7 +9,7 @@ LOCAL_MODULE := simp
 LOCAL_C_INCLUDES  := \
 	${CLIB_PATH} \
 	${SIMP_SRC_PATH}/include \
-	${SIMP_SRC_PATH}/include/simp \
+	${SIMP_SRC_PATH}/include \
 	${BIMP_SRC_PATH}/include \
 	${LOGGER_SRC_PATH} \
 	${SM_SRC_PATH} \
