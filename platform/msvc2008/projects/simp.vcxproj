@@ -117,6 +117,8 @@
     <ClCompile Include="..\..\..\source\PointsMesh.cpp" />
     <ClCompile Include="..\..\..\source\Skin2Mesh.cpp" />
     <ClCompile Include="..\..\..\source\TrianglesMesh.cpp" />
+    <ClCompile Include="..\..\..\source\NodeAudio.cpp" />
+    <ClCompile Include="..\..\..\source\NodeAudioSpr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\simp\AudioIDMgr.h" />
@@ -168,6 +170,8 @@
     <ClInclude Include="..\..\..\include\simp\Skin2Mesh.h" />
     <ClInclude Include="..\..\..\include\simp\TrianglesMesh.h" />
     <ClInclude Include="..\..\..\include\simp\simp_types.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeAudio.h" />
+    <ClInclude Include="..\..\..\include\simp\NodeAudioSpr.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\simp\NodeFactory.inl" />

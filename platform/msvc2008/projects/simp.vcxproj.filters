@@ -61,6 +61,9 @@
     <Filter Include="preprocess">
       <UniqueIdentifier>{5b586577-c3fb-4bb7-813e-1a1ad0dd695d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="node\16.audio">
+      <UniqueIdentifier>{5e1d5ef2-3738-4bf7-9581-25870496a897}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\ImportStream.cpp">
@@ -183,6 +186,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\TrianglesMesh.cpp">
       <Filter>node\11.mesh\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAudio.cpp">
+      <Filter>node\16.audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeAudioSpr.cpp">
+      <Filter>node\16.audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -326,6 +335,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\simp\MeshType.h">
       <Filter>node\11.mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAudio.h">
+      <Filter>node\16.audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simp\NodeAudioSpr.h">
+      <Filter>node\16.audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
