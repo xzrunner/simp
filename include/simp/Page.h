@@ -40,7 +40,7 @@ private:
 		Loader(int pkg_version, fs_file* file, uint32_t offset, Page* page);
 
 	protected:
-		virtual void OnLoad(bimp::ImportStream& is);
+		virtual void OnLoad(bimp::ImportStream& is) override;
 
 	private:
 		void* CreateNode(uint8_t type, bimp::Allocator& alloc, bimp::ImportStream& is) const;

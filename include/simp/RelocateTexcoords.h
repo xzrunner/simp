@@ -46,7 +46,7 @@ private:
 	{
 	public:
 		Visitor(int pkg_id, const CU_MAP<int, Item>& items);
-		virtual void Visit(int id, int type, const void* node);
+		virtual void Visit(int id, int type, const void* node) override;
 	private:
 		int m_pkg_id;
 		const CU_MAP<int, Item>& m_items;

@@ -72,7 +72,7 @@ private:
 	public:
 		HashID(int hash_sz);
 	protected:
-		virtual int GetHashVal(const uint32_t& id) const;
+		virtual int GetHashVal(const uint32_t& id) const override;
 	}; // HashID
 
 	struct HashName : public Hash<CU_STR>

@@ -25,7 +25,7 @@ public:
 	float GetScale() const { return m_scale; }
 
 protected:
-	virtual void OnLoad(bimp::ImportStream& is);
+	virtual void OnLoad(bimp::ImportStream& is) override;
 
 private:
 	int m_version;

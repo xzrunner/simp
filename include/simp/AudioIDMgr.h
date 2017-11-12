@@ -34,7 +34,7 @@ private:
 			CU_MAP<CU_STR, AudioID>& audios);
 
 	protected:
-		virtual void OnLoad(bimp::ImportStream& is);
+		virtual void OnLoad(bimp::ImportStream& is) override;
 
 	private:
 		CU_MAP<CU_STR, AudioID>& m_audios;

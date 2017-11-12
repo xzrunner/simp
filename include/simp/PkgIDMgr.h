@@ -32,7 +32,7 @@ private:
 		PkgIDsLoader(const std::string& filepath, CU_MAP<CU_STR, PkgID>& pkgs);
 
 	protected:
-		virtual void OnLoad(bimp::ImportStream& is);
+		virtual void OnLoad(bimp::ImportStream& is) override;
 
 	private:
 		CU_MAP<CU_STR, PkgID>& m_pkgs;
