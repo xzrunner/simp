@@ -33,6 +33,7 @@
 #include "simp/NodeTrailSpr.h"
 #include "simp/NodeAnim2.h"
 #include "simp/NodeAnim2Spr.h"
+#include "simp/NodeAudioSpr.h"
 
 #include <bimp/FileLoader.h>
 #include <bimp/typedef.h>
@@ -309,6 +310,12 @@ CreateNode(uint8_t type, bimp::Allocator& alloc, bimp::ImportStream& is) const
 		{
 			void* ptr = alloc.Alloc(NodeAnim2Spr::Size());
 			ret = new (ptr) NodeAnim2Spr(_is);
+		}
+		break;
+	case TYPE_AUDIO_SPR:
+		{
+			void* ptr = alloc.Alloc(NodeAudioSpr::Size());
+			ret = new (ptr) NodeAudioSpr(_is);
 		}
 		break;
 	}
