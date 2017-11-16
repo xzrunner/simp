@@ -9,6 +9,12 @@ namespace simp
 NodeAudioSpr::NodeAudioSpr(ImportStream& is)
 {
 	sym = is.UInt32();
+
+	offset   = is.Float();
+	duration = is.Float();
+
+	fade_in  = is.Float();
+	fade_out = is.Float();
 }
 
 int NodeAudioSpr::Size()

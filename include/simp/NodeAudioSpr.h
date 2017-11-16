@@ -15,6 +15,9 @@ class NodeAudioSpr : private cu::Uncopyable
 public:
 	uint32_t sym;
 
+	float offset, duration;
+	float fade_in, fade_out;
+
 public:
 	NodeAudioSpr(ImportStream& is);
 
