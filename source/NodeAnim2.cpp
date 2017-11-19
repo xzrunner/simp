@@ -62,11 +62,18 @@ NodeAnim2::NodeAnim2(bimp::Allocator& alloc, ImportStream& is)
 		tl_deforms[i] = static_cast<TL_Deform*>(alloc.Alloc(TL_Deform::Size()));
 		tl_deforms[i]->Load(alloc, is);
 	}
+
+	// curves
+	curve_count = is.UInt16();
+	curves = static_cast<Curve*>(alloc.Alloc(sizeof(Curve) * curve_count));
+	for (int i = 0; i < curve_count; ++i) {
+		curves[i].Load(is);
+	}
 }
 
 int NodeAnim2::Size()
 {
-	return ALIGN_4BYTE(sizeof(NodeAnim2) + PTR_SIZE_DIFF * 6);
+	return ALIGN_4BYTE(sizeof(NodeAnim2) + PTR_SIZE_DIFF * 8);
 }
 
 /************************************************************************/
@@ -158,6 +165,25 @@ Size()
 }
 
 /************************************************************************/
+/* struct NodeAnim2::Curve                                              */
+/************************************************************************/
+
+void NodeAnim2::Curve::
+Load(ImportStream& is)
+{
+	x0 = is.Float();
+	y0 = is.Float();
+	x1 = is.Float();
+	y1 = is.Float();
+}
+
+int NodeAnim2::Curve::
+Size()
+{
+	return ALIGN_4BYTE(sizeof(Curve));
+}
+
+/************************************************************************/
 /* struct NodeAnim2::JointSample                                        */
 /************************************************************************/
 
@@ -184,9 +210,10 @@ Load(bimp::Allocator& alloc, ImportStream& is)
 	alloc.Alloc(JointSample::Size() * count);
 	for (int i = 0; i < count; ++i)
 	{
-		samples[i].time = is.UInt16();
-		samples[i].lerp = is.UInt8();
-		samples[i].data = is.Float();
+		samples[i].time  = is.UInt16();
+		samples[i].lerp  = is.UInt8();
+		samples[i].curve = is.UInt8();
+		samples[i].data  = is.Float();
 	}
 }
 
@@ -248,13 +275,15 @@ Load(bimp::Allocator& alloc, ImportStream& is)
 	samples = static_cast<DeformSample**>(alloc.Alloc(sizeof(DeformSample*) * count));
 	for (int i = 0; i < count; ++i) 
 	{
-		uint16_t time = is.UInt16();
+		uint16_t time   = is.UInt16();
 		uint16_t offset = is.UInt16();
+		uint8_t  curve  = is.UInt8();
 		int count = is.UInt16();
 		int sz = DeformSample::Size() + sizeof(float) * count * 2;
 		samples[i] = static_cast<DeformSample*>(alloc.Alloc(sz));
 		samples[i]->time   = time;
 		samples[i]->offset = offset;
+		samples[i]->curve  = curve;
 		samples[i]->count  = count;
 		for (int j = 0, n = count * 2; j < n; ++j) {
 			samples[i]->vertices[j] = is.Float();

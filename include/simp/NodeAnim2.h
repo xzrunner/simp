@@ -70,11 +70,21 @@ public:
 		static int Size();
 	};
 
+	struct Curve
+	{
+		float x0, y0;
+		float x1, y1;
+
+		void Load(ImportStream& is);
+
+		static int Size();
+	};
+
 	struct JointSample
 	{
 		uint16_t time;
 		uint8_t	 lerp;
-		uint8_t  padding;
+		uint8_t  curve;
 		float	 data;
 
 		static int Size();
@@ -114,7 +124,10 @@ public:
 	{
 		uint16_t time;
 		uint16_t offset;
-		int count;
+		uint8_t  curve;
+		uint8_t  padding[3];
+
+		int   count;
 		float vertices[1];
 
 		static int Size();
@@ -138,7 +151,8 @@ public:
 	uint16_t ik_count;
 	uint16_t skin_count;
 	uint16_t slot_count;
-	uint16_t padding[3];
+	uint16_t curve_count;
+	uint16_t padding[2];
 
 	Joint* joints;
 	IK*    iks;
@@ -148,6 +162,8 @@ public:
 	TL_Joint**  tl_joints;
 	TL_Skin**   tl_skins;
 	TL_Deform** tl_deforms;
+
+	Curve* curves;
 
 public:
 	NodeAnim2(bimp::Allocator& alloc, ImportStream& is);
