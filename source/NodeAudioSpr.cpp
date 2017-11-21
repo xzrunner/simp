@@ -10,6 +10,8 @@ NodeAudioSpr::NodeAudioSpr(ImportStream& is)
 {
 	sym = is.UInt32();
 
+	volume   = is.Float();
+
 	offset   = is.Float();
 	duration = is.Float();
 
