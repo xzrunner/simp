@@ -4,7 +4,7 @@
 namespace simp
 {
 
-PkgIdxLoader::PkgIdxLoader(const std::string& filepath,
+PkgIdxLoader::PkgIdxLoader(const CU_STR& filepath,
 	                       CU_MAP<CU_STR, uint32_t>& export_names,
 	                       CU_VEC<Package::PageDesc>& pages,
                            CU_VEC<int>& ref_pkgs)

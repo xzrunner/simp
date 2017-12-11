@@ -11,7 +11,7 @@ namespace simp
 class PkgIdxLoader : public bimp::FileLoader
 {
 public:
-	PkgIdxLoader(const std::string& filepath,
+	PkgIdxLoader(const CU_STR& filepath,
 		CU_MAP<CU_STR, uint32_t>& export_names,
 		CU_VEC<Package::PageDesc>& pages,
 		CU_VEC<int>& ref_pkgs);

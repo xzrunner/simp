@@ -50,7 +50,7 @@ CU_STR AudioIDMgr::QueryAudioPath(int id) const
 /************************************************************************/
 
 AudioIDMgr::AudioIDsLoader::
-AudioIDsLoader(const std::string& filepath, CU_MAP<CU_STR, AudioID>& audios)
+AudioIDsLoader(const CU_STR& filepath, CU_MAP<CU_STR, AudioID>& audios)
 	: FileLoader(filepath)
 	, m_audios(audios)
 {

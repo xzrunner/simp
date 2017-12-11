@@ -36,7 +36,7 @@ private:
 	class Loader : public bimp::FileLoader
 	{
 	public:
-		Loader(int pkg_version, const std::string& filepath, Page* page);
+		Loader(int pkg_version, const CU_STR& filepath, Page* page);
 		Loader(int pkg_version, fs_file* file, uint32_t offset, Page* page);
 
 	protected:

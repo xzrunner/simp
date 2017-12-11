@@ -29,7 +29,7 @@ private:
 	class PkgIDsLoader : public bimp::FileLoader
 	{
 	public:
-		PkgIDsLoader(const std::string& filepath, CU_MAP<CU_STR, PkgID>& pkgs);
+		PkgIDsLoader(const CU_STR& filepath, CU_MAP<CU_STR, PkgID>& pkgs);
 
 	protected:
 		virtual void OnLoad(bimp::ImportStream& is) override;

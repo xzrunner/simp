@@ -46,7 +46,7 @@ void PkgIDMgr::Clear()
 /************************************************************************/
 
 PkgIDMgr::PkgIDsLoader::
-PkgIDsLoader(const std::string& filepath, CU_MAP<CU_STR, PkgID>& pkgs)
+PkgIDsLoader(const CU_STR& filepath, CU_MAP<CU_STR, PkgID>& pkgs)
 	: FileLoader(filepath)
 	, m_pkgs(pkgs)
 {
