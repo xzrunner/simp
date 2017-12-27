@@ -4,10 +4,10 @@
 #include "simp/simp_define.h"
 #include "simp/ImportStream.h"
 #include "simp/NodeTrans.h"
-#include "simp/from_int.h"
 
 #include <bimp/typedef.h>
 #include <bimp/Allocator.h>
+#include <bs/FixedPointNum.h>
 
 #include <string.h>
 
@@ -59,7 +59,7 @@ void NodeAnimation::Init(bimp::Allocator& alloc, ImportStream& is)
 			void* ptr = alloc.Alloc(FrameSize());
 			Frame* frame = new (ptr) Frame();
 			frame->index = (int16_t)(is.UInt16());
-			frame->tween = int2bool(is.UInt8());
+			frame->tween = bs::int2bool(is.UInt8());
 			InitActors(frame, alloc, is);
 			InitLerps(frame, alloc, is);
 			layer->frames[j] = frame;

@@ -201,9 +201,6 @@
     <ClInclude Include="..\..\..\include\simp\NodeID.h">
       <Filter>utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\simp\from_int.h">
-      <Filter>node</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\simp\NodeArray.h">
       <Filter>node</Filter>
     </ClInclude>

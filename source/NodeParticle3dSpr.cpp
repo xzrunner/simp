@@ -1,8 +1,8 @@
 #include "simp/NodeParticle3dSpr.h"
 #include "simp/ImportStream.h"
-#include "simp/from_int.h"
 
 #include <bimp/typedef.h>
+#include <bs/FixedPointNum.h>
 
 namespace simp
 {
@@ -17,7 +17,7 @@ NodeParticle3dSpr::NodeParticle3dSpr(ImportStream& is)
 	alone = (pack8 & 0x4) ? 1 : 0;
 	reuse = (pack8 >> 3) & 0xff;
 
-	radius = int2float(is.UInt16(), 16);
+	radius = bs::int2float(is.UInt16(), 16);
 }
 
 int NodeParticle3dSpr::Size()

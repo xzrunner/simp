@@ -15,7 +15,7 @@
     <ProjectGuid>{D19B530F-A257-4465-A92C-381E91B47746}</ProjectGuid>
     <RootNamespace>simp</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-	<WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>    
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -53,7 +53,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\memmgr\include;..\..\..\..\flatten\include;..\..\..\..\cooking\include;..\..\..\..\ds\src\ds;..\..\..\..\cu\src;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\bs\include;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\memmgr\include;..\..\..\..\flatten\include;..\..\..\..\cooking\include;..\..\..\..\ds\src\ds;..\..\..\..\cu\src;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;EASY_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -67,7 +67,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\memmgr\include;..\..\..\..\flatten\include;..\..\..\..\cooking\include;..\..\..\..\ds\src\ds;..\..\..\..\cu\src;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\bs\include;..\..\..\..\bimp\include;..\..\..\..\logger\src\logger;..\..\..\..\fs\src\fs;..\..\..\..\sm\src\sm;..\..\..\..\memmgr\include;..\..\..\..\flatten\include;..\..\..\..\cooking\include;..\..\..\..\ds\src\ds;..\..\..\..\cu\src;..\..\..\..\particle\src;..\..\..\..\mtrail\src\mtrail;..\..\..\..\rigging\src\rigging;..\..\..\..\editor-external\c99;..\..\..\..\editor-external\lzma\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;EASY_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -123,7 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\simp\AudioIDMgr.h" />
-    <ClInclude Include="..\..\..\include\simp\from_int.h" />
     <ClInclude Include="..\..\..\include\simp\ImportStream.h" />
     <ClInclude Include="..\..\..\include\simp\MeshShape.h" />
     <ClInclude Include="..\..\..\include\simp\NodeAnim2.h" />
