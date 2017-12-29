@@ -35,6 +35,7 @@
 #include "simp/NodeAnim2Spr.h"
 #include "simp/NodeAudioSpr.h"
 
+#include <fs_file.h>
 #include <bimp/FileLoader.h>
 #include <bimp/typedef.h>
 #include <bimp/Allocator.h>
