@@ -48,6 +48,10 @@ public:
 
 	auto& GetRefPkgs() const { return m_ref_pkgs; }
 
+	auto& GetPages() const { return m_pages; }
+
+	int GetVersion() const { return m_version;  }
+
 public:
 	class PageDesc
 	{
@@ -55,6 +59,11 @@ public:
 		PageDesc();
 		PageDesc(int size, int min, int max);
 		~PageDesc();
+
+		auto& GetFilepath() const { return m_filepath; }
+
+		int MinID() const { return m_min; }
+		int MaxID() const { return m_max; }
 
 		void ClearPage();
 
