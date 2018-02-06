@@ -1,0 +1,5 @@
+simp/
+projects/*
+
+!projects/simp.vcxproj
+!projects/simp.vcxproj.filters
